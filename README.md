@@ -29,7 +29,7 @@ AeroVine provides the solution: Automated drone missions and AI analysis deliver
 
 ---
 
-# Data That Nurtures the Harvest
+# Data that Nurtures the Harvest
 
 ## Pinpoint Hydration Needs
 Our AI instantly identifies areas of water stress by analyzing spectral imagery, ensuring you only irrigate where—and when—it matters most. Reduce water waste while maximizing vine health and grape quality.
