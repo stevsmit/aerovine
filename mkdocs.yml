@@ -1,0 +1,112 @@
+site_name: AeroVine Documentation
+site_description: AI-Powered Drone Technology for Wine Industry Agriculture
+site_author: AeroVine Team
+site_url: https://stevsmit.github.io/aerovine/
+
+repo_name: stevsmit/aerovine
+repo_url: https://github.com/stevsmit/aerovine
+edit_uri: edit/main/docs/
+
+# Copyright
+copyright: Copyright &copy; 2025 AeroVine
+
+# Theme
+theme:
+  name: material
+  palette:
+    # Light mode
+    - scheme: default
+      primary: indigo
+      accent: purple
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    # Dark mode
+    - scheme: slate
+      primary: indigo
+      accent: purple
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.expand
+    - navigation.top
+    - search.suggest
+    - search.highlight
+    - content.code.annotate
+  icon:
+    repo: fontawesome/brands/github
+
+# Plugins
+plugins:
+  - search
+  - git-revision-date-localized:
+      enable_creation_date: true
+
+# Extensions
+markdown_extensions:
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+  - attr_list
+  - md_in_html
+  - tables
+  - toc:
+      permalink: true
+
+# Navigation
+nav:
+  - Home: index.md
+  - About:
+    - Overview: about/overview.md
+    - Mission & Vision: about/mission.md
+  - Software:
+    - API Documentation: software/api-documentation.md
+    - API Quick Reference: software/api-quick-reference.md
+    - System Architecture: software/system-architecture.md
+    - Technical Requirements: software/technical-requirements.md
+    - Database Schema: software/database-schema.md
+    - UI Prototype Guide: software/ui-prototype-guide.md
+  - Marketing:
+    - Brand Guidelines: marketing/brand-guidelines.md
+    - Homepage Copy: marketing/homepage-copy.md
+    - Launch Campaign: marketing/launch-campaign.md
+    - Press Release Template: marketing/press-release.md
+  - Sales:
+    - Sales Playbook: sales/sales-playbook.md
+  - HR:
+    - Employee Handbook: hr/employee-handbook.md
+    - Job Descriptions: hr/job-descriptions.md
+    - Org Chart: hr/org-chart.md
+    - Performance Review: hr/performance-review.md
+    - Onboarding: hr/onboarding.md
+  - Finance:
+    - Financial Models: finance/financial-models.md
+  - Manufacturing:
+    - Manufacturing Guide: manufacturing/manufacturing.md
+  - Resources:
+    - Startup Package: resources/startup-package.md
+    - Simulation Package: resources/simulation-package.md
+    - API Docs README: resources/api-docs-readme.md
+
+# Extra
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/stevsmit/aerovine
+    - icon: fontawesome/solid/envelope
+      link: mailto:info@aerovine.com
+
