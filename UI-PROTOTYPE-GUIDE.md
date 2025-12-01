@@ -5,7 +5,7 @@
 ### **Quick Start (2 Minutes)**
 
 1. **Open the file:**
-   - Navigate to `/Users/jdohmann/AI-lab/acme-ai-dashboard.html`
+   - Navigate to `/aerovine/acme-ai-dashboard.html`
    - Double-click to open in your default browser
    - **OR** right-click → Open With → Choose your browser (Chrome, Safari, Firefox)
 

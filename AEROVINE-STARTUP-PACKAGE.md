@@ -18,7 +18,7 @@ Welcome to **AeroVine** - where aerial technology meets precision viticulture. Y
 ## 🎯 Your Files
 
 ```
-/Users/jdohmann/AI-lab/
+/aerovine
 │
 ├── 🌟 aerovine-dashboard.html              # ⭐ MAIN DEMO - Open this first!
 │
@@ -39,7 +39,7 @@ Welcome to **AeroVine** - where aerial technology meets precision viticulture. Y
 
 ### **Step 1: Open Your Working Prototype**
 ```bash
-1. Navigate to: /Users/jdohmann/AI-lab/
+1. Navigate to: /aerovine
 2. Double-click: aerovine-dashboard.html
 3. Boom! Professional web app in your browser
 ```
