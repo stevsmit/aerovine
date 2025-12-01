@@ -1,0 +1,3344 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="AI-Powered Drone Technology for Wine Industry Agriculture">
+      
+      
+        <meta name="author" content="AeroVine Team">
+      
+      
+        <link rel="canonical" href="https://stevsmit.github.io/aerovine/software/ui-prototype-guide/">
+      
+      
+        <link rel="prev" href="../database-schema/">
+      
+      
+        <link rel="next" href="../../marketing/brand-guidelines/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
+    
+    
+      
+        <title>UI Prototype Guide - AeroVine Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.618322db.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#acmeai-ui-prototype-demo-guide" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="AeroVine Documentation" class="md-header__button md-logo" aria-label="AeroVine Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            AeroVine Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              UI Prototype Guide
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="purple"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="purple"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/stevsmit/aerovine" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    stevsmit/aerovine
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../about/overview/" class="md-tabs__link">
+          
+  
+  
+  About
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../api-documentation/" class="md-tabs__link">
+          
+  
+  
+  Software
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../marketing/brand-guidelines/" class="md-tabs__link">
+          
+  
+  
+  Marketing
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../sales/sales-playbook/" class="md-tabs__link">
+          
+  
+  
+  Sales
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../hr/employee-handbook/" class="md-tabs__link">
+          
+  
+  
+  HR
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../finance/financial-models/" class="md-tabs__link">
+          
+  
+  
+  Finance
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../manufacturing/manufacturing/" class="md-tabs__link">
+          
+  
+  
+  Manufacturing
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../resources/startup-package.md" class="md-tabs__link">
+          
+  
+  
+  Resources
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="AeroVine Documentation" class="md-nav__button md-logo" aria-label="AeroVine Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    AeroVine Documentation
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/stevsmit/aerovine" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    stevsmit/aerovine
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    About
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    About
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../about/overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../about/mission/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Mission & Vision
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Software
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Software
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api-documentation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    API Documentation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api-quick-reference/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    API Quick Reference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../system-architecture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    System Architecture
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../technical-requirements/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Technical Requirements
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../database-schema/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Database Schema
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UI Prototype Guide
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UI Prototype Guide
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#how-to-use-this-prototype" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🎯 How to Use This Prototype
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🎯 How to Use This Prototype">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#quick-start-2-minutes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Quick Start (2 Minutes)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-you-can-do" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📱 What You Can Do
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📱 What You Can Do">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#interactive-features" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Interactive Features:
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vineyard-specific-features-your-competitive-edge" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🍇 Vineyard-Specific Features (Your Competitive Edge!)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🍇 Vineyard-Specific Features (Your Competitive Edge!)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#why-vineyards-matter" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why Vineyards Matter:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-the-prototype-shows" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What the Prototype Shows:
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="What the Prototype Shows:">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-vineyard-dashboard-tab" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Vineyard Dashboard Tab
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-vineyard-specific-metrics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Vineyard-Specific Metrics
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-ai-detections-in-vineyards" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. AI Detections in Vineyards
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#demo-script-5-minute-walkthrough" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🎬 Demo Script (5-Minute Walkthrough)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🎬 Demo Script (5-Minute Walkthrough)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#opening-30-seconds" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Opening (30 seconds)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dashboard-overview-1-minute" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Dashboard Overview (1 minute)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vineyard-specialization-2-minutes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Vineyard Specialization (2 minutes)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#live-operations-1-minute" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Live Operations (1 minute)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#analytics-roi-30-seconds" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Analytics &amp; ROI (30 seconds)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#closing-30-seconds" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Closing (30 seconds)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#key-talking-points-for-vineyards" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💡 Key Talking Points for Vineyards
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="💡 Key Talking Points for Vineyards">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#why-vineyards-need-drones" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why Vineyards Need Drones:
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vineyard-terminology-sound-like-an-expert" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🎓 Vineyard Terminology (Sound Like an Expert)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🎓 Vineyard Terminology (Sound Like an Expert)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diseases-to-mention" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Diseases to Mention:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#growth-stages" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Growth Stages:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#metrics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Metrics:
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#impressive-statistics-to-memorize" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📊 Impressive Statistics to Memorize
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📊 Impressive Statistics to Memorize">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#vineyard-specific" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Vineyard-Specific:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#general-agriculture" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        General Agriculture:
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#anticipated-questions-answers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ❓ Anticipated Questions &amp; Answers
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="❓ Anticipated Questions &amp; Answers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#q-why-focus-on-vineyards-and-traditional-agriculture" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Q: Why focus on vineyards AND traditional agriculture?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#q-how-accurate-is-the-disease-detection-in-vineyards" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Q: How accurate is the disease detection in vineyards?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#q-whats-different-about-monitoring-vineyards-vs-other-crops" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Q: What's different about monitoring vineyards vs other crops?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#q-do-vineyard-owners-actually-use-this-technology" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Q: Do vineyard owners actually use this technology?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#q-what-about-regulations-can-you-fly-drones-over-vineyards" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Q: What about regulations? Can you fly drones over vineyards?
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ui-design-highlights-technical-credibility" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🎨 UI Design Highlights (Technical Credibility)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🎨 UI Design Highlights (Technical Credibility)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-makes-this-professional" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What Makes This Professional:
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#taking-it-further-if-you-have-time" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🚀 Taking It Further (If You Have Time)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🚀 Taking It Further (If You Have Time)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#easy-enhancements" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Easy Enhancements:
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mobile-demo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📱 Mobile Demo
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#advanced-demo-side-by-side-comparison" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🎬 Advanced Demo: Side-by-Side Comparison
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pre-demo-checklist" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ✅ Pre-Demo Checklist
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-this-prototype-proves" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🎯 What This Prototype Proves
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#positioning-for-business-audiences" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💼 Positioning for Business Audiences
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="💼 Positioning for Business Audiences">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#for-investors" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        For Investors:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#for-winery-owners" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        For Winery Owners:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#for-technical-reviewers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        For Technical Reviewers:
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#your-competitive-advantages" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🌟 Your Competitive Advantages
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Marketing
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Marketing
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../marketing/brand-guidelines/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Brand Guidelines
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../marketing/homepage-copy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Homepage Copy
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../marketing/launch-campaign/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Launch Campaign
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../marketing/press-release/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Press Release Template
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sales
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Sales
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sales/sales-playbook/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sales Playbook
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    HR
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    HR
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hr/employee-handbook/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Employee Handbook
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hr/job-descriptions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Job Descriptions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hr/org-chart/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Org Chart
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hr/performance-review/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Performance Review
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hr/onboarding/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Onboarding
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Finance
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Finance
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../finance/financial-models/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Financial Models
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Manufacturing
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Manufacturing
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../manufacturing/manufacturing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Manufacturing Guide
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Resources
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Resources
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../resources/startup-package.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Startup Package
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../resources/simulation-package.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Simulation Package
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../resources/api-docs-readme/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    API Docs README
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#how-to-use-this-prototype" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🎯 How to Use This Prototype
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🎯 How to Use This Prototype">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#quick-start-2-minutes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Quick Start (2 Minutes)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-you-can-do" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📱 What You Can Do
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📱 What You Can Do">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#interactive-features" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Interactive Features:
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vineyard-specific-features-your-competitive-edge" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🍇 Vineyard-Specific Features (Your Competitive Edge!)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🍇 Vineyard-Specific Features (Your Competitive Edge!)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#why-vineyards-matter" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why Vineyards Matter:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-the-prototype-shows" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What the Prototype Shows:
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="What the Prototype Shows:">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-vineyard-dashboard-tab" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Vineyard Dashboard Tab
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-vineyard-specific-metrics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Vineyard-Specific Metrics
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-ai-detections-in-vineyards" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. AI Detections in Vineyards
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#demo-script-5-minute-walkthrough" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🎬 Demo Script (5-Minute Walkthrough)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🎬 Demo Script (5-Minute Walkthrough)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#opening-30-seconds" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Opening (30 seconds)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dashboard-overview-1-minute" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Dashboard Overview (1 minute)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vineyard-specialization-2-minutes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Vineyard Specialization (2 minutes)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#live-operations-1-minute" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Live Operations (1 minute)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#analytics-roi-30-seconds" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Analytics &amp; ROI (30 seconds)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#closing-30-seconds" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Closing (30 seconds)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#key-talking-points-for-vineyards" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💡 Key Talking Points for Vineyards
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="💡 Key Talking Points for Vineyards">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#why-vineyards-need-drones" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why Vineyards Need Drones:
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vineyard-terminology-sound-like-an-expert" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🎓 Vineyard Terminology (Sound Like an Expert)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🎓 Vineyard Terminology (Sound Like an Expert)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diseases-to-mention" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Diseases to Mention:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#growth-stages" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Growth Stages:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#metrics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Metrics:
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#impressive-statistics-to-memorize" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📊 Impressive Statistics to Memorize
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📊 Impressive Statistics to Memorize">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#vineyard-specific" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Vineyard-Specific:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#general-agriculture" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        General Agriculture:
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#anticipated-questions-answers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ❓ Anticipated Questions &amp; Answers
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="❓ Anticipated Questions &amp; Answers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#q-why-focus-on-vineyards-and-traditional-agriculture" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Q: Why focus on vineyards AND traditional agriculture?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#q-how-accurate-is-the-disease-detection-in-vineyards" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Q: How accurate is the disease detection in vineyards?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#q-whats-different-about-monitoring-vineyards-vs-other-crops" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Q: What's different about monitoring vineyards vs other crops?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#q-do-vineyard-owners-actually-use-this-technology" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Q: Do vineyard owners actually use this technology?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#q-what-about-regulations-can-you-fly-drones-over-vineyards" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Q: What about regulations? Can you fly drones over vineyards?
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ui-design-highlights-technical-credibility" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🎨 UI Design Highlights (Technical Credibility)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🎨 UI Design Highlights (Technical Credibility)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-makes-this-professional" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What Makes This Professional:
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#taking-it-further-if-you-have-time" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🚀 Taking It Further (If You Have Time)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🚀 Taking It Further (If You Have Time)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#easy-enhancements" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Easy Enhancements:
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mobile-demo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📱 Mobile Demo
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#advanced-demo-side-by-side-comparison" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🎬 Advanced Demo: Side-by-Side Comparison
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pre-demo-checklist" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ✅ Pre-Demo Checklist
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-this-prototype-proves" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🎯 What This Prototype Proves
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#positioning-for-business-audiences" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💼 Positioning for Business Audiences
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="💼 Positioning for Business Audiences">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#for-investors" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        For Investors:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#for-winery-owners" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        For Winery Owners:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#for-technical-reviewers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        For Technical Reviewers:
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#your-competitive-advantages" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🌟 Your Competitive Advantages
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="acmeai-ui-prototype-demo-guide">Acme.ai UI Prototype - Demo Guide<a class="headerlink" href="#acmeai-ui-prototype-demo-guide" title="Permanent link">&para;</a></h1>
+<h2 id="how-to-use-this-prototype">🎯 How to Use This Prototype<a class="headerlink" href="#how-to-use-this-prototype" title="Permanent link">&para;</a></h2>
+<h3 id="quick-start-2-minutes"><strong>Quick Start (2 Minutes)</strong><a class="headerlink" href="#quick-start-2-minutes" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>Open the file:</strong></li>
+<li>Navigate to <code>/aerovine/acme-ai-dashboard.html</code></li>
+<li>Double-click to open in your default browser</li>
+<li>
+<p><strong>OR</strong> right-click → Open With → Choose your browser (Chrome, Safari, Firefox)</p>
+</li>
+<li>
+<p><strong>You'll see a fully functional dashboard!</strong></p>
+</li>
+<li>No server required</li>
+<li>No installation needed</li>
+<li>Works 100% offline</li>
+<li>Looks professional and polished</li>
+</ol>
+<hr />
+<h2 id="what-you-can-do">📱 What You Can Do<a class="headerlink" href="#what-you-can-do" title="Permanent link">&para;</a></h2>
+<h3 id="interactive-features"><strong>Interactive Features:</strong><a class="headerlink" href="#interactive-features" title="Permanent link">&para;</a></h3>
+<p>✅ <strong>Navigate Between Pages</strong> - Click the top menu:
+- <strong>Dashboard</strong> - Fleet overview with AI detections
+- <strong>Vineyards</strong> - Premium vineyard management (NEW!)
+- <strong>Live Map</strong> - Real-time drone positions
+- <strong>Fleet</strong> - Individual drone status
+- <strong>Analytics</strong> - Performance metrics</p>
+<p>✅ <strong>Click on Vineyard Cards</strong> - Shows detailed popup information</p>
+<p>✅ <strong>Watch Real-time Updates</strong> - Battery levels update automatically</p>
+<p>✅ <strong>Fully Responsive</strong> - Works on desktop, tablet, and mobile</p>
+<hr />
+<h2 id="vineyard-specific-features-your-competitive-edge">🍇 Vineyard-Specific Features (Your Competitive Edge!)<a class="headerlink" href="#vineyard-specific-features-your-competitive-edge" title="Permanent link">&para;</a></h2>
+<h3 id="why-vineyards-matter"><strong>Why Vineyards Matter:</strong><a class="headerlink" href="#why-vineyards-matter" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Premium Market:</strong> Wine grapes = $3,000-$8,000 per ton (vs wheat $200/ton)</li>
+<li><strong>High ROI:</strong> Vineyard owners invest heavily in technology</li>
+<li><strong>Disease Sensitive:</strong> Powdery mildew, downy mildew, botrytis can destroy crops</li>
+<li><strong>Precision Required:</strong> Berry size, sugar content, canopy management critical</li>
+<li><strong>Global Market:</strong> Napa, Sonoma, Tuscany, Mendoza, Bordeaux, etc.</li>
+</ul>
+<h3 id="what-the-prototype-shows"><strong>What the Prototype Shows:</strong><a class="headerlink" href="#what-the-prototype-shows" title="Permanent link">&para;</a></h3>
+<h4 id="1-vineyard-dashboard-tab"><strong>1. Vineyard Dashboard Tab</strong><a class="headerlink" href="#1-vineyard-dashboard-tab" title="Permanent link">&para;</a></h4>
+<p>Shows 6 premium vineyards across 3 countries:
+- 🇺🇸 <strong>Napa Valley Estate</strong> - Cabernet Sauvignon (85 ha)
+  - AI detected: Powdery mildew in Block 7
+  - Vine health: 88%</p>
+<ul>
+<li>🇺🇸 <strong>Sonoma Valley Reserve</strong> - Chardonnay (62 ha)</li>
+<li>AI detected: Irrigation stress</li>
+<li>
+<p>Vine health: 92%</p>
+</li>
+<li>
+<p>🇺🇸 <strong>Russian River Vineyard</strong> - Pinot Noir (45 ha)</p>
+</li>
+<li>No issues, optimal health</li>
+<li>
+<p>Vine health: 94%</p>
+</li>
+<li>
+<p>🇺🇸 <strong>Willamette Valley Estate</strong> - Pinot Gris (38 ha)</p>
+</li>
+<li>Minor leaf discoloration</li>
+<li>
+<p>Vine health: 89%</p>
+</li>
+<li>
+<p>🇦🇷 <strong>Mendoza Reserve</strong> - Malbec (110 ha)</p>
+</li>
+<li>Excellent berry development</li>
+<li>
+<p>Vine health: 91%</p>
+</li>
+<li>
+<p>🇮🇹 <strong>Tuscany Estate</strong> - Sangiovese (72 ha)</p>
+</li>
+<li>Heat stress detected</li>
+<li>Vine health: 86%</li>
+</ul>
+<h4 id="2-vineyard-specific-metrics"><strong>2. Vineyard-Specific Metrics</strong><a class="headerlink" href="#2-vineyard-specific-metrics" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Total Coverage:</strong> 462 hectares across 6 estates</li>
+<li><strong>Average Vine Health:</strong> 90% (↑8% vs last season)</li>
+<li><strong>Predicted Yield:</strong> 3.2 tons/hectare</li>
+<li><strong>Days to Veraison:</strong> 18 (color change tracking)</li>
+</ul>
+<h4 id="3-ai-detections-in-vineyards"><strong>3. AI Detections in Vineyards</strong><a class="headerlink" href="#3-ai-detections-in-vineyards" title="Permanent link">&para;</a></h4>
+<p>The dashboard shows real vineyard diseases:
+- <strong>Powdery Mildew</strong> - Most common grape disease
+- <strong>Irrigation Stress</strong> - Critical for premium quality
+- <strong>Heat Stress</strong> - Climate impact monitoring
+- <strong>Canopy Density</strong> - Optimal sunlight exposure</p>
+<hr />
+<h2 id="demo-script-5-minute-walkthrough">🎬 Demo Script (5-Minute Walkthrough)<a class="headerlink" href="#demo-script-5-minute-walkthrough" title="Permanent link">&para;</a></h2>
+<h3 id="opening-30-seconds"><strong>Opening (30 seconds)</strong><a class="headerlink" href="#opening-30-seconds" title="Permanent link">&para;</a></h3>
+<p><em>[Open acme-ai-dashboard.html in browser]</em></p>
+<p>"This is Acme.ai's agricultural drone fleet management platform. We specialize in both large-scale farming AND premium vineyards."</p>
+<hr />
+<h3 id="dashboard-overview-1-minute"><strong>Dashboard Overview (1 minute)</strong><a class="headerlink" href="#dashboard-overview-1-minute" title="Permanent link">&para;</a></h3>
+<p><em>[Show Dashboard tab]</em></p>
+<p>"At a glance, we're managing 50 drones across 47 farms globally. Today alone we've surveyed 12,450 hectares with 89% AI autonomy."</p>
+<p><strong>Point to the alerts:</strong>
+"Our AI just detected powdery mildew in our Napa Valley vineyard - a disease that can devastate wine grapes. It identified the exact location: Block 7, affecting only 2.3 hectares."</p>
+<p><strong>Point to economic impact:</strong>
+"This precision saves money - $127,400 in chemical savings last month by treating only affected areas, not entire fields."</p>
+<hr />
+<h3 id="vineyard-specialization-2-minutes"><strong>Vineyard Specialization (2 minutes)</strong><a class="headerlink" href="#vineyard-specialization-2-minutes" title="Permanent link">&para;</a></h3>
+<p><em>[Click on "Vineyards" tab]</em></p>
+<p>"Here's where we differentiate - premium vineyard management. Wine grapes can be worth $3,000-$8,000 per ton compared to $200 for wheat. That's why precision matters."</p>
+<p><em>[Click on Napa Valley card - popup appears]</em></p>
+<p>"For this Cabernet Sauvignon vineyard in Napa, our AI detected powdery mildew early - before the winemaker could see it with the naked eye. The recommendation: precision fungicide application on just 2.3 hectares instead of spraying all 85 hectares."</p>
+<p><strong>Economics:</strong>
+"That single detection saved:
+- 65% in chemical costs
+- Prevented disease spread to healthy vines
+- Maintained premium wine quality
+- Protected the vineyard's $2.5M+ annual revenue"</p>
+<p><em>[Point to other vineyards]</em></p>
+<p>"We monitor vineyards across three continents - Napa, Sonoma, Willamette Valley in the US, Mendoza in Argentina, Tuscany in Italy. Each has unique challenges: heat stress in Italy, irrigation needs in Argentina, disease pressure in Oregon."</p>
+<hr />
+<h3 id="live-operations-1-minute"><strong>Live Operations (1 minute)</strong><a class="headerlink" href="#live-operations-1-minute" title="Permanent link">&para;</a></h3>
+<p><em>[Click on "Fleet" tab]</em></p>
+<p>"Right now, Drone V-08 is surveying our Pinot Noir vineyard in Russian River. You can see its battery level, mission progress, and estimated completion time."</p>
+<p><em>[Point to active drones]</em></p>
+<p>"Simultaneously, we have drones operating in traditional agriculture - wheat surveys in Iowa, corn field spraying. The platform manages both premium vineyards and commodity crops."</p>
+<hr />
+<h3 id="analytics-roi-30-seconds"><strong>Analytics &amp; ROI (30 seconds)</strong><a class="headerlink" href="#analytics-roi-30-seconds" title="Permanent link">&para;</a></h3>
+<p><em>[Click on "Analytics" tab]</em></p>
+<p>"The analytics prove the value. In our vineyards specifically:
+- 93% disease detection accuracy
+- 89% yield prediction confidence
+- $89,200 saved in chemical costs through precision
+- Estimated crop value of $847,000 - up 12% through early intervention"</p>
+<hr />
+<h3 id="closing-30-seconds"><strong>Closing (30 seconds)</strong><a class="headerlink" href="#closing-30-seconds" title="Permanent link">&para;</a></h3>
+<p>"This platform demonstrates that Acme.ai isn't just another drone company. We combine:
+- <strong>Agricultural Expertise</strong> - Understanding crop needs
+- <strong>AI Technology</strong> - 93% detection accuracy
+- <strong>Premium Market Focus</strong> - Vineyards are high-value
+- <strong>Global Scale</strong> - Operating across continents
+- <strong>Economic Impact</strong> - Real savings, real ROI"</p>
+<hr />
+<h2 id="key-talking-points-for-vineyards">💡 Key Talking Points for Vineyards<a class="headerlink" href="#key-talking-points-for-vineyards" title="Permanent link">&para;</a></h2>
+<h3 id="why-vineyards-need-drones"><strong>Why Vineyards Need Drones:</strong><a class="headerlink" href="#why-vineyards-need-drones" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>Disease Detection</strong></li>
+<li>Powdery mildew can destroy entire vintage</li>
+<li>Early detection = 90%+ crop saved</li>
+<li>
+<p>Our AI detects 5-7 days before visible symptoms</p>
+</li>
+<li>
+<p><strong>Precision Irrigation</strong></p>
+</li>
+<li>Water stress affects sugar content (critical for wine quality)</li>
+<li>Over-watering dilutes flavor</li>
+<li>
+<p>Our thermal imaging identifies stress zones</p>
+</li>
+<li>
+<p><strong>Canopy Management</strong></p>
+</li>
+<li>Too dense = disease risk + poor sun exposure</li>
+<li>Too sparse = sunburn damage</li>
+<li>
+<p>AI measures optimal density</p>
+</li>
+<li>
+<p><strong>Harvest Timing</strong></p>
+</li>
+<li>Picking too early = under-ripe, acidic</li>
+<li>Picking too late = over-ripe, low acidity</li>
+<li>
+<p>AI predicts optimal harvest window based on berry development</p>
+</li>
+<li>
+<p><strong>Premium Market Economics</strong></p>
+</li>
+<li>$3,000-$8,000 per ton vs commodity crops ($200/ton)</li>
+<li>Small improvements = huge financial impact</li>
+<li>Vineyard owners WILL pay for technology that protects investment</li>
+</ol>
+<hr />
+<h2 id="vineyard-terminology-sound-like-an-expert">🎓 Vineyard Terminology (Sound Like an Expert)<a class="headerlink" href="#vineyard-terminology-sound-like-an-expert" title="Permanent link">&para;</a></h2>
+<h3 id="diseases-to-mention"><strong>Diseases to Mention:</strong><a class="headerlink" href="#diseases-to-mention" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Powdery Mildew</strong> - White fungal growth, most common</li>
+<li><strong>Downy Mildew</strong> - Yellowing leaves, destructive</li>
+<li><strong>Botrytis</strong> (Noble Rot) - Can be good or bad depending on wine type</li>
+</ul>
+<h3 id="growth-stages"><strong>Growth Stages:</strong><a class="headerlink" href="#growth-stages" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Bud Break</strong> - Spring growth begins</li>
+<li><strong>Flowering</strong> - Critical for pollination</li>
+<li><strong>Fruit Set</strong> - Berries form</li>
+<li><strong>Veraison</strong> - Grapes change color, sugar accumulation</li>
+<li><strong>Harvest</strong> - Picking at optimal ripeness</li>
+</ul>
+<h3 id="metrics"><strong>Metrics:</strong><a class="headerlink" href="#metrics" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Brix</strong> - Sugar content (directly related to alcohol %)</li>
+<li><strong>pH</strong> - Acidity level</li>
+<li><strong>Canopy Density</strong> - Leaf coverage</li>
+<li><strong>Berry Size</strong> - Uniformity important for quality</li>
+<li><strong>Tons per hectare (t/ha)</strong> - Yield measurement</li>
+</ul>
+<hr />
+<h2 id="impressive-statistics-to-memorize">📊 Impressive Statistics to Memorize<a class="headerlink" href="#impressive-statistics-to-memorize" title="Permanent link">&para;</a></h2>
+<h3 id="vineyard-specific"><strong>Vineyard-Specific:</strong><a class="headerlink" href="#vineyard-specific" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>462 hectares</strong> of premium vineyards monitored</li>
+<li><strong>90% average vine health</strong> (8% improvement vs last season)</li>
+<li><strong>$89,200</strong> saved in chemical costs (52% reduction)</li>
+<li><strong>93%</strong> disease detection accuracy</li>
+<li><strong>3.2 t/ha</strong> predicted yield (premium quality maintained)</li>
+</ul>
+<h3 id="general-agriculture"><strong>General Agriculture:</strong><a class="headerlink" href="#general-agriculture" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>50 drones</strong> in global fleet</li>
+<li><strong>85,000 hectares</strong> total coverage</li>
+<li><strong>$127,400</strong> total monthly savings</li>
+<li><strong>89%</strong> AI autonomy rate</li>
+<li><strong>98.5%</strong> mission success rate</li>
+</ul>
+<hr />
+<h2 id="anticipated-questions-answers">❓ Anticipated Questions &amp; Answers<a class="headerlink" href="#anticipated-questions-answers" title="Permanent link">&para;</a></h2>
+<h3 id="q-why-focus-on-vineyards-and-traditional-agriculture"><strong>Q: Why focus on vineyards AND traditional agriculture?</strong><a class="headerlink" href="#q-why-focus-on-vineyards-and-traditional-agriculture" title="Permanent link">&para;</a></h3>
+<p>A: "Vineyards are high-margin, premium clients who pay for precision. Traditional agriculture provides volume and scale. Together, they create a balanced business model - high revenue per acre from vineyards, high volume from commodity crops."</p>
+<h3 id="q-how-accurate-is-the-disease-detection-in-vineyards"><strong>Q: How accurate is the disease detection in vineyards?</strong><a class="headerlink" href="#q-how-accurate-is-the-disease-detection-in-vineyards" title="Permanent link">&para;</a></h3>
+<p>A: "93% accuracy for powdery mildew, downy mildew, and botrytis. We trained our AI on 50,000+ labeled images from UC Davis Viticulture Department and real vineyard data. The AI detects spectral signatures invisible to the human eye - identifying disease 5-7 days before visible symptoms."</p>
+<h3 id="q-whats-different-about-monitoring-vineyards-vs-other-crops"><strong>Q: What's different about monitoring vineyards vs other crops?</strong><a class="headerlink" href="#q-whats-different-about-monitoring-vineyards-vs-other-crops" title="Permanent link">&para;</a></h3>
+<p>A: "Vineyards require more frequent monitoring - weekly vs monthly for row crops. Disease pressure is higher. The economic value is 15-40x higher per hectare. And precision matters more - a 5% quality improvement can mean premium pricing tier changes worth thousands of dollars."</p>
+<h3 id="q-do-vineyard-owners-actually-use-this-technology"><strong>Q: Do vineyard owners actually use this technology?</strong><a class="headerlink" href="#q-do-vineyard-owners-actually-use-this-technology" title="Permanent link">&para;</a></h3>
+<p>A: "Absolutely. Premium wineries in Napa spend $3,000-$5,000 per acre on farming costs already. Adding $200-$400/acre for drone monitoring that can prevent a $10,000/acre crop loss is an easy decision. Plus, they can market 'sustainable, precision viticulture' to consumers."</p>
+<h3 id="q-what-about-regulations-can-you-fly-drones-over-vineyards"><strong>Q: What about regulations? Can you fly drones over vineyards?</strong><a class="headerlink" href="#q-what-about-regulations-can-you-fly-drones-over-vineyards" title="Permanent link">&para;</a></h3>
+<p>A: "Yes, with FAA Part 107 commercial drone license. Vineyards are typically rural, outside no-fly zones. We maintain compliance with all agricultural aviation regulations and spray permit requirements."</p>
+<hr />
+<h2 id="ui-design-highlights-technical-credibility">🎨 UI Design Highlights (Technical Credibility)<a class="headerlink" href="#ui-design-highlights-technical-credibility" title="Permanent link">&para;</a></h2>
+<h3 id="what-makes-this-professional"><strong>What Makes This Professional:</strong><a class="headerlink" href="#what-makes-this-professional" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>Color Coding</strong></li>
+<li>Green gradient = Healthy/Success</li>
+<li>Blue gradient = Information/In Progress</li>
+<li>Orange/Yellow = Warning/Attention Needed</li>
+<li>
+<p>Red = Critical/Emergency</p>
+</li>
+<li>
+<p><strong>Responsive Design</strong></p>
+</li>
+<li>Works on desktop, tablet, mobile</li>
+<li>Modern CSS Grid and Flexbox</li>
+<li>
+<p>Smooth animations and transitions</p>
+</li>
+<li>
+<p><strong>Real-time Elements</strong></p>
+</li>
+<li>Pulsing status indicators</li>
+<li>Auto-updating battery levels</li>
+<li>
+<p>Fade-in animations on load</p>
+</li>
+<li>
+<p><strong>Information Hierarchy</strong></p>
+</li>
+<li>Most critical info at top (alerts, status)</li>
+<li>Supporting details below</li>
+<li>
+<p>Clear visual separation between sections</p>
+</li>
+<li>
+<p><strong>Accessibility</strong></p>
+</li>
+<li>High contrast text</li>
+<li>Clear font sizes</li>
+<li>Intuitive navigation</li>
+</ol>
+<hr />
+<h2 id="taking-it-further-if-you-have-time">🚀 Taking It Further (If You Have Time)<a class="headerlink" href="#taking-it-further-if-you-have-time" title="Permanent link">&para;</a></h2>
+<h3 id="easy-enhancements"><strong>Easy Enhancements:</strong><a class="headerlink" href="#easy-enhancements" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>Add More Vineyards</strong></li>
+<li>Edit the HTML, copy/paste vineyard card sections</li>
+<li>
+<p>Change variety names: Merlot, Syrah, Riesling, Sauvignon Blanc</p>
+</li>
+<li>
+<p><strong>Customize for Your Region</strong></p>
+</li>
+<li>Add local vineyard names</li>
+<li>
+<p>Use regional varieties (Oregon = Pinot Noir, Washington = Riesling)</p>
+</li>
+<li>
+<p><strong>Print to PDF</strong></p>
+</li>
+<li>Open in browser → File → Print → Save as PDF</li>
+<li>
+<p>Create a "product brochure" with screenshots</p>
+</li>
+<li>
+<p><strong>Take Screenshots</strong></p>
+</li>
+<li>Use for presentation slides</li>
+<li>Create before/after comparisons</li>
+<li>Show in printed materials</li>
+</ol>
+<hr />
+<h2 id="mobile-demo">📱 Mobile Demo<a class="headerlink" href="#mobile-demo" title="Permanent link">&para;</a></h2>
+<p>The UI is responsive! To show mobile view:</p>
+<ol>
+<li><strong>Chrome/Safari Desktop:</strong></li>
+<li>Right-click → Inspect</li>
+<li>Click device toolbar icon (phone/tablet icon)</li>
+<li>
+<p>Select iPhone or iPad from dropdown</p>
+</li>
+<li>
+<p><strong>On Your Phone:</strong></p>
+</li>
+<li>Email the HTML file to yourself</li>
+<li>Download and open in Safari/Chrome</li>
+<li>Full mobile experience!</li>
+</ol>
+<hr />
+<h2 id="advanced-demo-side-by-side-comparison">🎬 Advanced Demo: Side-by-Side Comparison<a class="headerlink" href="#advanced-demo-side-by-side-comparison" title="Permanent link">&para;</a></h2>
+<p><strong>Open two browser windows:</strong></p>
+<ol>
+<li><strong>Window 1:</strong> The UI Prototype (<code>acme-ai-dashboard.html</code>)</li>
+<li><strong>Window 2:</strong> The API Documentation (<code>acme-ai-api-documentation.md</code>)</li>
+</ol>
+<p><strong>Demo flow:</strong>
+"On the left, you see the user interface that vineyard managers interact with. On the right, the API that powers it - allowing integration with winery management systems like VineView, WineDirect, and others."</p>
+<p><em>[Click on vineyard card]</em>
+"When a vineyard manager clicks here, the UI calls our <code>/agriculture/fields/{id}/health</code> API endpoint..."</p>
+<p><em>[Show the endpoint in documentation]</em>
+"...which returns real-time NDVI analysis, disease detections, and AI recommendations in milliseconds."</p>
+<hr />
+<h2 id="pre-demo-checklist">✅ Pre-Demo Checklist<a class="headerlink" href="#pre-demo-checklist" title="Permanent link">&para;</a></h2>
+<ul>
+<li>[ ] Open <code>acme-ai-dashboard.html</code> in browser</li>
+<li>[ ] Test all navigation tabs (Dashboard, Vineyards, Map, Fleet, Analytics)</li>
+<li>[ ] Click on at least 2 vineyard cards to verify popups work</li>
+<li>[ ] Memorize 3-5 key statistics</li>
+<li>[ ] Practice the 5-minute walkthrough once</li>
+<li>[ ] Have API documentation open in separate tab</li>
+<li>[ ] Prepare answers to 2-3 anticipated questions</li>
+<li>[ ] Screenshot the Vineyard page for backup (in case internet/computer fails)</li>
+</ul>
+<hr />
+<h2 id="what-this-prototype-proves">🎯 What This Prototype Proves<a class="headerlink" href="#what-this-prototype-proves" title="Permanent link">&para;</a></h2>
+<p>Even as a non-technical person, you've created:</p>
+<p>✅ <strong>Professional UI</strong> - Looks like a real SaaS product</p>
+<p>✅ <strong>Agricultural Domain Knowledge</strong> - Understand crop health, diseases, precision ag</p>
+<p>✅ <strong>Vineyard Expertise</strong> - Premium market focus, viticulture terminology</p>
+<p>✅ <strong>Business Acumen</strong> - ROI metrics, market positioning, pricing tiers</p>
+<p>✅ <strong>Technical Planning</strong> - How UI connects to API backend</p>
+<p>✅ <strong>Design Thinking</strong> - User experience, information architecture</p>
+<p>✅ <strong>Global Scale</strong> - Multi-region, multi-crop management</p>
+<hr />
+<h2 id="positioning-for-business-audiences">💼 Positioning for Business Audiences<a class="headerlink" href="#positioning-for-business-audiences" title="Permanent link">&para;</a></h2>
+<h3 id="for-investors"><strong>For Investors:</strong><a class="headerlink" href="#for-investors" title="Permanent link">&para;</a></h3>
+<p>"This is a $5B+ market - precision agriculture. We're positioned at the premium end with vineyard specialization. The UI shows our differentiation: AI-powered disease detection that protects high-value crops."</p>
+<h3 id="for-winery-owners"><strong>For Winery Owners:</strong><a class="headerlink" href="#for-winery-owners" title="Permanent link">&para;</a></h3>
+<p>"Imagine getting an alert at 6am: 'Powdery mildew detected in Block 7, Cabernet Sauvignon. Optimal spray window opening in 2 hours.' You treat 2.3 hectares instead of 85 hectares. That's $12,000 saved on a single detection."</p>
+<h3 id="for-technical-reviewers"><strong>For Technical Reviewers:</strong><a class="headerlink" href="#for-technical-reviewers" title="Permanent link">&para;</a></h3>
+<p>"The frontend is built with vanilla JavaScript for rapid prototyping, but production would use React or Vue. The design system uses CSS Grid for responsive layouts. Data flows through our RESTful API with real-time WebSocket updates for telemetry."</p>
+<hr />
+<h2 id="your-competitive-advantages">🌟 Your Competitive Advantages<a class="headerlink" href="#your-competitive-advantages" title="Permanent link">&para;</a></h2>
+<p><strong>Most drone startups show:</strong>
+- Generic aerial photography
+- "We have drones that take pictures"
+- No specific use case</p>
+<p><strong>You show:</strong>
+- Specific agricultural application (vineyards + row crops)
+- Real diseases with solutions (powdery mildew detection)
+- Economic impact ($127K savings, $4.20 ROI)
+- Professional, working prototype
+- Complete technical documentation
+- Global scale (6 vineyards across 3 countries)</p>
+<hr />
+<p><strong>You're ready to impress! Good luck with your simulation! 🚀🍇</strong></p>
+
+
+
+
+
+
+
+  
+    
+  
+  
+    
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Last update">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="December 1, 2025 17:42:32 UTC">December 1, 2025</span>
+  </span>
+
+    
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Created">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="December 1, 2025 17:42:32 UTC">December 1, 2025</span>
+  </span>
+
+    
+    
+    
+  </aside>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2025 AeroVine
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/stevsmit/aerovine" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="mailto:info@aerovine.com" target="_blank" rel="noopener" title="" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M48 64C21.5 64 0 85.5 0 112c0 15.1 7.1 29.3 19.2 38.4l208 156a48 48 0 0 0 57.6 0l208-156c12.1-9.1 19.2-23.3 19.2-38.4 0-26.5-21.5-48-48-48zM0 196v188c0 35.3 28.7 64 64 64h384c35.3 0 64-28.7 64-64V196L313.6 344.8c-34.1 25.6-81.1 25.6-115.2 0z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.expand", "navigation.top", "search.suggest", "search.highlight", "content.code.annotate"], "search": "../../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.e71a0d61.min.js"></script>
+      
+    
+  </body>
+</html>

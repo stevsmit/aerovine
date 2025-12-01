@@ -1,0 +1,4617 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="AI-Powered Drone Technology for Wine Industry Agriculture">
+      
+      
+        <meta name="author" content="AeroVine Team">
+      
+      
+        <link rel="canonical" href="https://stevsmit.github.io/aerovine/software/technical-requirements/">
+      
+      
+        <link rel="prev" href="../system-architecture/">
+      
+      
+        <link rel="next" href="../database-schema/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
+    
+    
+      
+        <title>Technical Requirements - AeroVine Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.618322db.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#aerovine-technical-requirements" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="AeroVine Documentation" class="md-header__button md-logo" aria-label="AeroVine Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            AeroVine Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Technical Requirements
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="purple"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="purple"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/stevsmit/aerovine" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    stevsmit/aerovine
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../about/overview/" class="md-tabs__link">
+          
+  
+  
+  About
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../api-documentation/" class="md-tabs__link">
+          
+  
+  
+  Software
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../marketing/brand-guidelines/" class="md-tabs__link">
+          
+  
+  
+  Marketing
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../sales/sales-playbook/" class="md-tabs__link">
+          
+  
+  
+  Sales
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../hr/employee-handbook/" class="md-tabs__link">
+          
+  
+  
+  HR
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../finance/financial-models/" class="md-tabs__link">
+          
+  
+  
+  Finance
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../manufacturing/manufacturing/" class="md-tabs__link">
+          
+  
+  
+  Manufacturing
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../resources/startup-package.md" class="md-tabs__link">
+          
+  
+  
+  Resources
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="AeroVine Documentation" class="md-nav__button md-logo" aria-label="AeroVine Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    AeroVine Documentation
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/stevsmit/aerovine" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    stevsmit/aerovine
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    About
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    About
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../about/overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../about/mission/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Mission & Vision
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Software
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Software
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api-documentation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    API Documentation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api-quick-reference/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    API Quick Reference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../system-architecture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    System Architecture
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Technical Requirements
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Technical Requirements
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#table-of-contents" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Table of Contents
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-client-side-requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Client-Side Requirements
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Client-Side Requirements">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#hardware-vineyard-managersoperators" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hardware (Vineyard Managers/Operators)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#software" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Software
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#network-requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Network Requirements
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-drone-hardware-specifications" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Drone Hardware Specifications
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Drone Hardware Specifications">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#aerovine-x7-ag-platform" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        AeroVine-X7-AG Platform
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-backend-infrastructure-requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Backend Infrastructure Requirements
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Backend Infrastructure Requirements">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#application-server" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Application Server
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#database-infrastructure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Database Infrastructure
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#object-storage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Object Storage
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aiml-infrastructure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        AI/ML Infrastructure
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#message-queue-async-processing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Message Queue &amp; Async Processing
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-network-connectivity-requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Network &amp; Connectivity Requirements
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Network &amp; Connectivity Requirements">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ground-control-station-gcs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ground Control Station (GCS)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cloud-connectivity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cloud Connectivity
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-regulatory-compliance-requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Regulatory &amp; Compliance Requirements
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Regulatory &amp; Compliance Requirements">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#aviation-regulations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Aviation Regulations
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#agricultural-regulations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Agricultural Regulations
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#data-security-privacy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Data Security &amp; Privacy
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-integration-requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Integration Requirements
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Integration Requirements">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#farm-management-systems-fms" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Farm Management Systems (FMS)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#weather-data-services" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Weather Data Services
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#satellite-imagery-integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Satellite Imagery Integration
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gis-software-compatibility" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GIS Software Compatibility
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-development-devops-requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Development &amp; DevOps Requirements
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. Development &amp; DevOps Requirements">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#source-code-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Source Code Management
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cicd-pipeline" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CI/CD Pipeline
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#containerization-orchestration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Containerization &amp; Orchestration
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#monitoring-observability" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Monitoring &amp; Observability
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-scalability-requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Scalability Requirements
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8. Scalability Requirements">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#current-scale-prototypemvp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Current Scale (Prototype/MVP)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#scale-targets-year-3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Scale Targets (Year 3)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#scalability-strategies" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Scalability Strategies
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#performance-benchmarks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Performance Benchmarks
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quick-reference-minimum-viable-system" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Quick Reference: Minimum Viable System
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Quick Reference: Minimum Viable System">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#for-basic-deployment-prototypepilot-program" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        For Basic Deployment (Prototype/Pilot Program)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#for-your-presentation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        For Your Presentation
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="For Your Presentation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#if-asked-what-does-someone-need-to-use-aerovine" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        If Asked: "What does someone need to use AeroVine?"
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#if-asked-what-makes-your-tech-stack-special" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        If Asked: "What makes your tech stack special?"
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#if-asked-how-does-this-scale-to-1000-customers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        If Asked: "How does this scale to 1,000 customers?"
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#if-asked-what-about-security-and-compliance" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        If Asked: "What about security and compliance?"
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary-technical-capabilities" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Summary: Technical Capabilities
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../database-schema/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Database Schema
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ui-prototype-guide/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UI Prototype Guide
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Marketing
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Marketing
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../marketing/brand-guidelines/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Brand Guidelines
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../marketing/homepage-copy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Homepage Copy
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../marketing/launch-campaign/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Launch Campaign
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../marketing/press-release/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Press Release Template
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sales
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Sales
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sales/sales-playbook/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sales Playbook
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    HR
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    HR
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hr/employee-handbook/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Employee Handbook
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hr/job-descriptions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Job Descriptions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hr/org-chart/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Org Chart
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hr/performance-review/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Performance Review
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hr/onboarding/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Onboarding
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Finance
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Finance
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../finance/financial-models/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Financial Models
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Manufacturing
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Manufacturing
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../manufacturing/manufacturing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Manufacturing Guide
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Resources
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Resources
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../resources/startup-package.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Startup Package
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../resources/simulation-package.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Simulation Package
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../resources/api-docs-readme/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    API Docs README
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#table-of-contents" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Table of Contents
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-client-side-requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Client-Side Requirements
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Client-Side Requirements">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#hardware-vineyard-managersoperators" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hardware (Vineyard Managers/Operators)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#software" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Software
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#network-requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Network Requirements
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-drone-hardware-specifications" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Drone Hardware Specifications
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Drone Hardware Specifications">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#aerovine-x7-ag-platform" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        AeroVine-X7-AG Platform
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-backend-infrastructure-requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Backend Infrastructure Requirements
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Backend Infrastructure Requirements">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#application-server" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Application Server
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#database-infrastructure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Database Infrastructure
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#object-storage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Object Storage
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aiml-infrastructure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        AI/ML Infrastructure
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#message-queue-async-processing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Message Queue &amp; Async Processing
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-network-connectivity-requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Network &amp; Connectivity Requirements
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Network &amp; Connectivity Requirements">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ground-control-station-gcs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ground Control Station (GCS)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cloud-connectivity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cloud Connectivity
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-regulatory-compliance-requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Regulatory &amp; Compliance Requirements
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Regulatory &amp; Compliance Requirements">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#aviation-regulations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Aviation Regulations
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#agricultural-regulations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Agricultural Regulations
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#data-security-privacy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Data Security &amp; Privacy
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-integration-requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Integration Requirements
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Integration Requirements">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#farm-management-systems-fms" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Farm Management Systems (FMS)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#weather-data-services" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Weather Data Services
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#satellite-imagery-integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Satellite Imagery Integration
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gis-software-compatibility" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GIS Software Compatibility
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-development-devops-requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Development &amp; DevOps Requirements
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. Development &amp; DevOps Requirements">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#source-code-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Source Code Management
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cicd-pipeline" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CI/CD Pipeline
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#containerization-orchestration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Containerization &amp; Orchestration
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#monitoring-observability" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Monitoring &amp; Observability
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-scalability-requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Scalability Requirements
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8. Scalability Requirements">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#current-scale-prototypemvp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Current Scale (Prototype/MVP)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#scale-targets-year-3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Scale Targets (Year 3)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#scalability-strategies" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Scalability Strategies
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#performance-benchmarks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Performance Benchmarks
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quick-reference-minimum-viable-system" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Quick Reference: Minimum Viable System
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Quick Reference: Minimum Viable System">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#for-basic-deployment-prototypepilot-program" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        For Basic Deployment (Prototype/Pilot Program)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#for-your-presentation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        For Your Presentation
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="For Your Presentation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#if-asked-what-does-someone-need-to-use-aerovine" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        If Asked: "What does someone need to use AeroVine?"
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#if-asked-what-makes-your-tech-stack-special" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        If Asked: "What makes your tech stack special?"
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#if-asked-how-does-this-scale-to-1000-customers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        If Asked: "How does this scale to 1,000 customers?"
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#if-asked-what-about-security-and-compliance" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        If Asked: "What about security and compliance?"
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary-technical-capabilities" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Summary: Technical Capabilities
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="aerovine-technical-requirements">AeroVine Technical Requirements<a class="headerlink" href="#aerovine-technical-requirements" title="Permanent link">&para;</a></h1>
+<p><strong>AI-Powered Agricultural Drone Fleet Management</strong>
+<strong>Specialization: Premium Vineyard Monitoring &amp; Precision Agriculture</strong></p>
+<hr />
+<h2 id="table-of-contents">Table of Contents<a class="headerlink" href="#table-of-contents" title="Permanent link">&para;</a></h2>
+<ol>
+<li><a href="#1-client-side-requirements">Client-Side Requirements</a></li>
+<li><a href="#2-drone-hardware-specifications">Drone Hardware Specifications</a></li>
+<li><a href="#3-backend-infrastructure-requirements">Backend Infrastructure</a></li>
+<li><a href="#4-network--connectivity-requirements">Network &amp; Connectivity</a></li>
+<li><a href="#5-regulatory--compliance-requirements">Regulatory &amp; Compliance</a></li>
+<li><a href="#6-integration-requirements">Integration Requirements</a></li>
+<li><a href="#7-development--devops-requirements">Development &amp; DevOps</a></li>
+<li><a href="#8-scalability-requirements">Scalability Requirements</a></li>
+<li><a href="#quick-reference-minimum-viable-system">Quick Reference: Minimum Viable System</a></li>
+<li><a href="#for-your-presentation">Presentation Talking Points</a></li>
+</ol>
+<hr />
+<h2 id="1-client-side-requirements">1. Client-Side Requirements<a class="headerlink" href="#1-client-side-requirements" title="Permanent link">&para;</a></h2>
+<h3 id="hardware-vineyard-managersoperators">Hardware (Vineyard Managers/Operators)<a class="headerlink" href="#hardware-vineyard-managersoperators" title="Permanent link">&para;</a></h3>
+<p><strong>Desktop/Laptop:</strong>
+- <strong>Minimum</strong>: 8GB RAM, dual-core processor, 1920x1080 display
+- <strong>Recommended</strong>: 16GB RAM, quad-core processor, 4K display
+- <strong>OS</strong>: macOS 10.15+, Windows 10+, or Ubuntu 20.04+</p>
+<p><strong>Mobile Devices:</strong>
+- <strong>iOS</strong>: iPhone/iPad with iOS 14+ for field operations
+- <strong>Android</strong>: Android 10+ devices
+- <strong>Display</strong>: 10" tablet recommended for field work</p>
+<p><strong>Internet Connection:</strong>
+- <strong>Minimum</strong>: 10 Mbps download, 5 Mbps upload
+- <strong>Recommended</strong>: 50+ Mbps for real-time video streaming
+- <strong>Backup</strong>: 4G LTE cellular connection</p>
+<h3 id="software">Software<a class="headerlink" href="#software" title="Permanent link">&para;</a></h3>
+<p><strong>Web Browser:</strong>
+- Chrome 90+
+- Safari 14+
+- Firefox 88+
+- Edge 90+</p>
+<p><strong>Mobile Applications:</strong>
+- Native iOS app (Swift/SwiftUI)
+- Native Android app (Kotlin/Jetpack Compose)</p>
+<p><strong>Optional Integrations:</strong>
+- ArcGIS or QGIS for advanced GIS analysis
+- Farm management software (John Deere, Climate FieldView)
+- Winery management systems (VineView, WineDirect)</p>
+<h3 id="network-requirements">Network Requirements<a class="headerlink" href="#network-requirements" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Stable internet for real-time telemetry viewing</li>
+<li>VPN support for secure remote access</li>
+<li>WebSocket support for live drone tracking</li>
+<li>HTTPS/TLS 1.3 for all API communication</li>
+</ul>
+<hr />
+<h2 id="2-drone-hardware-specifications">2. Drone Hardware Specifications<a class="headerlink" href="#2-drone-hardware-specifications" title="Permanent link">&para;</a></h2>
+<h3 id="aerovine-x7-ag-platform">AeroVine-X7-AG Platform<a class="headerlink" href="#aerovine-x7-ag-platform" title="Permanent link">&para;</a></h3>
+<p><strong>Flight System:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Specification</th>
+<th>Requirement</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Type</strong></td>
+<td>Quadcopter or hexacopter</td>
+</tr>
+<tr>
+<td><strong>Payload Capacity</strong></td>
+<td>2-5 kg (sensors + spray equipment)</td>
+</tr>
+<tr>
+<td><strong>Flight Time</strong></td>
+<td>25-45 minutes per battery</td>
+</tr>
+<tr>
+<td><strong>Max Speed</strong></td>
+<td>15-25 m/s (33-56 mph)</td>
+</tr>
+<tr>
+<td><strong>Wind Resistance</strong></td>
+<td>Up to 15 m/s (33 mph)</td>
+</tr>
+<tr>
+<td><strong>Operating Temp</strong></td>
+<td>-10°C to 45°C (14°F to 113°F)</td>
+</tr>
+<tr>
+<td><strong>Max Altitude</strong></td>
+<td>120 meters (400 ft) - FAA Part 107 compliant</td>
+</tr>
+<tr>
+<td><strong>Weight</strong></td>
+<td>3-8 kg (without payload)</td>
+</tr>
+<tr>
+<td><strong>Rotor Diameter</strong></td>
+<td>12-18 inches</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Sensors &amp; Cameras:</strong></p>
+<p><strong>1. RGB Camera:</strong>
+- 20MP sensor minimum
+- 4K video capability (30fps)
+- Mechanical or electronic shutter
+- 84° field of view
+- Image format: JPEG, RAW (DNG)</p>
+<p><strong>2. Multispectral Camera:</strong>
+- 5-band imaging system
+  - Blue: 450nm (±20nm)
+  - Green: 560nm (±20nm)
+  - Red: 650nm (±20nm)
+  - Red Edge: 730nm (±10nm)
+  - Near-Infrared (NIR): 840nm (±20nm)
+- Resolution: 1.2MP per band minimum
+- Global shutter
+- Calibrated reflectance panel for ground truth
+- Output: GeoTIFF with embedded GPS coordinates</p>
+<p><strong>3. Thermal Camera:</strong>
+- FLIR Lepton or equivalent
+- Resolution: 640×512 pixels (minimum)
+- Spectral range: 7.5-13.5 μm (long-wave infrared)
+- Temperature range: -20°C to 150°C
+- Accuracy: ±5°C or ±5%
+- Frame rate: 9Hz minimum
+- Use cases: Irrigation stress detection, canopy temperature monitoring</p>
+<p><strong>Navigation &amp; Positioning:</strong></p>
+<ul>
+<li><strong>GPS/GNSS</strong>:</li>
+<li>RTK (Real-Time Kinematic) enabled</li>
+<li>Centimeter-level accuracy (horizontal: ±2cm, vertical: ±5cm)</li>
+<li>Multi-constellation: GPS, GLONASS, Galileo, BeiDou</li>
+<li>
+<p>Update rate: 10Hz</p>
+</li>
+<li>
+<p><strong>IMU (Inertial Measurement Unit)</strong>:</p>
+</li>
+<li>6-axis gyroscope + accelerometer</li>
+<li>3-axis magnetometer (compass)</li>
+<li>
+<p>Update rate: 200Hz</p>
+</li>
+<li>
+<p><strong>Barometer</strong>:</p>
+</li>
+<li>Altitude sensing (±0.5m accuracy)</li>
+<li>Temperature compensated</li>
+</ul>
+<p><strong>Obstacle Avoidance:</strong>
+- LiDAR or stereo vision cameras
+- Detection range: 0.5-30 meters
+- Field of view: 360° horizontal (preferred)
+- Automatic collision avoidance
+- Emergency stop capability</p>
+<p><strong>Communication Systems:</strong></p>
+<table>
+<thead>
+<tr>
+<th>System</th>
+<th>Specification</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Radio Control</strong></td>
+<td>2.4 GHz and 5.8 GHz dual-band</td>
+</tr>
+<tr>
+<td><strong>Telemetry Protocol</strong></td>
+<td>MAVLink (industry standard)</td>
+</tr>
+<tr>
+<td><strong>Update Rate</strong></td>
+<td>10Hz for position, 1Hz for status</td>
+</tr>
+<tr>
+<td><strong>Radio Range</strong></td>
+<td>7-10 km line-of-sight</td>
+</tr>
+<tr>
+<td><strong>Cellular Module</strong></td>
+<td>4G LTE for BVLOS operations</td>
+</tr>
+<tr>
+<td><strong>Cellular Range</strong></td>
+<td>Unlimited (network dependent)</td>
+</tr>
+<tr>
+<td><strong>Video Downlink</strong></td>
+<td>1080p real-time (5-20 Mbps)</td>
+</tr>
+<tr>
+<td><strong>Encryption</strong></td>
+<td>AES-256 for telemetry and video</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Power System:</strong></p>
+<ul>
+<li><strong>Battery Type</strong>: LiPo 6S (22.2V) or 12S (44.4V)</li>
+<li><strong>Capacity</strong>: 10,000-20,000 mAh</li>
+<li><strong>Energy</strong>: 222-888 Wh</li>
+<li><strong>Charge Time</strong>: 60-90 minutes (fast charging)</li>
+<li><strong>Cycle Life</strong>: 300-500 cycles</li>
+<li><strong>Smart Features</strong>: Battery management system (BMS), low-voltage protection</li>
+<li><strong>Swap Time</strong>: &lt;2 minutes for battery exchange</li>
+<li><strong>Charging Station</strong>: Automated charging pad with thermal management</li>
+</ul>
+<p><strong>Precision Spray System (Optional):</strong></p>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>Specification</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Tank Capacity</strong></td>
+<td>5-10 liters</td>
+</tr>
+<tr>
+<td><strong>Spray Width</strong></td>
+<td>3-5 meters</td>
+</tr>
+<tr>
+<td><strong>Flow Rate</strong></td>
+<td>0.5-2.0 L/min (electronically controlled)</td>
+</tr>
+<tr>
+<td><strong>Nozzle Type</strong></td>
+<td>Variable rate, GPS-triggered</td>
+</tr>
+<tr>
+<td><strong>Droplet Size</strong></td>
+<td>100-300 microns (adjustable)</td>
+</tr>
+<tr>
+<td><strong>Application Rate</strong></td>
+<td>5-20 L/hectare</td>
+</tr>
+<tr>
+<td><strong>Precision</strong></td>
+<td>±0.5 meter GPS accuracy</td>
+</tr>
+<tr>
+<td><strong>Empty Weight</strong></td>
+<td>2-3 kg</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Onboard Computing:</strong></p>
+<ul>
+<li><strong>Edge AI Processor</strong>: NVIDIA Jetson Nano or Xavier</li>
+<li><strong>RAM</strong>: 4-8 GB</li>
+<li><strong>Storage</strong>: 32-128 GB SD card or eMMC</li>
+<li><strong>OS</strong>: Linux-based (Ubuntu 18.04/20.04)</li>
+<li><strong>Real-time Processing</strong>:</li>
+<li>NDVI calculation during flight</li>
+<li>Basic anomaly detection</li>
+<li>Image compression and tagging</li>
+<li>Geo-referencing</li>
+</ul>
+<hr />
+<h2 id="3-backend-infrastructure-requirements">3. Backend Infrastructure Requirements<a class="headerlink" href="#3-backend-infrastructure-requirements" title="Permanent link">&para;</a></h2>
+<h3 id="application-server">Application Server<a class="headerlink" href="#application-server" title="Permanent link">&para;</a></h3>
+<p><strong>Framework &amp; Languages:</strong>
+- <strong>Primary</strong>: Python 3.9+ with FastAPI or Node.js 16+ with Express
+- <strong>API Architecture</strong>: RESTful + optional GraphQL
+- <strong>Documentation</strong>: OpenAPI 3.0 (Swagger) auto-generated
+- <strong>Authentication</strong>: OAuth 2.0, JWT tokens, 2FA support
+- <strong>Session Management</strong>: Redis-backed sessions
+- <strong>Rate Limiting</strong>: 1,000 requests/min per user (tiered by plan)</p>
+<p><strong>Server Specifications:</strong>
+- <strong>Minimum</strong>: 4 vCPUs, 16GB RAM
+- <strong>Recommended</strong>: 8 vCPUs, 32GB RAM
+- <strong>Storage</strong>: 500GB SSD (scales with image storage needs)
+- <strong>OS</strong>: Ubuntu 20.04 LTS or Amazon Linux 2</p>
+<p><strong>Real-time Services:</strong>
+- <strong>WebSocket Server</strong>: Socket.io or native WebSocket
+- <strong>Telemetry Streaming</strong>: 10Hz drone position updates
+- <strong>Concurrent Connections</strong>: 1,000+ simultaneous users
+- <strong>Message Protocol</strong>: JSON over WebSocket
+- <strong>Heartbeat</strong>: 30-second ping/pong</p>
+<h3 id="database-infrastructure">Database Infrastructure<a class="headerlink" href="#database-infrastructure" title="Permanent link">&para;</a></h3>
+<p><strong>Primary Database - PostgreSQL 13+:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Specification</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Version</strong></td>
+<td>PostgreSQL 13+</td>
+</tr>
+<tr>
+<td><strong>Extensions</strong></td>
+<td>PostGIS 3.0+ for geospatial data</td>
+</tr>
+<tr>
+<td><strong>Storage</strong></td>
+<td>100GB minimum, scales to 10TB+</td>
+</tr>
+<tr>
+<td><strong>Backup</strong></td>
+<td>Daily automated backups, 30-day retention</td>
+</tr>
+<tr>
+<td><strong>Replication</strong></td>
+<td>Master-slave for read scaling</td>
+</tr>
+<tr>
+<td><strong>Connection Pool</strong></td>
+<td>PgBouncer (500 max connections)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Data Stored:</strong>
+- User accounts and authentication
+- Farm/vineyard boundaries (polygon geometries)
+- Drone fleet registry
+- Mission history and flight logs
+- AI analysis results
+- Regulatory compliance records</p>
+<p><strong>Time-Series Database - TimescaleDB or InfluxDB:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Specification</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Purpose</strong></td>
+<td>High-frequency telemetry data</td>
+</tr>
+<tr>
+<td><strong>Data Rate</strong></td>
+<td>10Hz × 50 drones = 500 data points/second</td>
+</tr>
+<tr>
+<td><strong>Retention Policy</strong></td>
+<td>90 days hot, 2 years cold archive</td>
+</tr>
+<tr>
+<td><strong>Compression</strong></td>
+<td>10:1 ratio for historical data</td>
+</tr>
+<tr>
+<td><strong>Query Performance</strong></td>
+<td>&lt;100ms for time-range queries</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Telemetry Data:</strong>
+- GPS coordinates (lat/lon/alt)
+- Battery voltage and current
+- Signal strength (RSSI)
+- Flight mode and status
+- Wind speed and direction
+- Temperature and humidity</p>
+<p><strong>Cache Layer - Redis 6+:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Specification</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Purpose</strong></td>
+<td>Session management, real-time drone status</td>
+</tr>
+<tr>
+<td><strong>RAM</strong></td>
+<td>8GB minimum, 32GB recommended</td>
+</tr>
+<tr>
+<td><strong>Persistence</strong></td>
+<td>RDB snapshots + AOF log</td>
+</tr>
+<tr>
+<td><strong>Replication</strong></td>
+<td>Master-replica for high availability</td>
+</tr>
+<tr>
+<td><strong>Eviction Policy</strong></td>
+<td>LRU (Least Recently Used)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Cached Data:</strong>
+- Active drone positions (10-second TTL)
+- User session tokens
+- API rate limit counters
+- Weather data (15-minute refresh)
+- Dashboard aggregations</p>
+<h3 id="object-storage">Object Storage<a class="headerlink" href="#object-storage" title="Permanent link">&para;</a></h3>
+<p><strong>Image &amp; Data Storage:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Specification</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Provider</strong></td>
+<td>AWS S3, Google Cloud Storage, or Azure Blob</td>
+</tr>
+<tr>
+<td><strong>Initial Capacity</strong></td>
+<td>100GB (prototype)</td>
+</tr>
+<tr>
+<td><strong>Scale Target</strong></td>
+<td>50TB (production)</td>
+</tr>
+<tr>
+<td><strong>Redundancy</strong></td>
+<td>3-way replication (99.999999999% durability)</td>
+</tr>
+<tr>
+<td><strong>Lifecycle Management</strong></td>
+<td>Hot → Warm → Cold → Archive</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Storage Tiers:</strong>
+- <strong>Hot (0-30 days)</strong>: Frequent access, SSD-backed
+  - Multispectral images: ~50MB per hectare
+  - RGB imagery: ~100MB per hectare
+  - Thermal data: ~20MB per hectare
+- <strong>Warm (30 days - 1 year)</strong>: Infrequent access
+- <strong>Cold (1-5 years)</strong>: Archive tier (Glacier/Coldline)
+- <strong>Deep Archive (5+ years)</strong>: Regulatory compliance</p>
+<p><strong>File Formats:</strong>
+- <strong>Images</strong>: GeoTIFF (georeferenced), JPEG (preview)
+- <strong>Metadata</strong>: JSON with ISO 19115 geographic metadata
+- <strong>Vector Data</strong>: Shapefile, GeoJSON, KML
+- <strong>Reports</strong>: PDF (analysis reports)</p>
+<p><strong>Estimated Storage Needs:</strong>
+- Single vineyard survey (85 ha): ~5-10 GB
+- Weekly monitoring (50 farms): ~500 GB/week
+- Annual storage (50 farms): ~25 TB/year</p>
+<h3 id="aiml-infrastructure">AI/ML Infrastructure<a class="headerlink" href="#aiml-infrastructure" title="Permanent link">&para;</a></h3>
+<p><strong>Training Pipeline:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Specification</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>GPU Instances</strong></td>
+<td>NVIDIA A100 (80GB) or V100 (32GB)</td>
+</tr>
+<tr>
+<td><strong>Cloud Equivalent</strong></td>
+<td>AWS p3.8xlarge or p4d.24xlarge</td>
+</tr>
+<tr>
+<td><strong>Framework</strong></td>
+<td>TensorFlow 2.8+ or PyTorch 1.10+</td>
+</tr>
+<tr>
+<td><strong>Training Data</strong></td>
+<td>50,000+ labeled vineyard images</td>
+</tr>
+<tr>
+<td><strong>Storage</strong></td>
+<td>1TB SSD for training datasets</td>
+</tr>
+<tr>
+<td><strong>Model Versioning</strong></td>
+<td>MLflow or Weights &amp; Biases</td>
+</tr>
+<tr>
+<td><strong>Experiment Tracking</strong></td>
+<td>TensorBoard or Comet.ml</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Models:</strong>
+- <strong>Disease Classification</strong>:
+  - CNN (ResNet-50, EfficientNet)
+  - Classes: Powdery mildew, downy mildew, botrytis, healthy
+  - Accuracy: 93%+ on test set</p>
+<ul>
+<li><strong>NDVI Analysis</strong>:</li>
+<li>Formula: (NIR - Red) / (NIR + Red)</li>
+<li>
+<p>Thresholds: &lt;0.2 (stressed), 0.2-0.6 (moderate), &gt;0.6 (healthy)</p>
+</li>
+<li>
+<p><strong>Yield Prediction</strong>:</p>
+</li>
+<li>Random Forest or Gradient Boosting</li>
+<li>Inputs: NDVI history, weather, growth stage</li>
+<li>Accuracy: 89% (within ±5% of actual harvest)</li>
+</ul>
+<p><strong>Inference Pipeline:</strong></p>
+<p><strong>Edge Inference (On-Drone):</strong>
+- <strong>Hardware</strong>: NVIDIA Jetson Nano/Xavier
+- <strong>RAM</strong>: 4-8 GB
+- <strong>Model</strong>: Quantized TensorFlow Lite or TensorRT
+- <strong>Latency</strong>: &lt;100ms per frame
+- <strong>Use Case</strong>: Real-time NDVI, basic anomaly detection</p>
+<p><strong>Cloud Inference (Batch Processing):</strong>
+- <strong>Hardware</strong>: CPU instances (16 vCPUs) or GPU (optional)
+- <strong>Processing Time</strong>: &lt;5 minutes for 85-hectare survey
+- <strong>Batch Size</strong>: 32-64 images
+- <strong>Use Cases</strong>:
+  - Detailed disease classification
+  - Yield prediction modeling
+  - Multi-temporal analysis</p>
+<p><strong>Model Deployment:</strong>
+- <strong>Format</strong>: TensorFlow SavedModel or PyTorch TorchScript
+- <strong>Serving</strong>: TensorFlow Serving or TorchServe
+- <strong>Versioning</strong>: A/B testing for model updates
+- <strong>Monitoring</strong>: Prediction accuracy tracking, drift detection</p>
+<h3 id="message-queue-async-processing">Message Queue &amp; Async Processing<a class="headerlink" href="#message-queue-async-processing" title="Permanent link">&para;</a></h3>
+<p><strong>Message Broker:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Specification</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>System</strong></td>
+<td>RabbitMQ 3.9+ or Apache Kafka 2.8+</td>
+</tr>
+<tr>
+<td><strong>Throughput</strong></td>
+<td>10,000 messages/minute</td>
+</tr>
+<tr>
+<td><strong>Persistence</strong></td>
+<td>Durable queues for critical tasks</td>
+</tr>
+<tr>
+<td><strong>Retention</strong></td>
+<td>7 days (Kafka) or until consumed (RabbitMQ)</td>
+</tr>
+<tr>
+<td><strong>Replication</strong></td>
+<td>3-node cluster for high availability</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Message Queues:</strong>
+- <code>image.processing</code> - Incoming drone imagery
+- <code>ai.inference</code> - Disease detection requests
+- <code>mission.scheduler</code> - Flight planning tasks
+- <code>alert.dispatch</code> - Critical notifications (disease detected)
+- <code>report.generation</code> - PDF report creation
+- <code>email.notifications</code> - User alerts</p>
+<p><strong>Worker Processes:</strong>
+- <strong>Image Processing Workers</strong>: 4-8 instances
+  - NDVI calculation
+  - Orthoimage stitching (photogrammetry)
+  - Image compression and optimization</p>
+<ul>
+<li><strong>AI Inference Workers</strong>: 2-4 GPU instances</li>
+<li>Disease detection</li>
+<li>Yield prediction</li>
+<li>
+<p>Canopy analysis</p>
+</li>
+<li>
+<p><strong>Notification Workers</strong>: 2 instances</p>
+</li>
+<li>Email delivery (SendGrid, AWS SES)</li>
+<li>SMS alerts (Twilio)</li>
+<li>Push notifications (Firebase Cloud Messaging)</li>
+</ul>
+<hr />
+<h2 id="4-network-connectivity-requirements">4. Network &amp; Connectivity Requirements<a class="headerlink" href="#4-network-connectivity-requirements" title="Permanent link">&para;</a></h2>
+<h3 id="ground-control-station-gcs">Ground Control Station (GCS)<a class="headerlink" href="#ground-control-station-gcs" title="Permanent link">&para;</a></h3>
+<p><strong>Communication Channels:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Channel</th>
+<th>Technology</th>
+<th>Bandwidth</th>
+<th>Range</th>
+<th>Latency</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Primary Radio</strong></td>
+<td>2.4 GHz / 5.8 GHz</td>
+<td>5-20 Mbps</td>
+<td>7-10 km</td>
+<td>&lt;50ms</td>
+</tr>
+<tr>
+<td><strong>Cellular Backup</strong></td>
+<td>4G LTE</td>
+<td>5-50 Mbps</td>
+<td>Unlimited</td>
+<td>50-200ms</td>
+</tr>
+<tr>
+<td><strong>Satellite (Optional)</strong></td>
+<td>Iridium/Inmarsat</td>
+<td>100 kbps</td>
+<td>Global</td>
+<td>500-1000ms</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Data Transmission Strategy:</strong></p>
+<p><strong>During Flight:</strong>
+- <strong>Telemetry Only</strong>: GPS, battery, status (10 KB/s)
+- <strong>Low-Res Preview</strong>: 480p video stream (2 Mbps) optional
+- <strong>Command/Control</strong>: &lt;1 KB/s
+- <strong>Total Bandwidth</strong>: 2-5 Mbps</p>
+<p><strong>Post-Flight:</strong>
+- <strong>Image Upload</strong>: Via WiFi or cellular (5-50 Mbps)
+- <strong>Dataset Size</strong>: 2-10 GB per mission
+- <strong>Upload Time</strong>: 10-60 minutes
+- <strong>Compression</strong>: JPEG 2000 or WebP for efficient transfer</p>
+<p><strong>Network Protocols:</strong>
+- <strong>MAVLink</strong>: Telemetry and command (UDP/TCP)
+- <strong>RTSP</strong>: Video streaming
+- <strong>HTTPS</strong>: API communication (REST)
+- <strong>WebSocket</strong>: Real-time dashboard updates
+- <strong>MQTT</strong>: Lightweight telemetry (optional)</p>
+<h3 id="cloud-connectivity">Cloud Connectivity<a class="headerlink" href="#cloud-connectivity" title="Permanent link">&para;</a></h3>
+<p><strong>API Endpoints:</strong>
+- <strong>Protocol</strong>: HTTPS only (TLS 1.3)
+- <strong>Load Balancer</strong>: AWS ALB, Google Cloud Load Balancer, or Nginx
+- <strong>Auto-scaling</strong>: Based on CPU (&gt;70%) or request rate (&gt;1000/min)
+- <strong>Global Distribution</strong>: Multi-region deployment
+  - US-West (primary)
+  - US-East (failover)
+  - EU-Central (European customers)</p>
+<p><strong>CDN (Content Delivery Network):</strong>
+- <strong>Provider</strong>: CloudFlare, AWS CloudFront, or Fastly
+- <strong>Purpose</strong>:
+  - Static assets (dashboard JavaScript/CSS)
+  - Image thumbnails and previews
+  - Cached API responses
+- <strong>Cache TTL</strong>:
+  - Static assets: 7 days
+  - Thumbnails: 24 hours
+  - API responses: 5 minutes (for aggregations)</p>
+<p><strong>Uptime &amp; Reliability:</strong>
+- <strong>SLA</strong>: 99.9% uptime (8.76 hours downtime/year max)
+- <strong>Monitoring</strong>: Pingdom, UptimeRobot, or AWS CloudWatch
+- <strong>Incident Response</strong>: &lt;15 minutes for critical issues
+- <strong>Failover</strong>: Automatic DNS failover to backup region</p>
+<hr />
+<h2 id="5-regulatory-compliance-requirements">5. Regulatory &amp; Compliance Requirements<a class="headerlink" href="#5-regulatory-compliance-requirements" title="Permanent link">&para;</a></h2>
+<h3 id="aviation-regulations">Aviation Regulations<a class="headerlink" href="#aviation-regulations" title="Permanent link">&para;</a></h3>
+<p><strong>FAA Part 107 (United States):</strong>
+- <strong>Pilot Certification</strong>: Remote Pilot Certificate required
+- <strong>Airspace Authorization</strong>:
+  - LAANC (Low Altitude Authorization and Notification Capability) integration
+  - Automatic approval for Class G airspace
+  - Manual waiver for Class B/C/D airspace
+- <strong>Flight Rules</strong>:
+  - Altitude limit: 400 feet AGL
+  - Visual line of sight (VLOS) or waiver for BVLOS
+  - Daylight operations only (or waiver for night)
+  - No operations over people (without waiver)
+- <strong>Remote ID</strong>:
+  - Broadcast drone identification and location
+  - Required for all commercial operations (2023+)
+  - AeroVine system provides automatic compliance</p>
+<p><strong>International Regulations:</strong>
+- <strong>EASA (Europe)</strong>: Open/Specific/Certified categories
+- <strong>Transport Canada</strong>: SFOC or basic/advanced operations
+- <strong>CASA (Australia)</strong>: ReOC (Remote Operator Certificate)</p>
+<p><strong>Flight Logging Requirements:</strong>
+- Automatic recording of all flights
+- Data retained for 2 years minimum
+- Includes: pilot ID, drone serial, location, duration, purpose
+- Export capability for audits</p>
+<h3 id="agricultural-regulations">Agricultural Regulations<a class="headerlink" href="#agricultural-regulations" title="Permanent link">&para;</a></h3>
+<p><strong>EPA Pesticide Compliance (If Using Spray):</strong>
+- <strong>Applicator License</strong>: Required for pesticide application
+- <strong>Record Keeping</strong>:
+  - Chemical name and EPA registration number
+  - Application rate and total amount
+  - Target crop and pest
+  - Date, time, location (GPS coordinates)
+  - Weather conditions
+- <strong>Retention</strong>: 2 years minimum, 7 years for organic farms
+- <strong>Reporting</strong>: Electronic submission to state ag departments</p>
+<p><strong>State Agricultural Departments:</strong>
+- <strong>California</strong>: Pesticide Use Reporting (PUR)
+- <strong>Oregon</strong>: Pesticide Use Reports
+- <strong>Washington</strong>: Pesticide Recordkeeping
+- <strong>Automated Submission</strong>: AeroVine API integration with state systems</p>
+<p><strong>Organic Certification Compatibility:</strong>
+- <strong>USDA Organic</strong>: Track organic-approved inputs only
+- <strong>Audit Trail</strong>: Complete spray history with materials used
+- <strong>Buffer Zones</strong>: Respect organic buffer requirements
+- <strong>Documentation</strong>: Export reports for organic inspectors</p>
+<h3 id="data-security-privacy">Data Security &amp; Privacy<a class="headerlink" href="#data-security-privacy" title="Permanent link">&para;</a></h3>
+<p><strong>Encryption Standards:</strong>
+- <strong>In Transit</strong>: TLS 1.3 (minimum 256-bit)
+- <strong>At Rest</strong>: AES-256 encryption
+- <strong>Key Management</strong>: AWS KMS, Google Cloud KMS, or HashiCorp Vault
+- <strong>Certificate Management</strong>: Automated Let's Encrypt or corporate PKI</p>
+<p><strong>Compliance Frameworks:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Framework</th>
+<th>Status</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>SOC 2 Type II</strong></td>
+<td>Target Year 1</td>
+<td>Service organization controls audit</td>
+</tr>
+<tr>
+<td><strong>GDPR</strong></td>
+<td>Ready</td>
+<td>European data privacy (if expanding to EU)</td>
+</tr>
+<tr>
+<td><strong>CCPA</strong></td>
+<td>Compliant</td>
+<td>California Consumer Privacy Act</td>
+</tr>
+<tr>
+<td><strong>ISO 27001</strong></td>
+<td>Target Year 2</td>
+<td>Information security management</td>
+</tr>
+<tr>
+<td><strong>HIPAA</strong></td>
+<td>N/A</td>
+<td>Not handling health data</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Data Privacy:</strong>
+- <strong>Ownership</strong>: Customers own all their farm data
+- <strong>Portability</strong>: Export all data in standard formats (GeoJSON, CSV)
+- <strong>Right to Deletion</strong>: Complete data purge within 30 days
+- <strong>Anonymization</strong>: Aggregate analytics never include customer-identifiable data
+- <strong>Third-Party Sharing</strong>: Explicit opt-in required (never sell data)</p>
+<p><strong>Backup &amp; Disaster Recovery:</strong>
+- <strong>Backup Strategy</strong>: 3-2-1 rule
+  - 3 copies of data
+  - 2 different storage media
+  - 1 offsite backup
+- <strong>Backup Frequency</strong>:
+  - Database: Hourly incremental, daily full
+  - Object storage: Continuous replication
+- <strong>Retention</strong>:
+  - Daily backups: 30 days
+  - Weekly backups: 1 year
+  - Monthly backups: 7 years (regulatory)
+- <strong>Recovery Time Objective (RTO)</strong>: &lt;4 hours
+- <strong>Recovery Point Objective (RPO)</strong>: &lt;1 hour (minimal data loss)</p>
+<p><strong>Disaster Recovery Plan:</strong>
+- <strong>Multi-region</strong>: Primary (US-West) + Failover (US-East)
+- <strong>Automatic Failover</strong>: &lt;15 minutes for critical services
+- <strong>Testing</strong>: Quarterly DR drills
+- <strong>Documentation</strong>: Runbooks for all scenarios</p>
+<hr />
+<h2 id="6-integration-requirements">6. Integration Requirements<a class="headerlink" href="#6-integration-requirements" title="Permanent link">&para;</a></h2>
+<h3 id="farm-management-systems-fms">Farm Management Systems (FMS)<a class="headerlink" href="#farm-management-systems-fms" title="Permanent link">&para;</a></h3>
+<p><strong>Supported Integrations:</strong></p>
+<p><strong>1. John Deere Operations Center:</strong>
+- <strong>API</strong>: REST API with OAuth 2.0
+- <strong>Data Exchange</strong>:
+  - Import field boundaries
+  - Export NDVI maps and yield predictions
+  - Share spray recommendations
+- <strong>Sync Frequency</strong>: Real-time or scheduled (daily)</p>
+<p><strong>2. Climate FieldView:</strong>
+- <strong>API</strong>: FieldView API
+- <strong>Data</strong>: Field boundaries, planting dates, crop types
+- <strong>Benefit</strong>: Correlate drone data with ground equipment data</p>
+<p><strong>3. FarmLogs:</strong>
+- <strong>API</strong>: RESTful API
+- <strong>Features</strong>: Activity logging, input tracking</p>
+<p><strong>4. VineView (Winery-Specific):</strong>
+- <strong>Integration</strong>: Direct database sync or API
+- <strong>Data</strong>: Vine health, disease alerts, harvest predictions
+- <strong>Custom Fields</strong>: Brix levels, veraison tracking</p>
+<p><strong>5. WineDirect:</strong>
+- <strong>Purpose</strong>: Link vineyard health to wine production
+- <strong>Data</strong>: Harvest quality metrics, yield forecasts</p>
+<p><strong>API Data Formats:</strong>
+- <strong>Input</strong>: GeoJSON (field boundaries), CSV (planting data)
+- <strong>Output</strong>: GeoTIFF (imagery), JSON (analysis results), PDF (reports)</p>
+<h3 id="weather-data-services">Weather Data Services<a class="headerlink" href="#weather-data-services" title="Permanent link">&para;</a></h3>
+<p><strong>Primary Providers:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Provider</th>
+<th>Data</th>
+<th>Update Frequency</th>
+<th>Cost</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>OpenWeather API</strong></td>
+<td>Current + 7-day forecast</td>
+<td>15 minutes</td>
+<td>$40-400/month</td>
+</tr>
+<tr>
+<td><strong>Weather Underground</strong></td>
+<td>Hyper-local conditions</td>
+<td>5 minutes</td>
+<td>$50-500/month</td>
+</tr>
+<tr>
+<td><strong>NOAA</strong></td>
+<td>US-only, free</td>
+<td>Hourly</td>
+<td>Free (API limits)</td>
+</tr>
+<tr>
+<td><strong>Dark Sky (Apple)</strong></td>
+<td>Minute-by-minute precipitation</td>
+<td>1 minute</td>
+<td>Deprecated (existing users)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Weather Data Used:</strong>
+- <strong>Flight Safety</strong>:
+  - Wind speed/direction (cancel if &gt;15 km/h)
+  - Precipitation (delay if rain forecast within 2 hours)
+  - Temperature (battery performance affected &lt;-10°C)
+  - Visibility (minimum 3 miles)</p>
+<ul>
+<li><strong>Spray Window Optimization</strong>:</li>
+<li>Wind: 5-15 km/h ideal (avoid drift)</li>
+<li>Humidity: 50-70% (prevents rapid evaporation)</li>
+<li>Temperature: 15-25°C (optimal)</li>
+<li>Inversion layer detection (avoid spraying during)</li>
+</ul>
+<p><strong>API Integration:</strong>
+- <strong>REST API</strong>: JSON responses
+- <strong>Caching</strong>: 15-minute Redis cache
+- <strong>Fallback</strong>: Multiple providers for redundancy
+- <strong>Historical Data</strong>: 2 years for AI model training</p>
+<h3 id="satellite-imagery-integration">Satellite Imagery Integration<a class="headerlink" href="#satellite-imagery-integration" title="Permanent link">&para;</a></h3>
+<p><strong>Data Sources:</strong></p>
+<p><strong>1. Sentinel-2 (ESA):</strong>
+- <strong>Resolution</strong>: 10-60 meters (multispectral)
+- <strong>Revisit Time</strong>: 5 days
+- <strong>Cost</strong>: Free (open data)
+- <strong>Purpose</strong>: Large-scale monitoring, prioritize drone surveys
+- <strong>API</strong>: Copernicus Open Access Hub</p>
+<p><strong>2. Landsat 8/9 (NASA/USGS):</strong>
+- <strong>Resolution</strong>: 15-30 meters
+- <strong>Revisit Time</strong>: 16 days
+- <strong>Cost</strong>: Free
+- <strong>Purpose</strong>: Historical trends (data since 1972)</p>
+<p><strong>3. Planet Labs (Commercial):</strong>
+- <strong>Resolution</strong>: 3-5 meters
+- <strong>Revisit Time</strong>: Daily
+- <strong>Cost</strong>: $1,000-10,000/month
+- <strong>Purpose</strong>: Frequent monitoring for large estates</p>
+<p><strong>Use Cases:</strong>
+- <strong>Prioritization</strong>: Identify stressed areas → send drone for detailed survey
+- <strong>Validation</strong>: Compare drone NDVI with satellite NDVI
+- <strong>Large-Scale Trends</strong>: Monitor entire wine region
+- <strong>Cloud-Free</strong>: Fill gaps when drones can't fly</p>
+<p><strong>Data Formats:</strong>
+- <strong>Input</strong>: GeoTIFF (band rasters)
+- <strong>Processing</strong>: GDAL/Rasterio for image manipulation
+- <strong>Output</strong>: Fused satellite + drone imagery</p>
+<h3 id="gis-software-compatibility">GIS Software Compatibility<a class="headerlink" href="#gis-software-compatibility" title="Permanent link">&para;</a></h3>
+<p><strong>Export Formats:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Format</th>
+<th>Use Case</th>
+<th>Tools</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Shapefile</strong></td>
+<td>Field boundaries, flight paths</td>
+<td>ArcGIS, QGIS</td>
+</tr>
+<tr>
+<td><strong>GeoJSON</strong></td>
+<td>Web mapping, modern GIS</td>
+<td>Mapbox, Leaflet, Google Earth Engine</td>
+</tr>
+<tr>
+<td><strong>KML/KMZ</strong></td>
+<td>Google Earth visualization</td>
+<td>Google Earth Pro</td>
+</tr>
+<tr>
+<td><strong>GeoTIFF</strong></td>
+<td>Imagery with embedded coordinates</td>
+<td>QGIS, ArcGIS, ENVI</td>
+</tr>
+<tr>
+<td><strong>CSV</strong></td>
+<td>Tabular data (GPS points, yield)</td>
+<td>Excel, R, Python</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Import Capabilities:</strong>
+- Field boundaries from existing farm maps
+- Previous survey data
+- Soil maps (USDA SSURGO)
+- Elevation models (DEM/DTM)</p>
+<p><strong>Standards Compliance:</strong>
+- <strong>OGC (Open Geospatial Consortium)</strong>: WMS, WFS, WCS
+- <strong>ISO 19115</strong>: Geographic metadata standard
+- <strong>EPSG Projections</strong>: Support for all standard coordinate systems</p>
+<hr />
+<h2 id="7-development-devops-requirements">7. Development &amp; DevOps Requirements<a class="headerlink" href="#7-development-devops-requirements" title="Permanent link">&para;</a></h2>
+<h3 id="source-code-management">Source Code Management<a class="headerlink" href="#source-code-management" title="Permanent link">&para;</a></h3>
+<p><strong>Version Control:</strong>
+- <strong>System</strong>: Git (GitHub, GitLab, or Bitbucket)
+- <strong>Branching Strategy</strong>: GitFlow
+  - <code>main</code> - Production-ready code
+  - <code>develop</code> - Integration branch
+  - <code>feature/*</code> - Feature development
+  - <code>hotfix/*</code> - Emergency production fixes
+  - <code>release/*</code> - Release preparation
+- <strong>Code Review</strong>: Required for all pull requests
+- <strong>Reviewers</strong>: Minimum 2 approvals for production merge
+- <strong>Branch Protection</strong>: No direct commits to <code>main</code> or <code>develop</code></p>
+<p><strong>Repository Structure:</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>aerovine/
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>├── frontend/          # React/Vue dashboard
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>├── backend/           # Python FastAPI or Node.js
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>├── mobile-ios/        # Swift iOS app
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>├── mobile-android/    # Kotlin Android app
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>├── ml-models/         # AI/ML training code
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>├── infrastructure/    # Terraform/CloudFormation IaC
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>├── docs/              # Technical documentation
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>└── tests/             # End-to-end and integration tests
+</code></pre></div></p>
+<h3 id="cicd-pipeline">CI/CD Pipeline<a class="headerlink" href="#cicd-pipeline" title="Permanent link">&para;</a></h3>
+<p><strong>Continuous Integration:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Stage</th>
+<th>Tools</th>
+<th>Triggers</th>
+<th>Duration</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Linting</strong></td>
+<td>ESLint, Pylint, Black</td>
+<td>Every commit</td>
+<td>&lt;1 min</td>
+</tr>
+<tr>
+<td><strong>Unit Tests</strong></td>
+<td>Jest, pytest</td>
+<td>Every commit</td>
+<td>2-5 min</td>
+</tr>
+<tr>
+<td><strong>Integration Tests</strong></td>
+<td>Selenium, pytest</td>
+<td>PR creation</td>
+<td>10-15 min</td>
+</tr>
+<tr>
+<td><strong>Security Scan</strong></td>
+<td>Snyk, Bandit</td>
+<td>Daily + PR</td>
+<td>5 min</td>
+</tr>
+<tr>
+<td><strong>Build</strong></td>
+<td>Docker build</td>
+<td>PR merge</td>
+<td>5-10 min</td>
+</tr>
+<tr>
+<td><strong>Deploy to Staging</strong></td>
+<td>Terraform, Helm</td>
+<td>Merge to <code>develop</code></td>
+<td>10 min</td>
+</tr>
+<tr>
+<td><strong>E2E Tests</strong></td>
+<td>Cypress, Playwright</td>
+<td>Staging deployment</td>
+<td>15-20 min</td>
+</tr>
+<tr>
+<td><strong>Deploy to Production</strong></td>
+<td>Blue-green or canary</td>
+<td>Manual approval</td>
+<td>15 min</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Testing Requirements:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Test Type</th>
+<th>Coverage Target</th>
+<th>Tools</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Unit Tests</strong></td>
+<td>80%+</td>
+<td>Jest (JS), pytest (Python)</td>
+</tr>
+<tr>
+<td><strong>Integration Tests</strong></td>
+<td>Critical paths</td>
+<td>pytest, Postman</td>
+</tr>
+<tr>
+<td><strong>E2E Tests</strong></td>
+<td>User workflows</td>
+<td>Cypress, Selenium</td>
+</tr>
+<tr>
+<td><strong>Load Tests</strong></td>
+<td>1000 concurrent users</td>
+<td>k6, JMeter</td>
+</tr>
+<tr>
+<td><strong>Security Tests</strong></td>
+<td>OWASP Top 10</td>
+<td>OWASP ZAP, Burp Suite</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Deployment Strategy:</strong>
+- <strong>Blue-Green Deployment</strong>: Zero-downtime releases
+  - Maintain two identical production environments
+  - Deploy to "green" while "blue" serves traffic
+  - Switch traffic to "green" after validation
+  - Rollback = switch back to "blue"</p>
+<ul>
+<li><strong>Canary Deployment</strong>: Gradual rollout</li>
+<li>Deploy to 5% of servers</li>
+<li>Monitor error rates and performance</li>
+<li>Gradually increase to 25% → 50% → 100%</li>
+<li>Automatic rollback if error rate &gt;0.5%</li>
+</ul>
+<p><strong>Environment Management:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Environment</th>
+<th>Purpose</th>
+<th>Uptime SLA</th>
+<th>Auto-Deploy</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Development</strong></td>
+<td>Local developer machines</td>
+<td>N/A</td>
+<td>No</td>
+</tr>
+<tr>
+<td><strong>Staging</strong></td>
+<td>QA and testing</td>
+<td>95%</td>
+<td>Yes (on merge to <code>develop</code>)</td>
+</tr>
+<tr>
+<td><strong>Production</strong></td>
+<td>Live customer traffic</td>
+<td>99.9%</td>
+<td>No (manual approval)</td>
+</tr>
+<tr>
+<td><strong>Sandbox</strong></td>
+<td>Client demos and training</td>
+<td>90%</td>
+<td>No</td>
+</tr>
+</tbody>
+</table>
+<h3 id="containerization-orchestration">Containerization &amp; Orchestration<a class="headerlink" href="#containerization-orchestration" title="Permanent link">&para;</a></h3>
+<p><strong>Docker:</strong>
+- <strong>Base Images</strong>:
+  - <code>python:3.9-slim</code> for backend
+  - <code>node:16-alpine</code> for frontend build
+  - <code>nvidia/cuda:11.4</code> for ML inference
+- <strong>Multi-stage Builds</strong>: Minimize image size
+- <strong>Security</strong>:
+  - Non-root user
+  - No secrets in images
+  - Regular vulnerability scanning (Trivy, Clair)
+- <strong>Registry</strong>: AWS ECR, Google GCR, or Docker Hub private</p>
+<p><strong>Kubernetes (K8s):</strong></p>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Configuration</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Cluster</strong></td>
+<td>GKE, EKS, or AKS (managed)</td>
+</tr>
+<tr>
+<td><strong>Nodes</strong></td>
+<td>3-10 nodes (t3.xlarge equivalent)</td>
+</tr>
+<tr>
+<td><strong>Namespaces</strong></td>
+<td><code>production</code>, <code>staging</code>, <code>monitoring</code></td>
+</tr>
+<tr>
+<td><strong>Ingress</strong></td>
+<td>Nginx Ingress Controller</td>
+</tr>
+<tr>
+<td><strong>Service Mesh</strong></td>
+<td>Istio or Linkerd (optional, for advanced routing)</td>
+</tr>
+<tr>
+<td><strong>Autoscaling</strong></td>
+<td>HPA (Horizontal Pod Autoscaler) based on CPU/memory</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Helm Charts:</strong>
+- Package K8s manifests for easy deployment
+- Version-controlled chart repository
+- Separate values files for staging vs production</p>
+<p><strong>Resource Requests/Limits:</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1"># Example for API pod</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="nt">resources</span><span class="p">:</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">  </span><span class="nt">requests</span><span class="p">:</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">    </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">500m</span><span class="w">      </span><span class="c1"># 0.5 CPU core</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">    </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1Gi</span><span class="w">    </span><span class="c1"># 1 GB RAM</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">  </span><span class="nt">limits</span><span class="p">:</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="w">    </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2000m</span><span class="w">     </span><span class="c1"># 2 CPU cores</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="w">    </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">4Gi</span><span class="w">    </span><span class="c1"># 4 GB RAM</span>
+</code></pre></div></p>
+<h3 id="monitoring-observability">Monitoring &amp; Observability<a class="headerlink" href="#monitoring-observability" title="Permanent link">&para;</a></h3>
+<p><strong>Application Performance Monitoring (APM):</strong></p>
+<table>
+<thead>
+<tr>
+<th>Tool</th>
+<th>Purpose</th>
+<th>Metrics Tracked</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Datadog</strong></td>
+<td>Full-stack monitoring</td>
+<td>All (recommended)</td>
+</tr>
+<tr>
+<td><strong>New Relic</strong></td>
+<td>APM and infrastructure</td>
+<td>Application performance</td>
+</tr>
+<tr>
+<td><strong>Prometheus + Grafana</strong></td>
+<td>Open-source monitoring</td>
+<td>Custom metrics</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Key Metrics:</strong></p>
+<p><strong>API Performance:</strong>
+- <strong>Response Time</strong>: &lt;200ms (p95), &lt;500ms (p99)
+- <strong>Error Rate</strong>: &lt;0.1%
+- <strong>Throughput</strong>: Requests per second
+- <strong>Apdex Score</strong>: &gt;0.9 (user satisfaction)</p>
+<p><strong>Infrastructure:</strong>
+- <strong>CPU Utilization</strong>: &lt;70% average
+- <strong>Memory Usage</strong>: &lt;80% to prevent OOM
+- <strong>Disk I/O</strong>: &lt;80% saturation
+- <strong>Network</strong>: Bandwidth and packet loss</p>
+<p><strong>Business Metrics:</strong>
+- <strong>Active Drones</strong>: Real-time count
+- <strong>Missions Completed</strong>: Daily/weekly/monthly
+- <strong>AI Inference Time</strong>: &lt;5 minutes per survey
+- <strong>Alert Dispatch Time</strong>: &lt;1 minute for critical issues</p>
+<p><strong>Logging Stack:</strong></p>
+<p><strong>Option 1 - ELK Stack:</strong>
+- <strong>Elasticsearch</strong>: Log storage and indexing
+- <strong>Logstash</strong>: Log aggregation and parsing
+- <strong>Kibana</strong>: Visualization and search
+- <strong>Filebeat</strong>: Log shipping from containers</p>
+<p><strong>Option 2 - Cloud-Native:</strong>
+- AWS CloudWatch Logs
+- Google Cloud Logging
+- Azure Monitor Logs</p>
+<p><strong>Log Levels:</strong>
+- <code>DEBUG</code>: Detailed diagnostic information
+- <code>INFO</code>: General informational messages
+- <code>WARNING</code>: Non-critical issues
+- <code>ERROR</code>: Error events (require investigation)
+- <code>CRITICAL</code>: System failure (requires immediate attention)</p>
+<p><strong>Log Retention:</strong>
+- <strong>Hot Storage</strong>: 7 days (fast queries)
+- <strong>Warm Storage</strong>: 30 days
+- <strong>Cold Archive</strong>: 1 year (compliance)</p>
+<p><strong>Alerting:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Alert Type</th>
+<th>Threshold</th>
+<th>Notification</th>
+<th>Response Time</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Critical</strong></td>
+<td>API down, database failure</td>
+<td>PagerDuty + SMS</td>
+<td>&lt;15 minutes</td>
+</tr>
+<tr>
+<td><strong>High</strong></td>
+<td>Error rate &gt;1%, latency &gt;1s</td>
+<td>Email + Slack</td>
+<td>&lt;1 hour</td>
+</tr>
+<tr>
+<td><strong>Medium</strong></td>
+<td>Disk &gt;80%, unusual traffic</td>
+<td>Email</td>
+<td>&lt;4 hours</td>
+</tr>
+<tr>
+<td><strong>Low</strong></td>
+<td>Informational</td>
+<td>Email (daily digest)</td>
+<td>Next business day</td>
+</tr>
+</tbody>
+</table>
+<p><strong>On-Call Rotation:</strong>
+- 24/7 coverage for critical systems
+- Primary + backup engineer
+- 1-week rotation
+- Escalation path: Engineer → Team Lead → VP Engineering</p>
+<hr />
+<h2 id="8-scalability-requirements">8. Scalability Requirements<a class="headerlink" href="#8-scalability-requirements" title="Permanent link">&para;</a></h2>
+<h3 id="current-scale-prototypemvp">Current Scale (Prototype/MVP)<a class="headerlink" href="#current-scale-prototypemvp" title="Permanent link">&para;</a></h3>
+<p><strong>Operational Metrics:</strong>
+- <strong>Drones</strong>: 50 units
+- <strong>Customers</strong>: 100 (vineyards + farms)
+- <strong>Hectares Monitored</strong>: 85,000 total (462 ha vineyards)
+- <strong>Missions</strong>: 1,000 per month
+- <strong>Active Users</strong>: 200
+- <strong>Image Storage</strong>: 10 TB
+- <strong>API Requests</strong>: 100,000 per day</p>
+<p><strong>Infrastructure (Current):</strong>
+- <strong>Servers</strong>: 4 application servers (4 vCPUs, 16GB RAM each)
+- <strong>Database</strong>: Single PostgreSQL instance (8 vCPUs, 32GB RAM)
+- <strong>Storage</strong>: 15 TB (10 TB images + 5 TB buffer)
+- <strong>Monthly Cost</strong>: ~$5,000 (AWS/GCP/Azure)</p>
+<h3 id="scale-targets-year-3">Scale Targets (Year 3)<a class="headerlink" href="#scale-targets-year-3" title="Permanent link">&para;</a></h3>
+<p><strong>Operational Metrics:</strong>
+- <strong>Drones</strong>: 500-1,000 units
+- <strong>Customers</strong>: 1,000+
+- <strong>Hectares</strong>: 500,000-1,000,000
+- <strong>Missions</strong>: 10,000-20,000 per month
+- <strong>Active Users</strong>: 2,000-5,000
+- <strong>Image Storage</strong>: 200-500 TB
+- <strong>API Requests</strong>: 10,000,000 per day</p>
+<p><strong>Infrastructure (Year 3):</strong>
+- <strong>Servers</strong>: 20-50 application servers (auto-scaling)
+- <strong>Database</strong>: Master + 3 read replicas, sharded by region
+- <strong>Storage</strong>: 600 TB with tiered lifecycle
+- <strong>Monthly Cost</strong>: ~$50,000-$100,000</p>
+<h3 id="scalability-strategies">Scalability Strategies<a class="headerlink" href="#scalability-strategies" title="Permanent link">&para;</a></h3>
+<p><strong>Horizontal Scaling:</strong>
+- <strong>Stateless Services</strong>: All application servers stateless
+- <strong>Load Balancing</strong>: Distribute traffic across multiple servers
+- <strong>Auto-scaling</strong>:
+  - Scale up: CPU &gt;70% for 5 minutes → add server
+  - Scale down: CPU &lt;30% for 15 minutes → remove server
+  - Min instances: 4
+  - Max instances: 50</p>
+<p><strong>Database Scaling:</strong></p>
+<p><strong>Read Scaling:</strong>
+- <strong>Read Replicas</strong>: 3-5 replicas for read-heavy queries
+- <strong>Connection Pooling</strong>: PgBouncer (1000 max connections)
+- <strong>Query Optimization</strong>: Indexed all foreign keys, spatial indexes for geospatial queries
+- <strong>Materialized Views</strong>: Pre-computed aggregations for dashboards</p>
+<p><strong>Write Scaling:</strong>
+- <strong>Partitioning</strong>: Table partitioning by date (telemetry) and region (farms)
+- <strong>Sharding</strong>: Separate databases by geographic region (US, EU, APAC)
+- <strong>Async Writes</strong>: Non-critical data written via queue</p>
+<p><strong>Caching Strategy:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Data Type</th>
+<th>Cache</th>
+<th>TTL</th>
+<th>Invalidation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>User sessions</strong></td>
+<td>Redis</td>
+<td>24 hours</td>
+<td>On logout</td>
+</tr>
+<tr>
+<td><strong>Drone positions</strong></td>
+<td>Redis</td>
+<td>10 seconds</td>
+<td>Real-time update</td>
+</tr>
+<tr>
+<td><strong>Weather data</strong></td>
+<td>Redis</td>
+<td>15 minutes</td>
+<td>API refresh</td>
+</tr>
+<tr>
+<td><strong>Dashboard aggregations</strong></td>
+<td>Redis</td>
+<td>5 minutes</td>
+<td>On new mission completion</td>
+</tr>
+<tr>
+<td><strong>Static assets</strong></td>
+<td>CDN</td>
+<td>7 days</td>
+<td>On deployment</td>
+</tr>
+<tr>
+<td><strong>API responses (GET)</strong></td>
+<td>CDN</td>
+<td>1 minute</td>
+<td>Based on ETag</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Content Delivery:</strong>
+- <strong>CDN</strong>: CloudFlare or AWS CloudFront
+- <strong>Edge Locations</strong>: 100+ global locations
+- <strong>Cache Hit Ratio</strong>: &gt;90% for static content
+- <strong>Bandwidth Savings</strong>: 70-80% reduction in origin traffic</p>
+<p><strong>Storage Scaling:</strong></p>
+<p><strong>Object Storage Lifecycle:</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>Day 0-30:    Hot tier (S3 Standard)         - $0.023/GB/month
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>Day 31-365:  Warm tier (S3 Infrequent)     - $0.0125/GB/month
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>Day 366-1825: Cold tier (S3 Glacier)        - $0.004/GB/month
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>Day 1826+:   Deep Archive (S3 Deep Glacier) - $0.00099/GB/month
+</code></pre></div></p>
+<p><strong>Cost Optimization:</strong>
+- Automatic transition based on access patterns
+- Compress images (JPEG 2000, WebP)
+- Delete duplicate/redundant data
+- Estimated savings: 60-70% over flat storage</p>
+<h3 id="performance-benchmarks">Performance Benchmarks<a class="headerlink" href="#performance-benchmarks" title="Permanent link">&para;</a></h3>
+<p><strong>API Response Times:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Endpoint</th>
+<th>p50</th>
+<th>p95</th>
+<th>p99</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>GET /drones</strong></td>
+<td>50ms</td>
+<td>150ms</td>
+<td>300ms</td>
+</tr>
+<tr>
+<td><strong>GET /missions/{id}</strong></td>
+<td>30ms</td>
+<td>100ms</td>
+<td>200ms</td>
+</tr>
+<tr>
+<td><strong>POST /missions</strong></td>
+<td>100ms</td>
+<td>300ms</td>
+<td>500ms</td>
+</tr>
+<tr>
+<td><strong>GET /agriculture/fields/{id}/health</strong></td>
+<td>200ms</td>
+<td>500ms</td>
+<td>1000ms</td>
+</tr>
+<tr>
+<td><strong>WebSocket telemetry</strong></td>
+<td>10ms</td>
+<td>50ms</td>
+<td>100ms</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Processing Times:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Task</th>
+<th>Target</th>
+<th>Actual (Current)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Image upload</strong></td>
+<td>&lt;5 minutes per mission</td>
+<td>3-7 minutes</td>
+</tr>
+<tr>
+<td><strong>NDVI calculation</strong></td>
+<td>&lt;2 minutes per hectare</td>
+<td>1-3 minutes</td>
+</tr>
+<tr>
+<td><strong>AI disease detection</strong></td>
+<td>&lt;5 minutes per survey</td>
+<td>3-6 minutes</td>
+</tr>
+<tr>
+<td><strong>Orthoimage stitching</strong></td>
+<td>&lt;10 minutes for 100 ha</td>
+<td>8-15 minutes</td>
+</tr>
+<tr>
+<td><strong>Report generation (PDF)</strong></td>
+<td>&lt;1 minute</td>
+<td>30-60 seconds</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Concurrent Load:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Target</th>
+<th>Load Test Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Concurrent users</strong></td>
+<td>1,000</td>
+<td>1,200 (passed)</td>
+</tr>
+<tr>
+<td><strong>API requests/sec</strong></td>
+<td>500</td>
+<td>650 (passed)</td>
+</tr>
+<tr>
+<td><strong>WebSocket connections</strong></td>
+<td>1,000</td>
+<td>1,100 (passed)</td>
+</tr>
+<tr>
+<td><strong>Database connections</strong></td>
+<td>500</td>
+<td>400 (under limit)</td>
+</tr>
+<tr>
+<td><strong>Image uploads/hour</strong></td>
+<td>1,000</td>
+<td>850 (passed)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Failover Times:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Scenario</th>
+<th>Target RTO</th>
+<th>Actual</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Server failure</strong></td>
+<td>&lt;1 minute</td>
+<td>30 seconds (auto-scale replaces)</td>
+</tr>
+<tr>
+<td><strong>Database replica failure</strong></td>
+<td>&lt;30 seconds</td>
+<td>15 seconds (DNS failover)</td>
+</tr>
+<tr>
+<td><strong>Region outage</strong></td>
+<td>&lt;15 minutes</td>
+<td>12 minutes (multi-region failover)</td>
+</tr>
+<tr>
+<td><strong>Complete system restore</strong></td>
+<td>&lt;4 hours</td>
+<td>3.5 hours (from backup)</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="quick-reference-minimum-viable-system">Quick Reference: Minimum Viable System<a class="headerlink" href="#quick-reference-minimum-viable-system" title="Permanent link">&para;</a></h2>
+<h3 id="for-basic-deployment-prototypepilot-program">For Basic Deployment (Prototype/Pilot Program)<a class="headerlink" href="#for-basic-deployment-prototypepilot-program" title="Permanent link">&para;</a></h3>
+<p><strong>Essential Hardware:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Minimum Specification</th>
+<th>Quantity</th>
+<th>Approx Cost</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Drones</strong></td>
+<td>DJI Matrice 300 RTK or equivalent with RGB + multispectral</td>
+<td>5-10</td>
+<td>$15,000/unit</td>
+</tr>
+<tr>
+<td><strong>Ground Control</strong></td>
+<td>Laptop (16GB RAM, i5/Ryzen 5)</td>
+<td>2</td>
+<td>$1,500/unit</td>
+</tr>
+<tr>
+<td><strong>Charging Stations</strong></td>
+<td>4-port smart charger</td>
+<td>2</td>
+<td>$500/unit</td>
+</tr>
+<tr>
+<td><strong>RTK Base Station</strong></td>
+<td>For cm-level GPS accuracy</td>
+<td>1</td>
+<td>$3,000</td>
+</tr>
+<tr>
+<td><strong>Mobile Devices</strong></td>
+<td>iPad or Android tablet for field work</td>
+<td>3</td>
+<td>$500/unit</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Total Hardware Investment</strong>: ~$90,000-$170,000</p>
+<p><strong>Cloud Infrastructure (Monthly):</strong></p>
+<table>
+<thead>
+<tr>
+<th>Service</th>
+<th>Specification</th>
+<th>Provider Example</th>
+<th>Monthly Cost</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Application Servers</strong></td>
+<td>2× 4 vCPU, 16GB RAM</td>
+<td>AWS EC2 t3.xlarge</td>
+<td>$250</td>
+</tr>
+<tr>
+<td><strong>Database</strong></td>
+<td>1× 8 vCPU, 32GB RAM</td>
+<td>AWS RDS PostgreSQL</td>
+<td>$400</td>
+</tr>
+<tr>
+<td><strong>Object Storage</strong></td>
+<td>1 TB</td>
+<td>AWS S3</td>
+<td>$25</td>
+</tr>
+<tr>
+<td><strong>CDN</strong></td>
+<td>500 GB transfer</td>
+<td>CloudFlare</td>
+<td>$50</td>
+</tr>
+<tr>
+<td><strong>Load Balancer</strong></td>
+<td>Application Load Balancer</td>
+<td>AWS ALB</td>
+<td>$25</td>
+</tr>
+<tr>
+<td><strong>Monitoring</strong></td>
+<td>Datadog or New Relic</td>
+<td>APM + Infrastructure</td>
+<td>$100</td>
+</tr>
+<tr>
+<td><strong>Email/SMS</strong></td>
+<td>SendGrid + Twilio</td>
+<td>Notifications</td>
+<td>$50</td>
+</tr>
+<tr>
+<td><strong>Backup</strong></td>
+<td>Automated snapshots</td>
+<td>AWS Backup</td>
+<td>$50</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Total Monthly Cloud Cost</strong>: ~$950/month (~$11,400/year)</p>
+<p><strong>Staffing (Minimum):</strong>
+- <strong>1× Remote Pilot</strong> (FAA Part 107 certified): $60,000-$80,000/year
+- <strong>1× Backend Engineer</strong> (API, database, infrastructure): $100,000-$150,000/year
+- <strong>1× AI/ML Engineer</strong> (model training, optimization): $120,000-$180,000/year
+- <strong>1× Customer Success</strong> (vineyard onboarding, support): $50,000-$70,000/year</p>
+<p><strong>Total Annual Staffing</strong>: ~$330,000-$480,000</p>
+<p><strong>Operational Costs:</strong>
+- <strong>Insurance</strong> (liability, equipment): $10,000-$20,000/year
+- <strong>FAA Compliance</strong> (registrations, waivers): $1,000-$5,000/year
+- <strong>Software Licenses</strong> (GIS tools, APIs): $5,000-$10,000/year
+- <strong>Equipment Maintenance</strong>: $10,000-$15,000/year</p>
+<p><strong>Total Year 1 Costs</strong>: ~$450,000-$700,000</p>
+<p><strong>Revenue Potential (10 Vineyard Customers):</strong>
+- <strong>Pricing</strong>: $50,000-$200,000 per vineyard per year
+- <strong>Conservative (10 customers × $75,000)</strong>: $750,000/year
+- <strong>Break-even</strong>: 6-7 customers
+- <strong>Profit Margin</strong>: 35-40% after break-even</p>
+<hr />
+<h2 id="for-your-presentation">For Your Presentation<a class="headerlink" href="#for-your-presentation" title="Permanent link">&para;</a></h2>
+<h3 id="if-asked-what-does-someone-need-to-use-aerovine">If Asked: "What does someone need to use AeroVine?"<a class="headerlink" href="#if-asked-what-does-someone-need-to-use-aerovine" title="Permanent link">&para;</a></h3>
+<p><strong>For Vineyard Owners (End Users):</strong></p>
+<blockquote>
+<p>"For vineyard owners, the barrier to entry is minimal. They need a laptop or tablet with internet access - that's it. We provide the drones, sensors, and cloud infrastructure as a fully managed service. Our platform is browser-based, so there's no software to install. They log in, view their vineyard health in real-time, and receive AI-powered alerts when issues are detected. It's as simple as checking email."</p>
+</blockquote>
+<p><strong>For Customers Who Want to Operate Their Own Drones:</strong></p>
+<blockquote>
+<p>"For customers who prefer to own and operate drones, we offer the AeroVine-X7-AG platform - a pre-configured agricultural drone with multispectral and thermal cameras. We provide FAA Part 107 pilot training, platform certification, and full access to our cloud AI analysis. They fly the missions, we process the data and provide actionable insights within minutes."</p>
+</blockquote>
+<p><strong>For Technical Evaluators:</strong></p>
+<blockquote>
+<p>"From a technical standpoint, AeroVine runs on enterprise-grade cloud infrastructure with 99.9% uptime SLA. We're cloud-agnostic - AWS, Google Cloud, or Azure. The frontend is a responsive web app (React/Vue), backend is Python FastAPI with PostgreSQL + PostGIS for geospatial data. Real-time telemetry uses WebSocket streaming. All data is encrypted end-to-end (TLS 1.3 + AES-256), SOC 2 compliant, and GDPR-ready for international customers."</p>
+</blockquote>
+<h3 id="if-asked-what-makes-your-tech-stack-special">If Asked: "What makes your tech stack special?"<a class="headerlink" href="#if-asked-what-makes-your-tech-stack-special" title="Permanent link">&para;</a></h3>
+<blockquote>
+<p>"Three key technical differentiators:</p>
+<p><strong>1. Edge AI Processing</strong> - We run AI inference on the drones themselves using NVIDIA Jetson processors. NDVI is calculated in real-time during flight, not hours later when you get back to the office. This enables immediate decision-making.</p>
+<p><strong>2. Wine Grape-Specific Models</strong> - Our AI isn't generic crop health detection. We trained CNNs on 50,000+ labeled images of wine grape diseases - powdery mildew, downy mildew, botrytis - in vineyard conditions. That specificity gives us 93% accuracy vs 65% for generic agricultural AI.</p>
+<p><strong>3. Time-Series Optimization</strong> - We use TimescaleDB for drone telemetry. We can replay any flight from the past 2 years with full sensor data - GPS coordinates, battery levels, wind conditions - at 10Hz resolution. This is critical for regulatory compliance, incident investigation, and training our yield prediction models."</p>
+</blockquote>
+<h3 id="if-asked-how-does-this-scale-to-1000-customers">If Asked: "How does this scale to 1,000 customers?"<a class="headerlink" href="#if-asked-how-does-this-scale-to-1000-customers" title="Permanent link">&para;</a></h3>
+<blockquote>
+<p>"Our architecture is designed for horizontal scalability from day one. Application servers are stateless and auto-scale based on load - we can go from 4 servers to 50 in minutes. Database uses read replicas and regional sharding. Image storage is on object storage (S3) with lifecycle policies that automatically move old data to cheaper tiers - saving 60% on storage costs.</p>
+<p>We've load-tested the system to 1,200 concurrent users and 650 API requests per second - well above our Year 3 targets. The bottleneck isn't infrastructure, it's drone pilots. That's why we're building autonomous flight planning - one pilot can supervise 5 drones simultaneously, which scales us to 5,000 missions per month with just 20 pilots."</p>
+</blockquote>
+<h3 id="if-asked-what-about-security-and-compliance">If Asked: "What about security and compliance?"<a class="headerlink" href="#if-asked-what-about-security-and-compliance" title="Permanent link">&para;</a></h3>
+<blockquote>
+<p>"Security is built-in, not bolted-on. All data is encrypted in transit with TLS 1.3 and at rest with AES-256. We're targeting SOC 2 Type II certification in Year 1. Customer data is completely siloed - Vineyard A cannot access Vineyard B's data, ever. We never sell data to third parties. Customers own their data and can export or delete it at any time.</p>
+<p>For regulatory compliance, we automatically log every flight for FAA Part 107 requirements and integrate with state agricultural departments for pesticide reporting. Our system generates audit-ready reports with GPS-stamped spray records, chemical usage, and weather conditions - essential for organic certification."</p>
+</blockquote>
+<hr />
+<h2 id="summary-technical-capabilities">Summary: Technical Capabilities<a class="headerlink" href="#summary-technical-capabilities" title="Permanent link">&para;</a></h2>
+<p><strong>AeroVine combines:</strong></p>
+<p>✅ <strong>Specialized Sensors</strong> - Multispectral + thermal + RGB cameras calibrated for vineyards
+✅ <strong>Edge AI Processing</strong> - Real-time NDVI calculation on-drone
+✅ <strong>Cloud-Scale Infrastructure</strong> - 99.9% uptime, auto-scaling, multi-region
+✅ <strong>Wine Grape Expertise</strong> - AI models trained on 50,000+ vineyard images
+✅ <strong>Regulatory Compliance</strong> - Automatic FAA, EPA, and state ag department logging
+✅ <strong>Enterprise Security</strong> - SOC 2, GDPR-ready, end-to-end encryption
+✅ <strong>Seamless Integration</strong> - APIs for John Deere, Climate FieldView, VineView
+✅ <strong>Global Scalability</strong> - Proven to 1,200 concurrent users, 650 req/sec</p>
+<p><strong>Result</strong>: A professional, production-ready platform that protects multi-million dollar harvests through AI-powered early disease detection.</p>
+<hr />
+<p><strong>Document Version</strong>: 1.0
+<strong>Last Updated</strong>: 2025-12-01
+<strong>Owner</strong>: AeroVine Technical Team</p>
+<p><strong>For questions or technical deep-dive, contact</strong>: tech@aerovine.ai <em>(conceptual)</em></p>
+
+
+
+
+
+
+
+  
+    
+  
+  
+    
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Last update">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="December 1, 2025 17:42:32 UTC">December 1, 2025</span>
+  </span>
+
+    
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Created">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="December 1, 2025 17:42:32 UTC">December 1, 2025</span>
+  </span>
+
+    
+    
+    
+  </aside>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2025 AeroVine
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/stevsmit/aerovine" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="mailto:info@aerovine.com" target="_blank" rel="noopener" title="" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M48 64C21.5 64 0 85.5 0 112c0 15.1 7.1 29.3 19.2 38.4l208 156a48 48 0 0 0 57.6 0l208-156c12.1-9.1 19.2-23.3 19.2-38.4 0-26.5-21.5-48-48-48zM0 196v188c0 35.3 28.7 64 64 64h384c35.3 0 64-28.7 64-64V196L313.6 344.8c-34.1 25.6-81.1 25.6-115.2 0z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.expand", "navigation.top", "search.suggest", "search.highlight", "content.code.annotate"], "search": "../../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.e71a0d61.min.js"></script>
+      
+    
+  </body>
+</html>
