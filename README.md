@@ -11,17 +11,13 @@ Unlike traditional manual scouting or satellite imagery, AeroVine delivers hyper
 
 ---
 
-# The Precision Vintner's Advantage
-## AI-Accelerated Vineyard Intelligence
+# AI-Accelerated Vineyard Intelligence
 
 Stop guessing and start knowing. AeroVine delivers hyper-local, high-resolution aerial data directly to your team, allowing you to detect diseases, optimize water use, and forecast yield with effortless precision.
 
 ---
 
-## Problem & Solution
-
-# From Guesswork to Grape Quality
-## Why Manual Scouting Fails
+# From Guesswork to Grape Quality - Why Manual Scouting Fails
 
 Traditional vineyard management relies on methods that can't keep pace with modern viticulture demands:
 
