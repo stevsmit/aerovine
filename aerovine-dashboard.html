@@ -1100,6 +1100,39 @@
     </div>
 
     <script>
+        // ========================================
+        // AEROVINE REAL-TIME SIMULATION ENGINE
+        // ========================================
+
+        // Mockup data for real-time updates
+        const mockData = {
+            activeUsers: 47,
+            hectaresSurveyed: 12450,
+            activeMissions: 14,
+            aiAutonomy: 89,
+            fleetOperational: 47,
+            fleetCharging: 2,
+            fleetService: 1,
+            alerts: [],
+            lastUpdate: new Date()
+        };
+
+        // Drone telemetry simulation
+        const drones = [
+            { id: 'V-08', name: 'Drone V-08 (AeroVine-X7-AG)', mission: 'Pinot Noir health survey • Russian River Vineyard', battery: 87, speed: 12.5, altitude: 45, charging: false },
+            { id: 'V-12', name: 'Drone V-12 (AeroVine-X7-AG)', mission: 'Cabernet disease inspection • Napa Valley Estate', battery: 72, speed: 15.2, altitude: 38, charging: false },
+            { id: 'A-23', name: 'Drone A-23 (AeroVine-X7-AG)', mission: 'Wheat field survey • Miller Farms, Iowa', battery: 82, speed: 18.0, altitude: 52, charging: false },
+            { id: 'V-03', name: 'Drone V-03 (AeroVine-X7-AG)', mission: 'Status: Charging • Last: Chardonnay survey completed', battery: 34, speed: 0, altitude: 0, charging: true },
+            { id: 'B-12', name: 'Drone B-12 (AeroVine-X7-AG)', mission: 'Corn field precision spray • Field C-47', battery: 68, speed: 10.8, altitude: 15, charging: false }
+        ];
+
+        // Mission progress tracking
+        const missions = {
+            'V-08': { progress: 67, eta: 12 },
+            'V-12': { progress: 34, eta: 18 },
+            'A-23': { progress: 82, eta: 6 }
+        };
+
         // Page Navigation
         function showPage(pageId) {
             // Hide all pages
@@ -1119,19 +1152,256 @@
             event.target.classList.add('active');
         }
 
-        // Simulate real-time updates
-        setInterval(() => {
-            // Update battery percentages slightly
-            document.querySelectorAll('.battery-fill').forEach(battery => {
-                const currentWidth = parseInt(battery.style.width);
-                if (currentWidth > 20) {
-                    battery.style.width = (currentWidth - Math.random() * 0.5) + '%';
+        // Format number with commas
+        function formatNumber(num) {
+            return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        }
+
+        // Generate random value within range
+        function randomInRange(min, max) {
+            return Math.random() * (max - min) + min;
+        }
+
+        // ========================================
+        // REAL-TIME UPDATE FUNCTIONS
+        // ========================================
+
+        // Update battery levels with realistic drain
+        function updateBatteryLevels() {
+            document.querySelectorAll('.battery-fill').forEach((battery, index) => {
+                const drone = drones[index];
+                if (!drone) return;
+
+                if (drone.charging) {
+                    // Charging: increase battery 0.5-1% every 5 seconds
+                    drone.battery = Math.min(100, drone.battery + randomInRange(0.5, 1.0));
+                } else {
+                    // Active: decrease battery based on activity
+                    const drainRate = drone.speed > 0 ? randomInRange(0.3, 0.7) : randomInRange(0.1, 0.2);
+                    drone.battery = Math.max(20, drone.battery - drainRate);
+                }
+
+                // Update UI
+                battery.style.width = drone.battery + '%';
+                const batteryText = battery.parentElement.querySelector('span');
+                if (batteryText) {
+                    batteryText.textContent = Math.round(drone.battery) + '%';
+                }
+
+                // Change color if battery is low
+                if (drone.battery < 30 && !drone.charging) {
+                    battery.style.background = 'linear-gradient(90deg, #f59e0b, #ef4444)';
+                } else if (drone.charging) {
+                    battery.style.background = 'linear-gradient(90deg, #10b981, #38ef7d)';
+                } else {
+                    battery.style.background = 'linear-gradient(90deg, #4A90E2, #5BA3F5)';
                 }
             });
-        }, 5000);
+        }
 
-        // Add subtle animation on load
+        // Update mission progress
+        function updateMissionProgress() {
+            Object.keys(missions).forEach(droneId => {
+                const mission = missions[droneId];
+
+                // Increment progress
+                if (mission.progress < 100) {
+                    mission.progress = Math.min(100, mission.progress + randomInRange(0.5, 1.5));
+
+                    // Decrease ETA
+                    mission.eta = Math.max(0, mission.eta - randomInRange(0.08, 0.15));
+                }
+            });
+
+            // Update UI if on map page
+            updateFlightPathUI();
+        }
+
+        // Update flight path progress in UI
+        function updateFlightPathUI() {
+            const flightPaths = document.querySelectorAll('[style*="Progress:"]');
+            flightPaths.forEach(path => {
+                const text = path.textContent;
+                Object.keys(missions).forEach(droneId => {
+                    if (text.includes(droneId)) {
+                        const mission = missions[droneId];
+                        const progressText = Math.round(mission.progress) + '%';
+                        const etaText = Math.round(mission.eta) + ' min';
+                        path.innerHTML = path.innerHTML.replace(/Progress: \d+%/, 'Progress: ' + progressText);
+                        path.innerHTML = path.innerHTML.replace(/ETA: \d+ min/, 'ETA: ' + etaText);
+                    }
+                });
+            });
+        }
+
+        // Update dashboard stats with subtle variations
+        function updateDashboardStats() {
+            // Area surveyed increases throughout the day
+            mockData.hectaresSurveyed += Math.round(randomInRange(5, 15));
+
+            // Active missions fluctuate
+            if (Math.random() > 0.7) {
+                mockData.activeMissions += Math.random() > 0.5 ? 1 : -1;
+                mockData.activeMissions = Math.max(10, Math.min(20, mockData.activeMissions));
+            }
+
+            // AI autonomy varies slightly
+            if (Math.random() > 0.8) {
+                mockData.aiAutonomy += randomInRange(-0.5, 0.5);
+                mockData.aiAutonomy = Math.max(85, Math.min(92, mockData.aiAutonomy));
+            }
+
+            // Update UI
+            const statValues = document.querySelectorAll('.stat-value');
+            if (statValues[0]) statValues[0].textContent = mockData.fleetOperational + ' / 50';
+            if (statValues[1]) statValues[1].textContent = formatNumber(mockData.hectaresSurveyed);
+            if (statValues[2]) statValues[2].textContent = mockData.activeMissions;
+            if (statValues[3]) statValues[3].textContent = Math.round(mockData.aiAutonomy) + '%';
+        }
+
+        // Simulate new alert notifications
+        function simulateAlerts() {
+            const alertTypes = [
+                {
+                    type: 'info',
+                    icon: '📊',
+                    title: 'Data Analysis Complete',
+                    message: 'Mendoza Reserve survey processed • 110 ha analyzed • No issues detected',
+                    probability: 0.02
+                },
+                {
+                    type: 'success',
+                    icon: '✓',
+                    title: 'Mission Completed',
+                    message: 'Drone V-15: Sangiovese health survey (72 ha) • Overall vine health: 86%',
+                    probability: 0.03
+                },
+                {
+                    type: 'info',
+                    icon: '🔋',
+                    title: 'Battery Charging Complete',
+                    message: 'Drone V-03 ready for deployment • Battery: 100% • Systems nominal',
+                    probability: 0.01
+                }
+            ];
+
+            alertTypes.forEach(alertDef => {
+                if (Math.random() < alertDef.probability) {
+                    addAlertToUI(alertDef);
+                }
+            });
+        }
+
+        // Add alert to UI with animation
+        function addAlertToUI(alertDef) {
+            const alertsList = document.querySelector('.alerts-list');
+            if (!alertsList) return;
+
+            const alertItem = document.createElement('div');
+            alertItem.className = 'alert-item ' + alertDef.type;
+            alertItem.style.opacity = '0';
+            alertItem.style.transform = 'translateX(-20px)';
+            alertItem.innerHTML = `
+                <div class="alert-icon">${alertDef.icon}</div>
+                <div>
+                    <strong>${alertDef.title}</strong><br>
+                    <small>${alertDef.message} • ${new Date().toLocaleTimeString()}</small>
+                </div>
+            `;
+
+            // Insert at top
+            alertsList.insertBefore(alertItem, alertsList.firstChild);
+
+            // Animate in
+            setTimeout(() => {
+                alertItem.style.transition = 'all 0.5s ease';
+                alertItem.style.opacity = '1';
+                alertItem.style.transform = 'translateX(0)';
+            }, 10);
+
+            // Remove old alerts (keep max 6)
+            const alerts = alertsList.querySelectorAll('.alert-item');
+            if (alerts.length > 6) {
+                const oldAlert = alerts[alerts.length - 1];
+                oldAlert.style.opacity = '0';
+                setTimeout(() => oldAlert.remove(), 500);
+            }
+        }
+
+        // Update time display
+        function updateTimestamp() {
+            const now = new Date();
+            const timeString = now.toLocaleTimeString('en-US', {
+                hour: '2-digit',
+                minute: '2-digit',
+                second: '2-digit'
+            });
+
+            // Add timestamp to header if doesn't exist
+            let timestamp = document.querySelector('.live-timestamp');
+            if (!timestamp) {
+                const headerRight = document.querySelector('.header-right');
+                timestamp = document.createElement('div');
+                timestamp.className = 'live-timestamp';
+                timestamp.style.cssText = 'font-size: 0.875rem; opacity: 0.9; display: flex; align-items: center; gap: 0.5rem;';
+                headerRight.insertBefore(timestamp, headerRight.firstChild);
+            }
+
+            timestamp.innerHTML = `<span style="color: #10b981;">●</span> Live • ${timeString}`;
+        }
+
+        // Simulate vineyard health fluctuations
+        function updateVineyardHealth() {
+            const healthBars = document.querySelectorAll('.health-fill');
+            healthBars.forEach(bar => {
+                const currentWidth = parseFloat(bar.style.width);
+                if (currentWidth && currentWidth > 0) {
+                    // Subtle health variation ±0.1%
+                    const newWidth = currentWidth + randomInRange(-0.1, 0.1);
+                    bar.style.width = Math.max(80, Math.min(95, newWidth)) + '%';
+                }
+            });
+        }
+
+        // Pulse animation for active drones
+        function animateActiveDrones() {
+            const activeStatuses = document.querySelectorAll('.drone-status.active');
+            activeStatuses.forEach(status => {
+                status.style.animation = 'pulse 2s infinite';
+            });
+        }
+
+        // ========================================
+        // INITIALIZATION
+        // ========================================
+
+        // Start all real-time simulations
+        function startRealtimeUpdates() {
+            // Battery updates every 5 seconds
+            setInterval(updateBatteryLevels, 5000);
+
+            // Mission progress every 3 seconds
+            setInterval(updateMissionProgress, 3000);
+
+            // Dashboard stats every 10 seconds
+            setInterval(updateDashboardStats, 10000);
+
+            // Time display every 1 second
+            setInterval(updateTimestamp, 1000);
+
+            // Vineyard health every 15 seconds
+            setInterval(updateVineyardHealth, 15000);
+
+            // New alerts every 20-40 seconds
+            setInterval(simulateAlerts, randomInRange(20000, 40000));
+
+            // Animate active drones
+            animateActiveDrones();
+        }
+
+        // Enhanced load animation
         window.addEventListener('load', () => {
+            // Animate stat cards
             document.querySelectorAll('.stat-value').forEach((el, index) => {
                 setTimeout(() => {
                     el.style.opacity = '0';
@@ -1143,7 +1413,32 @@
                     }, 50);
                 }, index * 100);
             });
+
+            // Start real-time updates after 2 seconds
+            setTimeout(startRealtimeUpdates, 2000);
+
+            // Initial timestamp
+            updateTimestamp();
+
+            console.log('🍇 AeroVine Dashboard initialized');
+            console.log('📊 Real-time telemetry active');
+            console.log('🚁 Monitoring', drones.length, 'drones');
         });
+
+        // Log telemetry data (for demo purposes)
+        setInterval(() => {
+            console.log('=== AeroVine Telemetry ===');
+            console.log('Time:', new Date().toLocaleTimeString());
+            console.log('Active Drones:', drones.filter(d => !d.charging).length);
+            console.log('Hectares Surveyed:', formatNumber(mockData.hectaresSurveyed));
+            console.log('Active Missions:', mockData.activeMissions);
+            drones.forEach(drone => {
+                if (!drone.charging) {
+                    console.log(`  ${drone.id}: ${Math.round(drone.battery)}% battery, ${drone.speed} m/s, ${drone.altitude}m alt`);
+                }
+            });
+            console.log('========================');
+        }, 30000); // Log every 30 seconds
     </script>
 </body>
 </html>
