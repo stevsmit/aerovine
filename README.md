@@ -42,7 +42,7 @@ Get accurate yield predictions block-by-block, months ahead of harvest, giving y
 
 ---
 
-# Trusted by Leading Vintners Across Southern California
+# Trusted by Leading Vintners Across the Napa Valley
 
 Our technology is powered by the latest machine learning models trained on thousands of acres of varietal-specific data, ensuring insights that are both accurate and relevant to your specific growing conditions.
 
