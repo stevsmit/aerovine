@@ -1,7 +1,7 @@
 # About AeroVine
 A drone company specializing in agricultural applications for the wine industry. Based in the Napa Valley area of California, AeroVine can provide rapid response agricultural services to vintners in the Napa Valley, Sonoma County and Mendocino County areas.
 
-# Mission, vision, vand value proposition
+# Mission, vision, and value proposition
 
 AeroVine empowers vintners with real-time, AI-driven aerial data so that you can have effortless precision in managing your vineyards, ensuring the optimal quality and yield of every harvest.
 
