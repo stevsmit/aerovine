@@ -39,12 +39,6 @@ theme:
   icon:
     repo: fontawesome/brands/github
 
-# Plugins
-plugins:
-  - search
-  - git-revision-date-localized:
-      enable_creation_date: true
-
 # Extensions
 markdown_extensions:
   - pymdownx.highlight:
