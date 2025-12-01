@@ -1,0 +1,914 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AeroVine - Investor Pitch Deck</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #5D3A7A 0%, #4A90E2 100%);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            background: white;
+            padding: 40px 20px;
+            text-align: center;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            color: #5D3A7A;
+            font-size: 3em;
+            margin-bottom: 10px;
+        }
+
+        .tagline {
+            color: #7A8B99;
+            font-size: 1.3em;
+            font-weight: 300;
+        }
+
+        .section {
+            background: white;
+            padding: 40px;
+            margin-bottom: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            color: #5D3A7A;
+            font-size: 2em;
+            margin-bottom: 20px;
+            border-bottom: 3px solid #4A90E2;
+            padding-bottom: 10px;
+        }
+
+        h3 {
+            color: #7A8B99;
+            font-size: 1.5em;
+            margin: 30px 0 15px 0;
+        }
+
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .metric-card {
+            background: linear-gradient(135deg, #5D3A7A 0%, #4A90E2 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .metric-value {
+            font-size: 2.5em;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+
+        .metric-label {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+
+        .chart-container {
+            position: relative;
+            height: 400px;
+            margin: 30px 0;
+        }
+
+        .chart-container-small {
+            position: relative;
+            height: 300px;
+            margin: 30px 0;
+        }
+
+        .highlight-box {
+            background: rgba(93, 58, 122, 0.08);
+            border-left: 5px solid #5D3A7A;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+
+        .highlight-box h4 {
+            color: #5D3A7A;
+            margin-bottom: 10px;
+        }
+
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        @media (max-width: 768px) {
+            .two-column {
+                grid-template-columns: 1fr;
+            }
+            h1 {
+                font-size: 2em;
+            }
+            .section {
+                padding: 20px;
+            }
+        }
+
+        .positive {
+            color: #D4A574;
+        }
+
+        .negative {
+            color: #ef4444;
+        }
+
+        .growth-indicator {
+            display: inline-block;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: bold;
+            margin-left: 10px;
+        }
+
+        .growth-up {
+            background: rgba(212, 165, 116, 0.2);
+            color: #5D3A7A;
+        }
+
+        .timeline {
+            margin: 30px 0;
+        }
+
+        .timeline-item {
+            padding: 15px;
+            margin: 10px 0;
+            background: rgba(122, 139, 153, 0.05);
+            border-left: 4px solid #4A90E2;
+            border-radius: 5px;
+        }
+
+        .timeline-month {
+            font-weight: bold;
+            color: #5D3A7A;
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: white;
+            margin-top: 30px;
+            background: linear-gradient(135deg, #5D3A7A 0%, #4A90E2 100%);
+            border-radius: 10px;
+        }
+
+        .contact-info {
+            background: rgba(255,255,255,0.1);
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .logo-icon {
+            width: 100px;
+            height: 120px;
+        }
+
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .logo-main {
+            font-size: 2.5em;
+            font-weight: bold;
+            color: #4A90E2;
+            letter-spacing: -1px;
+            margin: 0;
+            line-height: 1;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+        }
+
+        .logo-tagline {
+            font-size: 0.9em;
+            color: #7A8B99;
+            margin-top: 5px;
+            font-weight: 300;
+        }
+
+        @media (max-width: 768px) {
+            .logo-container {
+                flex-direction: column;
+                gap: 15px;
+            }
+            .logo-icon {
+                width: 80px;
+                height: 96px;
+            }
+            .logo-main {
+                font-size: 2em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo-container">
+                <svg class="logo-icon" viewBox="0 0 120 140" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Drone body - light grayish-blue, rectangular with rounded edges -->
+                    <rect x="40" y="25" width="40" height="18" rx="4" fill="#7A8B99" opacity="0.7"/>
+                    <!-- Horizontal arms extending from sides -->
+                    <line x1="40" y1="34" x2="25" y2="34" stroke="#333" stroke-width="2.5" stroke-linecap="round"/>
+                    <line x1="80" y1="34" x2="95" y2="34" stroke="#333" stroke-width="2.5" stroke-linecap="round"/>
+                    <!-- Four propellers (dark gray/black circles) -->
+                    <circle cx="25" cy="20" r="5" fill="#333"/>
+                    <circle cx="95" cy="20" r="5" fill="#333"/>
+                    <circle cx="25" cy="48" r="5" fill="#333"/>
+                    <circle cx="95" cy="48" r="5" fill="#333"/>
+                    <!-- Wing/tail at rear - light blue, pointing upwards -->
+                    <path d="M 80 34 L 85 25 L 80 30 Z" fill="#4A90E2"/>
+                    <!-- Landing gear legs extending downward -->
+                    <line x1="50" y1="43" x2="50" y2="55" stroke="#333" stroke-width="2" stroke-linecap="round"/>
+                    <line x1="70" y1="43" x2="70" y2="55" stroke="#333" stroke-width="2" stroke-linecap="round"/>
+                    <!-- Grape cluster - triangular, purple/magenta shades, wider at top -->
+                    <circle cx="50" cy="70" r="6" fill="#5D3A7A"/>
+                    <circle cx="45" cy="75" r="5.5" fill="#8B4A9E"/>
+                    <circle cx="55" cy="75" r="5.5" fill="#8B4A9E"/>
+                    <circle cx="42" cy="80" r="5" fill="#5D3A7A"/>
+                    <circle cx="50" cy="82" r="5" fill="#8B4A9E"/>
+                    <circle cx="58" cy="80" r="5" fill="#5D3A7A"/>
+                    <circle cx="46" cy="86" r="4.5" fill="#5D3A7A"/>
+                    <circle cx="54" cy="87" r="4.5" fill="#8B4A9E"/>
+                    <circle cx="50" cy="92" r="4" fill="#5D3A7A"/>
+                </svg>
+                <div class="logo-text">
+                    <h1 class="logo-main" style="color: #4A90E2;">AeroVine</h1>
+                    <p class="logo-tagline">Precision Agriculture for Premium Wines</p>
+                </div>
+            </div>
+            <p class="tagline">Revolutionizing Wine Industry Agriculture with AI-Powered Drones</p>
+            <p style="margin-top: 15px; color: #7A8B99;">Napa Valley, California | Serving Napa, Sonoma & Mendocino Counties</p>
+        </header>
+
+        <!-- Executive Summary -->
+        <section class="section">
+            <h2>Executive Summary</h2>
+            <p style="font-size: 1.1em; line-height: 1.8;">
+                AeroVine is a cutting-edge drone technology company specializing in agricultural applications 
+                for the wine industry. Based in the heart of California's wine country, we provide rapid-response 
+                agricultural services to vintners across Napa Valley, Sonoma County, and Mendocino County. 
+                Our AI-powered drone solutions enable precision agriculture, crop monitoring, and data-driven 
+                decision-making for premium wine producers.
+            </p>
+            <div class="highlight-box">
+                <h4>🎯 Investment Opportunity</h4>
+                <p>
+                    AeroVine is positioned at the intersection of two high-growth markets: precision agriculture 
+                    and commercial drone services. With strong gross margins (77-78%) and a clear path to profitability 
+                    by Month 12, we're seeking strategic investment to accelerate growth and expand our service area.
+                </p>
+            </div>
+        </section>
+
+        <!-- Team -->
+        <section class="section">
+            <h2>Our Team</h2>
+            <p style="font-size: 1.1em; line-height: 1.8; margin-bottom: 30px;">
+                AeroVine is led by a diverse team of experts combining deep expertise in agriculture, drone technology, 
+                artificial intelligence, and wine industry operations. Our team's unique blend of technical innovation 
+                and agricultural knowledge positions us to deliver exceptional value to premium wine producers.
+            </p>
+            <div class="two-column">
+                <div>
+                    <h3>Leadership & Operations</h3>
+                    <ul style="line-height: 2; margin-left: 20px;">
+                        <li><strong>Founding Team:</strong> Combined 40+ years in ag-tech and drone operations</li>
+                        <li><strong>Wine Industry Advisors:</strong> Deep connections in Napa, Sonoma, and Mendocino</li>
+                        <li><strong>Operations Team:</strong> Experienced in precision agriculture and vineyard management</li>
+                        <li><strong>Customer Success:</strong> Dedicated support for vintner partnerships</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3>Technical Expertise</h3>
+                    <ul style="line-height: 2; margin-left: 20px;">
+                        <li><strong>AI/ML Engineers:</strong> Specialized in agricultural data analytics</li>
+                        <li><strong>Drone Specialists:</strong> FAA-certified pilots and maintenance experts</li>
+                        <li><strong>Software Development:</strong> Custom platform for data visualization and insights</li>
+                        <li><strong>R&D Team:</strong> Continuous innovation in sensor technology and automation</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="highlight-box" style="margin-top: 30px;">
+                <h4>🎓 Team Investment</h4>
+                <p>
+                    With <strong>$840,000</strong> annually invested in our team (57% of operating expenses), 
+                    AeroVine prioritizes attracting and retaining top talent. Our strategic location in Napa Valley 
+                    enables us to recruit from both Silicon Valley's tech ecosystem and California's agricultural 
+                    innovation hubs.
+                </p>
+            </div>
+        </section>
+
+        <!-- Key Metrics -->
+        <section class="section">
+            <h2>12-Month Financial Highlights</h2>
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <div class="metric-label">Total Revenue</div>
+                    <div class="metric-value">$960.5K</div>
+                    <div style="margin-top: 10px; font-size: 0.9em;">Year 1 Projection</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-label">Gross Margin</div>
+                    <div class="metric-value">78%</div>
+                    <div style="margin-top: 10px; font-size: 0.9em;">Industry Leading</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-label">Path to Profitability</div>
+                    <div class="metric-value">Month 12</div>
+                    <div style="margin-top: 10px; font-size: 0.9em;">Positive EBITDA</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-label">Product Units Sold</div>
+                    <div class="metric-value">275</div>
+                    <div style="margin-top: 10px; font-size: 0.9em;">Cumulative Year 1</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Revenue Growth -->
+        <section class="section">
+            <h2>Revenue Growth Trajectory</h2>
+            <p style="margin-bottom: 20px;">
+                AeroVine demonstrates strong revenue growth, starting operations in Month 3 and achieving 
+                <strong>$170,000</strong> in monthly revenue by Month 12. Our dual revenue streams—product sales 
+                and service delivery—provide diversified income and multiple growth vectors.
+            </p>
+            <div class="chart-container">
+                <canvas id="revenueChart"></canvas>
+            </div>
+            <div class="two-column">
+                <div>
+                    <h3>Product Revenue</h3>
+                    <p><strong>$687,500</strong> total (71% of revenue)</p>
+                    <p>Drone hardware and equipment sales to vintners</p>
+                </div>
+                <div>
+                    <h3>Service Revenue</h3>
+                    <p><strong>$273,000</strong> total (29% of revenue)</p>
+                    <p>Recurring agricultural monitoring and data services</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Technology -->
+        <section class="section">
+            <h2>Technology & Innovation</h2>
+            <p style="font-size: 1.1em; line-height: 1.8; margin-bottom: 30px;">
+                AeroVine's competitive advantage lies in our proprietary AI-powered drone platform, specifically 
+                engineered for wine industry applications. Our technology stack combines advanced sensors, machine 
+                learning algorithms, and intuitive data visualization to deliver actionable insights for vintners.
+            </p>
+            <div class="two-column">
+                <div>
+                    <h3>Core Technology Stack</h3>
+                    <ul style="line-height: 2; margin-left: 20px;">
+                        <li><strong>Multispectral Imaging:</strong> Advanced sensors for crop health analysis</li>
+                        <li><strong>AI-Powered Analytics:</strong> Machine learning models trained on vineyard data</li>
+                        <li><strong>Real-Time Monitoring:</strong> Live data streaming and alert systems</li>
+                        <li><strong>Precision Mapping:</strong> High-resolution terrain and crop mapping</li>
+                        <li><strong>Weather Integration:</strong> Predictive analytics for optimal harvest timing</li>
+                        <li><strong>Disease Detection:</strong> Early identification of vine diseases and pests</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3>Platform Capabilities</h3>
+                    <ul style="line-height: 2; margin-left: 20px;">
+                        <li><strong>Cloud-Based Dashboard:</strong> Accessible insights for vineyard managers</li>
+                        <li><strong>Mobile Applications:</strong> Field access to critical data and alerts</li>
+                        <li><strong>API Integration:</strong> Seamless connection with existing farm management systems</li>
+                        <li><strong>Historical Analytics:</strong> Year-over-year comparison and trend analysis</li>
+                        <li><strong>Automated Reporting:</strong> Customizable reports for stakeholders</li>
+                        <li><strong>Scalable Infrastructure:</strong> Built to support hundreds of vineyards</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="highlight-box" style="margin-top: 30px;">
+                <h4>🔬 R&D Investment</h4>
+                <p>
+                    AeroVine invests <strong>$300,000 annually</strong> (20% of operating expenses) in research and 
+                    development to maintain technological leadership. Our R&D focus includes next-generation AI algorithms, 
+                    enhanced sensor capabilities, autonomous flight operations, and integration with emerging agricultural 
+                    technologies. This commitment ensures we stay ahead of the curve in precision agriculture innovation.
+                </p>
+            </div>
+            <div style="margin-top: 30px; padding: 20px; background: rgba(74, 144, 226, 0.05); border-radius: 10px; border: 2px solid #4A90E2;">
+                <h3 style="color: #4A90E2; margin-top: 0;">Competitive Advantages</h3>
+                <div class="two-column">
+                    <div>
+                        <ul style="line-height: 2; margin-left: 20px;">
+                            <li>Wine industry-specific AI models</li>
+                            <li>Proprietary data collection protocols</li>
+                            <li>Deep integration with vineyard operations</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <ul style="line-height: 2; margin-left: 20px;">
+                            <li>FAA Part 107 certified operations</li>
+                            <li>Proven ROI for premium wine producers</li>
+                            <li>Continuous platform improvements</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Profitability Analysis -->
+        <section class="section">
+            <h2>Path to Profitability</h2>
+            <p style="margin-bottom: 20px;">
+                Despite initial investment in operations and R&D, AeroVine achieves positive EBITDA in Month 12, 
+                demonstrating a clear path to sustainable profitability. Our gross margins remain consistently 
+                strong at 77-78% throughout the year.
+            </p>
+            <div class="chart-container">
+                <canvas id="profitabilityChart"></canvas>
+            </div>
+            <div class="highlight-box">
+                <h4>📊 Key Insight</h4>
+                <p>
+                    Net income improves from <strong class="negative">-$123,000</strong> in Month 1 to 
+                    <strong class="positive">+$9,500</strong> in Month 12, representing a $132,500 improvement 
+                    and demonstrating strong operational leverage as revenue scales.
+                </p>
+            </div>
+        </section>
+
+        <!-- Cash Burn Analysis -->
+        <section class="section">
+            <h2>Cash Burn Rate & Runway</h2>
+            <p style="margin-bottom: 20px;">
+                Monthly cash burn decreases significantly over the year, from $123,000 in Month 1 to 
+                negative burn (cash generation) of $9,500 in Month 12. This trend demonstrates improving 
+                unit economics and operational efficiency.
+            </p>
+            <div class="chart-container">
+                <canvas id="cashBurnChart"></canvas>
+            </div>
+        </section>
+
+        <!-- Operating Expenses -->
+        <section class="section">
+            <h2>Operating Expense Structure</h2>
+            <p style="margin-bottom: 20px;">
+                Our expense structure is optimized for growth, with significant investment in R&D ($300K annually) 
+                to maintain technological leadership, while maintaining lean operations in other areas.
+            </p>
+            <div class="chart-container-small">
+                <canvas id="expensesChart"></canvas>
+            </div>
+            <div class="metrics-grid" style="margin-top: 30px;">
+                <div class="metric-card" style="background: linear-gradient(135deg, #5D3A7A 0%, #4A90E2 100%);">
+                    <div class="metric-label">R&D Investment</div>
+                    <div class="metric-value">$300K</div>
+                    <div style="margin-top: 10px; font-size: 0.9em;">20% of OpEx</div>
+                </div>
+                <div class="metric-card" style="background: linear-gradient(135deg, #4A90E2 0%, #5D3A7A 100%);">
+                    <div class="metric-label">Team Investment</div>
+                    <div class="metric-value">$840K</div>
+                    <div style="margin-top: 10px; font-size: 0.9em;">57% of OpEx</div>
+                </div>
+                <div class="metric-card" style="background: linear-gradient(135deg, #D4A574 0%, #5D3A7A 100%);">
+                    <div class="metric-label">Marketing</div>
+                    <div class="metric-value">$180K</div>
+                    <div style="margin-top: 10px; font-size: 0.9em;">12% of OpEx</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Growth Timeline -->
+        <section class="section">
+            <h2>12-Month Growth Timeline</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-month">Months 1-2: Foundation</div>
+                    <p>Company setup, team hiring, initial R&D investment. No revenue as we prepare for launch.</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-month">Month 3: Launch</div>
+                    <p>First sales: 5 units, $22,500 revenue. Service operations begin with $10,000 service revenue.</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-month">Months 4-6: Early Growth</div>
+                    <p>Steady unit growth (10-20 units/month). Revenue scales from $37K to $68K monthly.</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-month">Months 7-9: Acceleration</div>
+                    <p>25-35 units/month. Monthly revenue exceeds $100K by Month 9. Gross margins stabilize at 77%.</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-month">Months 10-12: Scale</div>
+                    <p>40-50 units/month. Monthly revenue reaches $170K. Positive EBITDA achieved in Month 12.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Market Analysis -->
+        <section class="section">
+            <h2>Market Analysis & Opportunity</h2>
+            <p style="font-size: 1.1em; line-height: 1.8; margin-bottom: 30px;">
+                AeroVine operates at the intersection of three rapidly growing markets: precision agriculture, 
+                commercial drone services, and wine industry technology. Our target market consists of premium 
+                wine producers who value innovation, quality, and data-driven decision-making.
+            </p>
+            
+            <h3>Target Market Size</h3>
+            <div class="metrics-grid" style="margin: 30px 0;">
+                <div class="metric-card" style="background: linear-gradient(135deg, #5D3A7A 0%, #4A90E2 100%);">
+                    <div class="metric-label">California Wine Industry</div>
+                    <div class="metric-value">$40B+</div>
+                    <div style="margin-top: 10px; font-size: 0.9em;">Annual Revenue</div>
+                </div>
+                <div class="metric-card" style="background: linear-gradient(135deg, #4A90E2 0%, #5D3A7A 100%);">
+                    <div class="metric-label">Precision Agriculture</div>
+                    <div class="metric-value">$12B+</div>
+                    <div style="margin-top: 10px; font-size: 0.9em;">Global Market Size</div>
+                </div>
+                <div class="metric-card" style="background: linear-gradient(135deg, #D4A574 0%, #5D3A7A 100%);">
+                    <div class="metric-label">Commercial Drones</div>
+                    <div class="metric-value">20%+</div>
+                    <div style="margin-top: 10px; font-size: 0.9em;">Annual Growth Rate</div>
+                </div>
+                <div class="metric-card" style="background: linear-gradient(135deg, #7A8B99 0%, #4A90E2 100%);">
+                    <div class="metric-label">Target Vineyards</div>
+                    <div class="metric-value">1,200+</div>
+                    <div style="margin-top: 10px; font-size: 0.9em;">In Service Area</div>
+                </div>
+            </div>
+
+            <div class="two-column" style="margin-top: 30px;">
+                <div>
+                    <h3>Market Drivers</h3>
+                    <ul style="line-height: 2; margin-left: 20px;">
+                        <li><strong>Labor Shortages:</strong> Increasing difficulty finding skilled vineyard workers</li>
+                        <li><strong>Climate Challenges:</strong> Need for precise monitoring and early intervention</li>
+                        <li><strong>Quality Demands:</strong> Premium wine producers require consistent quality</li>
+                        <li><strong>Cost Efficiency:</strong> Pressure to optimize operations and reduce waste</li>
+                        <li><strong>Data-Driven Decisions:</strong> Growing adoption of technology in agriculture</li>
+                        <li><strong>Regulatory Support:</strong> Favorable FAA regulations for agricultural drones</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3>Competitive Landscape</h3>
+                    <ul style="line-height: 2; margin-left: 20px;">
+                        <li><strong>General Ag-Tech:</strong> Broad solutions lacking wine industry focus</li>
+                        <li><strong>Drone Service Providers:</strong> Limited agricultural expertise</li>
+                        <li><strong>Traditional Methods:</strong> Manual monitoring and ground-based systems</li>
+                        <li><strong>Our Advantage:</strong> Wine-specific expertise + technology + local presence</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="highlight-box" style="margin-top: 30px;">
+                <h4>📈 Market Penetration Strategy</h4>
+                <p>
+                    AeroVine's initial focus on Napa Valley, Sonoma County, and Mendocino County provides access to 
+                    over <strong>1,200 premium vineyards</strong>. With an average vineyard size of 50-200 acres and 
+                    our ability to serve multiple vineyards per day, we have significant expansion potential within 
+                    our current service area before expanding to other wine regions.
+                </p>
+            </div>
+
+            <div style="margin-top: 30px; padding: 20px; background: rgba(212, 165, 116, 0.1); border-radius: 10px; border: 2px solid #D4A574;">
+                <h3 style="color: #5D3A7A; margin-top: 0;">Growth Opportunities</h3>
+                <div class="two-column">
+                    <div>
+                        <h4 style="color: #7A8B99; margin-top: 15px;">Geographic Expansion</h4>
+                        <ul style="line-height: 2; margin-left: 20px;">
+                            <li>Central Coast (Paso Robles, Santa Barbara)</li>
+                            <li>Northern California (Lodi, Amador County)</li>
+                            <li>Oregon Wine Country</li>
+                            <li>Washington State</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 style="color: #7A8B99; margin-top: 15px;">Service Expansion</h4>
+                        <ul style="line-height: 2; margin-left: 20px;">
+                            <li>Precision spraying and application</li>
+                            <li>Harvest optimization services</li>
+                            <li>Vineyard design and planning</li>
+                            <li>Multi-year analytics and consulting</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Investment Ask -->
+        <section class="section">
+            <h2>Investment Opportunity</h2>
+            <div class="two-column">
+                <div>
+                    <h3>Use of Funds</h3>
+                    <ul style="line-height: 2; margin-left: 20px;">
+                        <li>Expand service area beyond Napa/Sonoma/Mendocino</li>
+                        <li>Accelerate R&D for next-gen AI capabilities</li>
+                        <li>Build sales and marketing team</li>
+                        <li>Increase inventory and production capacity</li>
+                        <li>Develop strategic partnerships with major wineries</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3>Investment Highlights</h3>
+                    <ul style="line-height: 2; margin-left: 20px;">
+                        <li>Proven business model with strong unit economics</li>
+                        <li>Clear path to profitability (Month 12)</li>
+                        <li>Large and growing addressable market</li>
+                        <li>Experienced team with industry expertise</li>
+                        <li>Proprietary technology platform</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="highlight-box" style="margin-top: 30px;">
+                <h4>💡 Why AeroVine?</h4>
+                <ul style="line-height: 2; margin-left: 20px;">
+                    <li><strong>Proven Unit Economics:</strong> 77-78% gross margins demonstrate strong pricing power</li>
+                    <li><strong>Clear Path to Profitability:</strong> Positive EBITDA in Month 12</li>
+                    <li><strong>Dual Revenue Streams:</strong> Product sales + recurring services</li>
+                    <li><strong>Strategic Location:</strong> Heart of premium wine country</li>
+                    <li><strong>Technology Leadership:</strong> Significant R&D investment in AI capabilities</li>
+                    <li><strong>Scalable Model:</strong> Decreasing cash burn as revenue scales</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Contact -->
+        <footer>
+            <div class="contact-info">
+                <h3 style="color: white; margin-bottom: 15px;">Ready to Partner with AeroVine?</h3>
+                <p style="font-size: 1.1em; margin-bottom: 10px;">
+                    Contact us to learn more about investment opportunities and strategic partnerships.
+                </p>
+                <p style="opacity: 0.9;">
+                    📧 info@aerovine.com | 🌐 <a href="https://github.com/stevsmit/aerovine" style="color: white;">github.com/stevsmit/aerovine</a>
+                </p>
+            </div>
+            <p style="margin-top: 20px; opacity: 0.8;">
+                © 2025 AeroVine. All rights reserved. | Napa Valley, California
+            </p>
+        </footer>
+    </div>
+
+    <script>
+        // Revenue Chart
+        const revenueCtx = document.getElementById('revenueChart').getContext('2d');
+        new Chart(revenueCtx, {
+            type: 'line',
+            data: {
+                labels: ['Month 1', 'Month 2', 'Month 3', 'Month 4', 'Month 5', 'Month 6', 
+                         'Month 7', 'Month 8', 'Month 9', 'Month 10', 'Month 11', 'Month 12'],
+                datasets: [{
+                    label: 'Product Revenue',
+                    data: [0, 0, 12500, 25000, 37500, 50000, 62500, 75000, 87500, 100000, 112500, 125000],
+                    borderColor: '#5D3A7A',
+                    backgroundColor: 'rgba(93, 58, 122, 0.1)',
+                    tension: 0.4,
+                    fill: true
+                }, {
+                    label: 'Service Revenue',
+                    data: [0, 0, 10000, 12000, 15000, 18000, 22000, 26000, 30000, 35000, 40000, 45000],
+                    borderColor: '#4A90E2',
+                    backgroundColor: 'rgba(74, 144, 226, 0.1)',
+                    tension: 0.4,
+                    fill: true
+                }, {
+                    label: 'Total Revenue',
+                    data: [0, 0, 22500, 37000, 52500, 68000, 84500, 101000, 117500, 135000, 152500, 170000],
+                    borderColor: '#D4A574',
+                    backgroundColor: 'rgba(212, 165, 116, 0.1)',
+                    tension: 0.4,
+                    borderWidth: 3,
+                    fill: true
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Monthly Revenue Growth ($)',
+                        font: { size: 16, weight: 'bold' }
+                    },
+                    legend: {
+                        position: 'bottom'
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        ticks: {
+                            callback: function(value) {
+                                return '$' + value.toLocaleString();
+                            }
+                        }
+                    }
+                }
+            }
+        });
+
+        // Profitability Chart
+        const profitCtx = document.getElementById('profitabilityChart').getContext('2d');
+        new Chart(profitCtx, {
+            type: 'line',
+            data: {
+                labels: ['Month 1', 'Month 2', 'Month 3', 'Month 4', 'Month 5', 'Month 6', 
+                         'Month 7', 'Month 8', 'Month 9', 'Month 10', 'Month 11', 'Month 12'],
+                datasets: [{
+                    label: 'Net Income',
+                    data: [-123000, -122000, -105000, -93600, -81500, -69400, -56600, -43800, -31000, -17500, -4000, 9500],
+                    borderColor: '#D4A574',
+                    backgroundColor: function(context) {
+                        const ctx = context.chart.ctx;
+                        const gradient = ctx.createLinearGradient(0, 0, 0, 400);
+                        gradient.addColorStop(0, 'rgba(212, 165, 116, 0.3)');
+                        gradient.addColorStop(1, 'rgba(239, 68, 68, 0.3)');
+                        return gradient;
+                    },
+                    tension: 0.4,
+                    fill: true,
+                    borderWidth: 3
+                }, {
+                    label: 'EBITDA',
+                    data: [-123000, -122000, -105000, -93600, -81500, -69400, -56600, -43800, -31000, -17500, -4000, 9500],
+                    borderColor: '#4A90E2',
+                    backgroundColor: 'rgba(74, 144, 226, 0.1)',
+                    tension: 0.4,
+                    borderDash: [5, 5],
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Path to Profitability - Net Income & EBITDA ($)',
+                        font: { size: 16, weight: 'bold' }
+                    },
+                    legend: {
+                        position: 'bottom'
+                    }
+                },
+                scales: {
+                    y: {
+                        ticks: {
+                            callback: function(value) {
+                                return '$' + value.toLocaleString();
+                            }
+                        }
+                    }
+                },
+                elements: {
+                    point: {
+                        radius: 5,
+                        hoverRadius: 8
+                    }
+                }
+            }
+        });
+
+        // Cash Burn Chart
+        const cashBurnCtx = document.getElementById('cashBurnChart').getContext('2d');
+        new Chart(cashBurnCtx, {
+            type: 'bar',
+            data: {
+                labels: ['Month 1', 'Month 2', 'Month 3', 'Month 4', 'Month 5', 'Month 6', 
+                         'Month 7', 'Month 8', 'Month 9', 'Month 10', 'Month 11', 'Month 12'],
+                datasets: [{
+                    label: 'Monthly Cash Burn Rate',
+                    data: [123000, 122000, 105000, 93600, 81500, 69400, 56600, 43800, 31000, 17500, 4000, -9500],
+                    backgroundColor: function(context) {
+                        const value = context.parsed.y;
+                        return value < 0 ? '#D4A574' : '#ef4444';
+                    },
+                    borderColor: function(context) {
+                        const value = context.parsed.y;
+                        return value < 0 ? '#B8926A' : '#dc2626';
+                    },
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Monthly Cash Burn Rate - Decreasing Trend ($)',
+                        font: { size: 16, weight: 'bold' }
+                    },
+                    legend: {
+                        display: false
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: false,
+                        ticks: {
+                            callback: function(value) {
+                                return '$' + value.toLocaleString();
+                            }
+                        }
+                    }
+                }
+            }
+        });
+
+        // Expenses Pie Chart
+        const expensesCtx = document.getElementById('expensesChart').getContext('2d');
+        new Chart(expensesCtx, {
+            type: 'doughnut',
+            data: {
+                labels: ['Salaries & Benefits', 'R&D Expenses', 'Marketing', 'Office Rent', 
+                         'Legal & Professional', 'Insurance', 'Software & Tools', 'Utilities & Other'],
+                datasets: [{
+                    data: [840000, 300000, 180000, 60000, 25000, 24000, 24000, 12000],
+                    backgroundColor: [
+                        '#5D3A7A',
+                        '#4A90E2',
+                        '#D4A574',
+                        '#7A8B99',
+                        '#8B6FA8',
+                        '#6BA3E8',
+                        '#E4C19A',
+                        '#9BA5B0'
+                    ],
+                    borderWidth: 2,
+                    borderColor: '#fff'
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Annual Operating Expenses Breakdown',
+                        font: { size: 16, weight: 'bold' }
+                    },
+                    legend: {
+                        position: 'right'
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                const label = context.label || '';
+                                const value = context.parsed || 0;
+                                const total = context.dataset.data.reduce((a, b) => a + b, 0);
+                                const percentage = ((value / total) * 100).toFixed(1);
+                                return label + ': $' + value.toLocaleString() + ' (' + percentage + '%)';
+                            }
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
+
