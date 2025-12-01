@@ -1,0 +1,1149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AeroVine - Agricultural Drone Fleet Management</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: #f5f7fa;
+            color: #2c3e50;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, #5D3A7A 0%, #4A3D5C 100%);
+            color: white;
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .header-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        /* Navigation */
+        .nav {
+            background: white;
+            border-bottom: 1px solid #e0e6ed;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .nav-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-item {
+            padding: 1rem 0;
+            cursor: pointer;
+            border-bottom: 3px solid transparent;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            color: #64748b;
+        }
+
+        .nav-item:hover {
+            color: #5D3A7A;
+        }
+
+        .nav-item.active {
+            color: #5D3A7A;
+            border-bottom-color: #5D3A7A;
+        }
+
+        /* Main Content */
+        .container {
+            max-width: 1400px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+        }
+
+        .page {
+            display: none;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        /* Cards */
+        .card {
+            background: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+            margin-bottom: 1.5rem;
+        }
+
+        .card-header {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: #1e293b;
+        }
+
+        /* Stats Grid */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, #5D3A7A 0%, #7A4B9C 100%);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(93, 58, 122, 0.3);
+        }
+
+        .stat-card.green {
+            background: linear-gradient(135deg, #4A90E2 0%, #5BA3F5 100%);
+        }
+
+        .stat-card.orange {
+            background: linear-gradient(135deg, #D4A574 0%, #E0B886 100%);
+        }
+
+        .stat-card.blue {
+            background: linear-gradient(135deg, #7A8B99 0%, #8C9DAB 100%);
+        }
+
+        .stat-label {
+            font-size: 0.875rem;
+            opacity: 0.9;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-value {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 0.25rem;
+        }
+
+        .stat-change {
+            font-size: 0.875rem;
+            opacity: 0.9;
+        }
+
+        /* Alerts */
+        .alerts-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .alert-item {
+            padding: 1rem;
+            border-radius: 8px;
+            border-left: 4px solid;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .alert-item.warning {
+            background: #fef3c7;
+            border-color: #f59e0b;
+        }
+
+        .alert-item.success {
+            background: #d1fae5;
+            border-color: #10b981;
+        }
+
+        .alert-item.info {
+            background: #dbeafe;
+            border-color: #3b82f6;
+        }
+
+        .alert-icon {
+            font-size: 1.25rem;
+        }
+
+        /* Vineyard Grid */
+        .vineyard-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .vineyard-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+
+        .vineyard-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+        }
+
+        .vineyard-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, #5D3A7A 0%, #7A4B9C 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+        }
+
+        .vineyard-content {
+            padding: 1.5rem;
+        }
+
+        .vineyard-name {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .vineyard-variety {
+            color: #64748b;
+            margin-bottom: 1rem;
+        }
+
+        .health-bar {
+            background: #e0e6ed;
+            height: 8px;
+            border-radius: 4px;
+            overflow: hidden;
+            margin-bottom: 0.5rem;
+        }
+
+        .health-fill {
+            height: 100%;
+            border-radius: 4px;
+            transition: width 0.5s ease;
+        }
+
+        .health-fill.excellent {
+            background: linear-gradient(90deg, #4A90E2, #5BA3F5);
+        }
+
+        .health-fill.good {
+            background: linear-gradient(90deg, #D4A574, #E0B886);
+        }
+
+        .health-fill.moderate {
+            background: linear-gradient(90deg, #7A8B99, #8C9DAB);
+        }
+
+        .health-label {
+            font-size: 0.875rem;
+            color: #64748b;
+        }
+
+        /* Map Container */
+        .map-container {
+            background: #e5e7eb;
+            height: 600px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .map-placeholder {
+            text-align: center;
+            color: #64748b;
+        }
+
+        .map-placeholder-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Drone List */
+        .drone-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .drone-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1rem;
+            background: #f8fafc;
+            border-radius: 8px;
+            border: 1px solid #e0e6ed;
+        }
+
+        .drone-info {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .drone-status {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        .drone-status.active {
+            background: #10b981;
+        }
+
+        .drone-status.charging {
+            background: #f59e0b;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        .drone-details {
+            flex: 1;
+        }
+
+        .drone-id {
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .drone-mission {
+            font-size: 0.875rem;
+            color: #64748b;
+        }
+
+        .drone-battery {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 0.5rem;
+        }
+
+        .battery-bar {
+            width: 100px;
+            height: 8px;
+            background: #e0e6ed;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .battery-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #4A90E2, #5BA3F5);
+            transition: width 0.5s ease;
+        }
+
+        /* Buttons */
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #5D3A7A 0%, #7A4B9C 100%);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(93, 58, 122, 0.4);
+        }
+
+        .btn-secondary {
+            background: #e0e6ed;
+            color: #475569;
+        }
+
+        .btn-secondary:hover {
+            background: #cbd5e1;
+        }
+
+        /* Analytics Charts */
+        .chart-container {
+            height: 300px;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 1rem;
+        }
+
+        .chart-placeholder {
+            text-align: center;
+            color: #64748b;
+        }
+
+        /* Progress Bars */
+        .progress-item {
+            margin-bottom: 1.5rem;
+        }
+
+        .progress-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+        }
+
+        .progress-label {
+            font-weight: 500;
+        }
+
+        .progress-value {
+            color: #64748b;
+        }
+
+        .progress-bar {
+            height: 12px;
+            background: #e0e6ed;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            border-radius: 6px;
+            background: linear-gradient(90deg, #5D3A7A, #7A4B9C);
+            transition: width 1s ease;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .vineyard-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-content {
+                overflow-x: auto;
+            }
+        }
+
+        /* Loading Animation */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .card {
+            animation: fadeIn 0.5s ease;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <div class="header">
+        <div class="header-content">
+            <div class="logo">
+                🍇 AeroVine
+            </div>
+            <div class="header-right">
+                <div>🌍 Global Operations</div>
+                <div class="user-info">
+                    <span>👤 Demo User</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <div class="nav">
+        <div class="nav-content">
+            <div class="nav-item active" onclick="showPage('dashboard')">Dashboard</div>
+            <div class="nav-item" onclick="showPage('vineyards')">Vineyards</div>
+            <div class="nav-item" onclick="showPage('map')">Live Map</div>
+            <div class="nav-item" onclick="showPage('fleet')">Fleet</div>
+            <div class="nav-item" onclick="showPage('analytics')">Analytics</div>
+        </div>
+    </div>
+
+    <!-- Main Container -->
+    <div class="container">
+        <!-- Dashboard Page -->
+        <div id="dashboard" class="page active">
+            <!-- Stats Grid -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-label">FLEET STATUS</div>
+                    <div class="stat-value">47 / 50</div>
+                    <div class="stat-change">Operational • 2 Charging • 1 Service</div>
+                </div>
+                <div class="stat-card green">
+                    <div class="stat-label">AREA SURVEYED TODAY</div>
+                    <div class="stat-value">12,450</div>
+                    <div class="stat-change">hectares • +18% vs last week</div>
+                </div>
+                <div class="stat-card orange">
+                    <div class="stat-label">ACTIVE MISSIONS</div>
+                    <div class="stat-value">14</div>
+                    <div class="stat-change">8 Vineyard Surveys • 6 Field Operations</div>
+                </div>
+                <div class="stat-card blue">
+                    <div class="stat-label">AI AUTONOMY RATE</div>
+                    <div class="stat-value">89%</div>
+                    <div class="stat-change">Minimal human intervention required</div>
+                </div>
+            </div>
+
+            <!-- Crop Health Overview -->
+            <div class="card">
+                <div class="card-header">🌱 Crop Health Overview (AI-Powered Analysis)</div>
+                <div class="progress-item">
+                    <div class="progress-header">
+                        <span class="progress-label">Healthy</span>
+                        <span class="progress-value">78%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 78%"></div>
+                    </div>
+                </div>
+                <div class="progress-item">
+                    <div class="progress-header">
+                        <span class="progress-label">Stressed (Water/Nutrient)</span>
+                        <span class="progress-value">15%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 15%; background: linear-gradient(90deg, #f59e0b, #ef4444)"></div>
+                    </div>
+                </div>
+                <div class="progress-item">
+                    <div class="progress-header">
+                        <span class="progress-label">Disease Detected</span>
+                        <span class="progress-value">5%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 5%; background: linear-gradient(90deg, #ef4444, #dc2626)"></div>
+                    </div>
+                </div>
+                <div class="progress-item">
+                    <div class="progress-header">
+                        <span class="progress-label">Critical</span>
+                        <span class="progress-value">2%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 2%; background: #dc2626"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Alerts -->
+            <div class="card">
+                <div class="card-header">⚠️ Recent Alerts & AI Detections</div>
+                <div class="alerts-list">
+                    <div class="alert-item warning">
+                        <div class="alert-icon">⚠️</div>
+                        <div>
+                            <strong>Powdery Mildew Detected</strong> - Napa Valley Vineyard, Block 7 (Cabernet Sauvignon)<br>
+                            <small>AI Confidence: 94% • Recommended: Precision fungicide spray • Affected: 2.3 ha</small>
+                        </div>
+                    </div>
+                    <div class="alert-item warning">
+                        <div class="alert-icon">💧</div>
+                        <div>
+                            <strong>Irrigation Stress Detected</strong> - Sonoma Vineyard, Block 12 (Chardonnay)<br>
+                            <small>AI Confidence: 87% • Recommended: Irrigation system check • 8 dry spots identified</small>
+                        </div>
+                    </div>
+                    <div class="alert-item success">
+                        <div class="alert-icon">✓</div>
+                        <div>
+                            <strong>Mission Completed</strong> - Drone V-08: Pinot Noir health survey (45 ha)<br>
+                            <small>Overall vine health: 92% • No critical issues • Next survey scheduled in 7 days</small>
+                        </div>
+                    </div>
+                    <div class="alert-item info">
+                        <div class="alert-icon">🌤️</div>
+                        <div>
+                            <strong>Optimal Spray Window</strong> - All California vineyards (Next 8 hours)<br>
+                            <small>Wind: 5 km/h • Temp: 18°C • Humidity: 65% • AI recommends immediate action</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Economic Impact -->
+            <div class="card">
+                <div class="card-header">💰 Economic Impact (Last 30 Days)</div>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; padding: 1rem 0;">
+                    <div>
+                        <div style="font-size: 2rem; font-weight: 700; color: #5D3A7A;">$127,400</div>
+                        <div style="color: #7A8B99; margin-top: 0.5rem;">Chemical Savings</div>
+                        <div style="font-size: 0.875rem; color: #4A90E2; margin-top: 0.25rem;">↑ 45% reduction vs broadcast</div>
+                    </div>
+                    <div>
+                        <div style="font-size: 2rem; font-weight: 700; color: #4A90E2;">+12%</div>
+                        <div style="color: #7A8B99; margin-top: 0.5rem;">Yield Improvement</div>
+                        <div style="font-size: 0.875rem; color: #4A90E2; margin-top: 0.25rem;">↑ Early intervention value: $847K</div>
+                    </div>
+                    <div>
+                        <div style="font-size: 2rem; font-weight: 700; color: #D4A574;">$4.20</div>
+                        <div style="color: #7A8B99; margin-top: 0.5rem;">ROI per Dollar</div>
+                        <div style="font-size: 0.875rem; color: #4A90E2; margin-top: 0.25rem;">↑ Industry average: $2.80</div>
+                    </div>
+                    <div>
+                        <div style="font-size: 2rem; font-weight: 700; color: #D4A574;">23</div>
+                        <div style="color: #7A8B99; margin-top: 0.5rem;">Pest Outbreaks Caught</div>
+                        <div style="font-size: 0.875rem; color: #4A90E2; margin-top: 0.25rem;">↑ Loss prevention: $234K</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Vineyards Page -->
+        <div id="vineyards" class="page">
+            <div class="card">
+                <div class="card-header">🍇 Premium Vineyard Management</div>
+                <p style="color: #64748b; margin-bottom: 2rem;">
+                    AI-powered precision viticulture across 47 premium wine regions. Real-time vine health monitoring,
+                    disease detection, and harvest optimization for maximum grape quality and yield.
+                </p>
+            </div>
+
+            <div class="vineyard-grid">
+                <div class="vineyard-card" onclick="alert('Vineyard Details: Napa Valley Estate\n\n• Variety: Cabernet Sauvignon\n• Area: 85 hectares\n• Vine Health: 88%\n• Last Survey: 3 hours ago\n• AI Detection: Powdery mildew in Block 7 (2.3 ha)\n• Recommendation: Precision fungicide application')">
+                    <div class="vineyard-image">🍇</div>
+                    <div class="vineyard-content">
+                        <div class="vineyard-name">Napa Valley Estate</div>
+                        <div class="vineyard-variety">Cabernet Sauvignon • 85 hectares</div>
+                        <div class="health-bar">
+                            <div class="health-fill good" style="width: 88%"></div>
+                        </div>
+                        <div class="health-label">Vine Health: 88% Good • Last survey: 3hrs ago</div>
+                        <div style="margin-top: 1rem; padding-top: 1rem; border-top: 1px solid #e0e6ed;">
+                            <div style="font-size: 0.875rem; color: #64748b;">🔍 AI Detections:</div>
+                            <div style="font-size: 0.875rem; color: #f59e0b; margin-top: 0.25rem;">⚠️ Powdery mildew - Block 7 (2.3 ha)</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="vineyard-card" onclick="alert('Vineyard Details: Sonoma Valley Reserve\n\n• Variety: Chardonnay\n• Area: 62 hectares\n• Vine Health: 92%\n• Last Survey: 5 hours ago\n• AI Detection: Irrigation stress in Block 12\n• Recommendation: Check drip irrigation system')">
+                    <div class="vineyard-image" style="background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);">🍇</div>
+                    <div class="vineyard-content">
+                        <div class="vineyard-name">Sonoma Valley Reserve</div>
+                        <div class="vineyard-variety">Chardonnay • 62 hectares</div>
+                        <div class="health-bar">
+                            <div class="health-fill excellent" style="width: 92%"></div>
+                        </div>
+                        <div class="health-label">Vine Health: 92% Excellent • Last survey: 5hrs ago</div>
+                        <div style="margin-top: 1rem; padding-top: 1rem; border-top: 1px solid #e0e6ed;">
+                            <div style="font-size: 0.875rem; color: #64748b;">🔍 AI Detections:</div>
+                            <div style="font-size: 0.875rem; color: #f59e0b; margin-top: 0.25rem;">💧 Irrigation stress - Block 12</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="vineyard-card" onclick="alert('Vineyard Details: Russian River Vineyard\n\n• Variety: Pinot Noir\n• Area: 45 hectares\n• Vine Health: 94%\n• Last Survey: 12 hours ago\n• AI Detection: No issues detected\n• Status: Optimal health, veraison on schedule')">
+                    <div class="vineyard-image" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">🍇</div>
+                    <div class="vineyard-content">
+                        <div class="vineyard-name">Russian River Vineyard</div>
+                        <div class="vineyard-variety">Pinot Noir • 45 hectares</div>
+                        <div class="health-bar">
+                            <div class="health-fill excellent" style="width: 94%"></div>
+                        </div>
+                        <div class="health-label">Vine Health: 94% Excellent • Last survey: 12hrs ago</div>
+                        <div style="margin-top: 1rem; padding-top: 1rem; border-top: 1px solid #e0e6ed;">
+                            <div style="font-size: 0.875rem; color: #64748b;">🔍 AI Detections:</div>
+                            <div style="font-size: 0.875rem; color: #10b981; margin-top: 0.25rem;">✓ No issues • Veraison on schedule</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="vineyard-card" onclick="alert('Vineyard Details: Willamette Valley Estate\n\n• Variety: Pinot Gris\n• Area: 38 hectares\n• Vine Health: 89%\n• Last Survey: 8 hours ago\n• AI Detection: Minor leaf discoloration in Block 3\n• Recommendation: Nutrient analysis recommended')">
+                    <div class="vineyard-image" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">🍇</div>
+                    <div class="vineyard-content">
+                        <div class="vineyard-name">Willamette Valley Estate</div>
+                        <div class="vineyard-variety">Pinot Gris • 38 hectares</div>
+                        <div class="health-bar">
+                            <div class="health-fill good" style="width: 89%"></div>
+                        </div>
+                        <div class="health-label">Vine Health: 89% Good • Last survey: 8hrs ago</div>
+                        <div style="margin-top: 1rem; padding-top: 1rem; border-top: 1px solid #e0e6ed;">
+                            <div style="font-size: 0.875rem; color: #64748b;">🔍 AI Detections:</div>
+                            <div style="font-size: 0.875rem; color: #3b82f6; margin-top: 0.25rem;">ℹ️ Leaf discoloration - Block 3</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="vineyard-card" onclick="alert('Vineyard Details: Mendoza Reserve (Argentina)\n\n• Variety: Malbec\n• Area: 110 hectares\n• Vine Health: 91%\n• Last Survey: 18 hours ago\n• AI Detection: Optimal canopy density\n• Status: Excellent berry development')">
+                    <div class="vineyard-image" style="background: linear-gradient(135deg, #FA8BFF 0%, #2BD2FF 90%, #2BFF88 100%);">🍇</div>
+                    <div class="vineyard-content">
+                        <div class="vineyard-name">Mendoza Reserve 🇦🇷</div>
+                        <div class="vineyard-variety">Malbec • 110 hectares</div>
+                        <div class="health-bar">
+                            <div class="health-fill excellent" style="width: 91%"></div>
+                        </div>
+                        <div class="health-label">Vine Health: 91% Excellent • Last survey: 18hrs ago</div>
+                        <div style="margin-top: 1rem; padding-top: 1rem; border-top: 1px solid #e0e6ed;">
+                            <div style="font-size: 0.875rem; color: #64748b;">🔍 AI Detections:</div>
+                            <div style="font-size: 0.875rem; color: #10b981; margin-top: 0.25rem;">✓ Optimal canopy • Berry development excellent</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="vineyard-card" onclick="alert('Vineyard Details: Tuscany Estate (Italy)\n\n• Variety: Sangiovese\n• Area: 72 hectares\n• Vine Health: 86%\n• Last Survey: 24 hours ago\n• AI Detection: Heat stress in south-facing blocks\n• Recommendation: Increase irrigation frequency')">
+                    <div class="vineyard-image" style="background: linear-gradient(135deg, #FFD89B 0%, #19547B 100%);">🍇</div>
+                    <div class="vineyard-content">
+                        <div class="vineyard-name">Tuscany Estate 🇮🇹</div>
+                        <div class="vineyard-variety">Sangiovese • 72 hectares</div>
+                        <div class="health-bar">
+                            <div class="health-fill good" style="width: 86%"></div>
+                        </div>
+                        <div class="health-label">Vine Health: 86% Good • Last survey: 24hrs ago</div>
+                        <div style="margin-top: 1rem; padding-top: 1rem; border-top: 1px solid #e0e6ed;">
+                            <div style="font-size: 0.875rem; color: #64748b;">🔍 AI Detections:</div>
+                            <div style="font-size: 0.875rem; color: #f59e0b; margin-top: 0.25rem;">☀️ Heat stress - south blocks</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Vineyard-Specific Metrics -->
+            <div class="card" style="margin-top: 2rem;">
+                <div class="card-header">📊 Vineyard Performance Metrics</div>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; padding: 1rem 0;">
+                    <div>
+                        <div style="font-size: 1.5rem; font-weight: 700; color: #5D3A7A;">462</div>
+                        <div style="color: #7A8B99; margin-top: 0.5rem;">Total Hectares</div>
+                        <div style="font-size: 0.875rem; color: #7A8B99; margin-top: 0.25rem;">Across 6 premium estates</div>
+                    </div>
+                    <div>
+                        <div style="font-size: 1.5rem; font-weight: 700; color: #4A90E2;">90%</div>
+                        <div style="color: #7A8B99; margin-top: 0.5rem;">Avg Vine Health</div>
+                        <div style="font-size: 0.875rem; color: #4A90E2; margin-top: 0.25rem;">↑ +8% vs last season</div>
+                    </div>
+                    <div>
+                        <div style="font-size: 1.5rem; font-weight: 700; color: #D4A574;">3.2 t/ha</div>
+                        <div style="color: #7A8B99; margin-top: 0.5rem;">Predicted Yield</div>
+                        <div style="font-size: 0.875rem; color: #4A90E2; margin-top: 0.25rem;">↑ Premium quality maintained</div>
+                    </div>
+                    <div>
+                        <div style="font-size: 1.5rem; font-weight: 700; color: #D4A574;">18</div>
+                        <div style="color: #7A8B99; margin-top: 0.5rem;">Days to Veraison</div>
+                        <div style="font-size: 0.875rem; color: #7A8B99; margin-top: 0.25rem;">Color change tracking</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Map Page -->
+        <div id="map" class="page">
+            <div class="card">
+                <div class="card-header">🗺️ Live Fleet Map</div>
+                <div class="map-container">
+                    <div class="map-placeholder">
+                        <div class="map-placeholder-icon">🗺️</div>
+                        <div>Interactive Map Visualization</div>
+                        <div style="font-size: 0.875rem; margin-top: 0.5rem; color: #94a3b8;">
+                            Real-time drone positions, flight paths, and field boundaries<br>
+                            In production: Integrates with Mapbox/Google Maps API
+                        </div>
+                        <div style="margin-top: 2rem; display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                            <div style="display: flex; align-items: center; gap: 0.5rem;">
+                                <div style="width: 12px; height: 12px; border-radius: 50%; background: #10b981;"></div>
+                                <span style="font-size: 0.875rem;">Active Drones (12)</span>
+                            </div>
+                            <div style="display: flex; align-items: center; gap: 0.5rem;">
+                                <div style="width: 12px; height: 12px; border-radius: 50%; background: #5D3A7A;"></div>
+                                <span style="font-size: 0.875rem;">Vineyards (6)</span>
+                            </div>
+                            <div style="display: flex; align-items: center; gap: 0.5rem;">
+                                <div style="width: 12px; height: 12px; border-radius: 50%; background: #D4A574;"></div>
+                                <span style="font-size: 0.875rem;">Fields (47)</span>
+                            </div>
+                            <div style="display: flex; align-items: center; gap: 0.5rem;">
+                                <div style="width: 12px; height: 12px; border-radius: 50%; background: #ef4444;"></div>
+                                <span style="font-size: 0.875rem;">Issues Detected (3)</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 1.5rem; margin-top: 1.5rem;">
+                <div class="card">
+                    <div class="card-header">📍 Active Flight Paths</div>
+                    <div style="color: #64748b; margin-bottom: 1rem;">Currently executing missions across multiple regions</div>
+                    <div style="display: flex; flex-direction: column; gap: 1rem;">
+                        <div style="padding: 1rem; background: #f8fafc; border-radius: 8px; border-left: 4px solid #10b981;">
+                            <div style="font-weight: 600;">Drone V-08: Pinot Noir Survey</div>
+                            <div style="font-size: 0.875rem; color: #64748b; margin-top: 0.25rem;">
+                                Russian River Vineyard • Progress: 67% • ETA: 12 min
+                            </div>
+                        </div>
+                        <div style="padding: 1rem; background: #f8fafc; border-radius: 8px; border-left: 4px solid #10b981;">
+                            <div style="font-weight: 600;">Drone V-12: Cabernet Disease Check</div>
+                            <div style="font-size: 0.875rem; color: #64748b; margin-top: 0.25rem;">
+                                Napa Valley Estate • Progress: 34% • ETA: 18 min
+                            </div>
+                        </div>
+                        <div style="padding: 1rem; background: #f8fafc; border-radius: 8px; border-left: 4px solid #5D3A7A;">
+                            <div style="font-weight: 600;">Drone A-23: Wheat Field Survey</div>
+                            <div style="font-size: 0.875rem; color: #64748b; margin-top: 0.25rem;">
+                                Miller Farms, Iowa • Progress: 82% • ETA: 6 min
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">🌍 Regional Coverage</div>
+                    <div style="display: flex; flex-direction: column; gap: 1rem;">
+                        <div>
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                <span style="font-weight: 500;">North America</span>
+                                <span style="color: #64748b;">87%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 87%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                <span style="font-weight: 500;">South America</span>
+                                <span style="color: #64748b;">76%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 76%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                <span style="font-weight: 500;">Europe</span>
+                                <span style="color: #64748b;">65%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 65%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Fleet Page -->
+        <div id="fleet" class="page">
+            <div class="card">
+                <div class="card-header">🚁 Drone Fleet Status</div>
+                <div class="drone-list">
+                    <div class="drone-item">
+                        <div class="drone-info">
+                            <div class="drone-status active"></div>
+                            <div class="drone-details">
+                                <div class="drone-id">Drone V-08 (AeroVine-X7-AG)</div>
+                                <div class="drone-mission">Mission: Pinot Noir health survey • Russian River Vineyard</div>
+                            </div>
+                        </div>
+                        <div class="drone-battery">
+                            <span style="font-size: 0.875rem; font-weight: 600;">87%</span>
+                            <div class="battery-bar">
+                                <div class="battery-fill" style="width: 87%"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="drone-item">
+                        <div class="drone-info">
+                            <div class="drone-status active"></div>
+                            <div class="drone-details">
+                                <div class="drone-id">Drone V-12 (AeroVine-X7-AG)</div>
+                                <div class="drone-mission">Mission: Cabernet disease inspection • Napa Valley Estate</div>
+                            </div>
+                        </div>
+                        <div class="drone-battery">
+                            <span style="font-size: 0.875rem; font-weight: 600;">72%</span>
+                            <div class="battery-bar">
+                                <div class="battery-fill" style="width: 72%"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="drone-item">
+                        <div class="drone-info">
+                            <div class="drone-status active"></div>
+                            <div class="drone-details">
+                                <div class="drone-id">Drone A-23 (AeroVine-X7-AG)</div>
+                                <div class="drone-mission">Mission: Wheat field survey • Miller Farms, Iowa</div>
+                            </div>
+                        </div>
+                        <div class="drone-battery">
+                            <span style="font-size: 0.875rem; font-weight: 600;">82%</span>
+                            <div class="battery-bar">
+                                <div class="battery-fill" style="width: 82%"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="drone-item">
+                        <div class="drone-info">
+                            <div class="drone-status charging"></div>
+                            <div class="drone-details">
+                                <div class="drone-id">Drone V-03 (AeroVine-X7-AG)</div>
+                                <div class="drone-mission">Status: Charging • Last: Chardonnay survey completed</div>
+                            </div>
+                        </div>
+                        <div class="drone-battery">
+                            <span style="font-size: 0.875rem; font-weight: 600;">34%</span>
+                            <div class="battery-bar">
+                                <div class="battery-fill" style="width: 34%; background: linear-gradient(90deg, #f59e0b, #ef4444)"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="drone-item">
+                        <div class="drone-info">
+                            <div class="drone-status active"></div>
+                            <div class="drone-details">
+                                <div class="drone-id">Drone B-12 (AeroVine-X7-AG)</div>
+                                <div class="drone-mission">Mission: Corn field precision spray • Field C-47</div>
+                            </div>
+                        </div>
+                        <div class="drone-battery">
+                            <span style="font-size: 0.875rem; font-weight: 600;">68%</span>
+                            <div class="battery-bar">
+                                <div class="battery-fill" style="width: 68%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">📊 Fleet Performance</div>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; padding: 1rem 0;">
+                    <div>
+                        <div style="font-size: 1.5rem; font-weight: 700; color: #5D3A7A;">1,247</div>
+                        <div style="color: #7A8B99; margin-top: 0.5rem;">Total Flight Hours</div>
+                        <div style="font-size: 0.875rem; color: #4A90E2; margin-top: 0.25rem;">This month</div>
+                    </div>
+                    <div>
+                        <div style="font-size: 1.5rem; font-weight: 700; color: #4A90E2;">98.5%</div>
+                        <div style="color: #7A8B99; margin-top: 0.5rem;">Mission Success Rate</div>
+                        <div style="font-size: 0.875rem; color: #4A90E2; margin-top: 0.25rem;">342 missions</div>
+                    </div>
+                    <div>
+                        <div style="font-size: 1.5rem; font-weight: 700; color: #D4A574;">3.2 min</div>
+                        <div style="color: #7A8B99; margin-top: 0.5rem;">Avg Response Time</div>
+                        <div style="font-size: 0.875rem; color: #7A8B99; margin-top: 0.25rem;">Deploy to airborne</div>
+                    </div>
+                    <div>
+                        <div style="font-size: 1.5rem; font-weight: 700; color: #4A90E2;">0</div>
+                        <div style="color: #7A8B99; margin-top: 0.5rem;">Safety Incidents</div>
+                        <div style="font-size: 0.875rem; color: #4A90E2; margin-top: 0.25rem;">✓ Perfect record</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Analytics Page -->
+        <div id="analytics" class="page">
+            <div class="card">
+                <div class="card-header">📈 Vineyard Analytics & Insights</div>
+                <div class="chart-container">
+                    <div class="chart-placeholder">
+                        <div style="font-size: 3rem; margin-bottom: 1rem;">📊</div>
+                        <div>Crop Health Trends - Last 30 Days</div>
+                        <div style="font-size: 0.875rem; margin-top: 0.5rem; color: #94a3b8;">
+                            In production: Interactive charts using Chart.js or D3.js<br>
+                            Shows NDVI trends, disease progression, yield forecasts
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
+                <div class="card">
+                    <div class="card-header">🍇 Vineyard-Specific Metrics</div>
+                    <div class="progress-item">
+                        <div class="progress-header">
+                            <span class="progress-label">Vine Health Score</span>
+                            <span class="progress-value">90%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 90%"></div>
+                        </div>
+                    </div>
+                    <div class="progress-item">
+                        <div class="progress-header">
+                            <span class="progress-label">Canopy Density (Optimal)</span>
+                            <span class="progress-value">85%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 85%"></div>
+                        </div>
+                    </div>
+                    <div class="progress-item">
+                        <div class="progress-header">
+                            <span class="progress-label">Berry Size Uniformity</span>
+                            <span class="progress-value">92%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 92%"></div>
+                        </div>
+                    </div>
+                    <div class="progress-item">
+                        <div class="progress-header">
+                            <span class="progress-label">Disease Pressure Index</span>
+                            <span class="progress-value">12% (Low)</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 12%; background: linear-gradient(90deg, #10b981, #38ef7d)"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">💰 Economic Performance</div>
+                    <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+                        <div>
+                            <div style="font-size: 1.75rem; font-weight: 700; color: #5D3A7A;">$847,000</div>
+                            <div style="color: #7A8B99; margin-top: 0.25rem;">Estimated Crop Value</div>
+                            <div style="font-size: 0.875rem; color: #4A90E2; margin-top: 0.25rem;">↑ +12% vs baseline</div>
+                        </div>
+                        <div>
+                            <div style="font-size: 1.75rem; font-weight: 700; color: #4A90E2;">$89,200</div>
+                            <div style="color: #7A8B99; margin-top: 0.25rem;">Chemical Savings (Precision)</div>
+                            <div style="font-size: 0.875rem; color: #4A90E2; margin-top: 0.25rem;">↑ 52% reduction in vineyard sprays</div>
+                        </div>
+                        <div>
+                            <div style="font-size: 1.75rem; font-weight: 700; color: #D4A574;">3.2 t/ha</div>
+                            <div style="color: #7A8B99; margin-top: 0.25rem;">Predicted Yield</div>
+                            <div style="font-size: 0.875rem; color: #7A8B99; margin-top: 0.25rem;">Premium quality maintained</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">🤖 AI Detection Performance</div>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; padding: 1rem 0;">
+                    <div>
+                        <div style="font-size: 1.5rem; font-weight: 700; color: #5D3A7A;">93%</div>
+                        <div style="color: #7A8B99; margin-top: 0.5rem;">Disease Detection Accuracy</div>
+                        <div style="font-size: 0.875rem; color: #7A8B99; margin-top: 0.25rem;">Powdery mildew, downy mildew, botrytis</div>
+                    </div>
+                    <div>
+                        <div style="font-size: 1.5rem; font-weight: 700; color: #4A90E2;">89%</div>
+                        <div style="color: #7A8B99; margin-top: 0.5rem;">Yield Prediction Confidence</div>
+                        <div style="font-size: 0.875rem; color: #4A90E2; margin-top: 0.25rem;">Within ±5% of actual harvest</div>
+                    </div>
+                    <div>
+                        <div style="font-size: 1.5rem; font-weight: 700; color: #D4A574;">87%</div>
+                        <div style="color: #7A8B99; margin-top: 0.5rem;">Early Detection Rate</div>
+                        <div style="font-size: 0.875rem; color: #4A90E2; margin-top: 0.25rem;">Issues caught before visible symptoms</div>
+                    </div>
+                    <div>
+                        <div style="font-size: 1.5rem; font-weight: 700; color: #4A90E2;">5%</div>
+                        <div style="color: #7A8B99; margin-top: 0.5rem;">False Positive Rate</div>
+                        <div style="font-size: 0.875rem; color: #4A90E2; margin-top: 0.25rem;">Excellent precision</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Page Navigation
+        function showPage(pageId) {
+            // Hide all pages
+            document.querySelectorAll('.page').forEach(page => {
+                page.classList.remove('active');
+            });
+
+            // Remove active state from all nav items
+            document.querySelectorAll('.nav-item').forEach(item => {
+                item.classList.remove('active');
+            });
+
+            // Show selected page
+            document.getElementById(pageId).classList.add('active');
+
+            // Add active state to clicked nav item
+            event.target.classList.add('active');
+        }
+
+        // Simulate real-time updates
+        setInterval(() => {
+            // Update battery percentages slightly
+            document.querySelectorAll('.battery-fill').forEach(battery => {
+                const currentWidth = parseInt(battery.style.width);
+                if (currentWidth > 20) {
+                    battery.style.width = (currentWidth - Math.random() * 0.5) + '%';
+                }
+            });
+        }, 5000);
+
+        // Add subtle animation on load
+        window.addEventListener('load', () => {
+            document.querySelectorAll('.stat-value').forEach((el, index) => {
+                setTimeout(() => {
+                    el.style.opacity = '0';
+                    el.style.transform = 'translateY(20px)';
+                    setTimeout(() => {
+                        el.style.transition = 'all 0.5s ease';
+                        el.style.opacity = '1';
+                        el.style.transform = 'translateY(0)';
+                    }, 50);
+                }, index * 100);
+            });
+        });
+    </script>
+</body>
+</html>

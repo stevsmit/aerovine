@@ -1,0 +1,650 @@
+{
+  "info": {
+    "name": "Acme.ai Agricultural Drone Fleet API",
+    "description": "Complete API collection for Acme.ai agricultural drone fleet management system",
+    "version": "2.1.0",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{access_token}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "https://api.acme.ai/v2",
+      "type": "string"
+    },
+    {
+      "key": "access_token",
+      "value": "",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "Authentication",
+      "item": [
+        {
+          "name": "Get Access Token",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"client_id\": \"your_client_id\",\n  \"client_secret\": \"your_client_secret\",\n  \"grant_type\": \"client_credentials\",\n  \"scope\": \"fleet.read fleet.write telemetry.read operations.write\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/auth/token",
+              "host": ["{{base_url}}"],
+              "path": ["auth", "token"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Fleet Management",
+      "item": [
+        {
+          "name": "List All Drones",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/fleet/drones?status=operational&page=1&limit=50",
+              "host": ["{{base_url}}"],
+              "path": ["fleet", "drones"],
+              "query": [
+                {
+                  "key": "status",
+                  "value": "operational"
+                },
+                {
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "key": "limit",
+                  "value": "50"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Drone Details",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/fleet/drones/A-23",
+              "host": ["{{base_url}}"],
+              "path": ["fleet", "drones", "A-23"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update Drone Configuration",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"assigned_farm_id\": \"farm_miller_iowa\",\n  \"max_altitude_agl_meters\": 120,\n  \"max_speed_mps\": 15,\n  \"return_to_base_battery_percent\": 25,\n  \"geofence_enabled\": true\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/fleet/drones/A-23",
+              "host": ["{{base_url}}"],
+              "path": ["fleet", "drones", "A-23"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Flight Planning & Control",
+      "item": [
+        {
+          "name": "Create Flight Mission",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"mission_type\": \"crop_survey\",\n  \"name\": \"Wheat Health Survey - Field B-23\",\n  \"description\": \"Weekly health monitoring for spring wheat\",\n  \"drone_id\": \"A-23\",\n  \"farm_id\": \"farm_miller_iowa\",\n  \"field_ids\": [\"field_b23\"],\n  \"priority\": \"normal\",\n  \"schedule\": {\n    \"start_time\": \"2024-12-01T15:00:00Z\",\n    \"auto_start\": true,\n    \"weather_constraints\": {\n      \"max_wind_speed_kph\": 15,\n      \"min_visibility_meters\": 1000,\n      \"no_precipitation\": true\n    }\n  },\n  \"flight_parameters\": {\n    \"altitude_agl_meters\": 45,\n    \"speed_mps\": 12,\n    \"overlap_percent\": 70,\n    \"pattern\": \"grid\",\n    \"gimbal_angle_degrees\": -90\n  },\n  \"ai_analysis\": {\n    \"enabled\": true,\n    \"modules\": [\n      \"crop_health_ndvi\",\n      \"pest_detection\",\n      \"weed_mapping\",\n      \"disease_identification\",\n      \"nutrient_deficiency\",\n      \"stress_prediction\",\n      \"yield_estimation\"\n    ],\n    \"realtime_processing\": true\n  }\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/missions",
+              "host": ["{{base_url}}"],
+              "path": ["missions"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Start Mission",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"pre_flight_checks_confirmed\": true,\n  \"override_weather_delay\": false\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/missions/m_42/start",
+              "host": ["{{base_url}}"],
+              "path": ["missions", "m_42", "start"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Mission Status",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/missions/m_42",
+              "host": ["{{base_url}}"],
+              "path": ["missions", "m_42"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Pause Mission",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/missions/m_42/pause",
+              "host": ["{{base_url}}"],
+              "path": ["missions", "m_42", "pause"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Resume Mission",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/missions/m_42/resume",
+              "host": ["{{base_url}}"],
+              "path": ["missions", "m_42", "resume"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Abort Mission",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"reason\": \"Weather conditions deteriorating\",\n  \"return_to_base\": true,\n  \"save_partial_data\": true\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/missions/m_42/abort",
+              "host": ["{{base_url}}"],
+              "path": ["missions", "m_42", "abort"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Emergency Landing",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"reason\": \"Low battery critical alert\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/fleet/drones/A-23/emergency_land",
+              "host": ["{{base_url}}"],
+              "path": ["fleet", "drones", "A-23", "emergency_land"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Return to Base",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/fleet/drones/A-23/return_to_base",
+              "host": ["{{base_url}}"],
+              "path": ["fleet", "drones", "A-23", "return_to_base"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Telemetry",
+      "item": [
+        {
+          "name": "Get Real-time Telemetry",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/telemetry/drones/A-23/live",
+              "host": ["{{base_url}}"],
+              "path": ["telemetry", "drones", "A-23", "live"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Telemetry History",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/telemetry/drones/A-23/history?start_time=2024-12-01T14:00:00Z&end_time=2024-12-01T15:00:00Z&interval=30s&fields=battery.percent,position.altitude_agl_meters",
+              "host": ["{{base_url}}"],
+              "path": ["telemetry", "drones", "A-23", "history"],
+              "query": [
+                {
+                  "key": "start_time",
+                  "value": "2024-12-01T14:00:00Z"
+                },
+                {
+                  "key": "end_time",
+                  "value": "2024-12-01T15:00:00Z"
+                },
+                {
+                  "key": "interval",
+                  "value": "30s"
+                },
+                {
+                  "key": "fields",
+                  "value": "battery.percent,position.altitude_agl_meters"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Agricultural Operations",
+      "item": [
+        {
+          "name": "Create Precision Spray Mission",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Fungicide Treatment - Field C-47\",\n  \"drone_id\": \"B-12\",\n  \"field_id\": \"field_c47\",\n  \"chemical\": {\n    \"name\": \"Azoxystrobin\",\n    \"type\": \"fungicide\",\n    \"concentration_percent\": 25,\n    \"target_rate_lha\": 0.5,\n    \"tank_mix_liters\": 18\n  },\n  \"spray_zones\": [\n    {\n      \"zone_id\": \"zone_1\",\n      \"polygon\": [\n        {\"lat\": 41.9876, \"lon\": -93.6201},\n        {\"lat\": 41.9880, \"lon\": -93.6190},\n        {\"lat\": 41.9870, \"lon\": -93.6180}\n      ],\n      \"area_hectares\": 12.4,\n      \"reason\": \"Disease outbreak detected by AI\",\n      \"severity\": \"high\"\n    }\n  ],\n  \"flight_parameters\": {\n    \"altitude_agl_meters\": 3.5,\n    \"speed_mps\": 5,\n    \"swath_width_meters\": 6,\n    \"nozzle_pressure_psi\": 40\n  },\n  \"ai_optimization\": {\n    \"enabled\": true,\n    \"variable_rate_application\": true,\n    \"wind_drift_compensation\": true\n  }\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/agriculture/spray-missions",
+              "host": ["{{base_url}}"],
+              "path": ["agriculture", "spray-missions"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Crop Health Analysis",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/agriculture/fields/field_b23/health?include_historical=true",
+              "host": ["{{base_url}}"],
+              "path": ["agriculture", "fields", "field_b23", "health"],
+              "query": [
+                {
+                  "key": "include_historical",
+                  "value": "true"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Field NDVI Map",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/agriculture/fields/field_b23/ndvi-map?format=geotiff&resolution_meters=0.1",
+              "host": ["{{base_url}}"],
+              "path": ["agriculture", "fields", "field_b23", "ndvi-map"],
+              "query": [
+                {
+                  "key": "format",
+                  "value": "geotiff"
+                },
+                {
+                  "key": "resolution_meters",
+                  "value": "0.1"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Log Spray Application",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"mission_id\": \"spray_47\",\n  \"drone_id\": \"B-12\",\n  \"field_id\": \"field_c47\",\n  \"operator_id\": \"operator_123\",\n  \"application_date\": \"2024-12-01T06:15:00Z\",\n  \"chemical\": {\n    \"product_name\": \"Azoxystrobin 25% SC\",\n    \"epa_registration_number\": \"100-123\",\n    \"active_ingredient\": \"Azoxystrobin\",\n    \"concentration_percent\": 25,\n    \"type\": \"fungicide\"\n  },\n  \"application_details\": {\n    \"area_treated_hectares\": 12.4,\n    \"total_volume_applied_liters\": 6.2,\n    \"application_rate_lha\": 0.5,\n    \"target_pest_disease\": \"Fusarium head blight\",\n    \"growth_stage\": \"flowering\",\n    \"method\": \"precision_aerial_variable_rate\"\n  },\n  \"weather_conditions\": {\n    \"temperature_celsius\": 18,\n    \"wind_speed_kph\": 8,\n    \"wind_direction_degrees\": 270,\n    \"humidity_percent\": 60,\n    \"precipitation\": false\n  },\n  \"regulatory_compliance\": {\n    \"rei_hours\": 12,\n    \"phi_days\": 14,\n    \"buffer_zones_respected\": true,\n    \"applicator_license\": \"AG-12345-IA\"\n  }\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/agriculture/spray-logs",
+              "host": ["{{base_url}}"],
+              "path": ["agriculture", "spray-logs"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Maintenance",
+      "item": [
+        {
+          "name": "Get Maintenance Schedule",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/fleet/drones/A-23/maintenance/schedule",
+              "host": ["{{base_url}}"],
+              "path": ["fleet", "drones", "A-23", "maintenance", "schedule"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Log Maintenance Activity",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"maintenance_type\": \"routine_inspection\",\n  \"performed_by\": \"tech_456\",\n  \"performed_at\": \"2024-11-15T08:30:00Z\",\n  \"duration_hours\": 2,\n  \"checklist_completed\": true,\n  \"components_inspected\": [\n    \"motors\",\n    \"propellers\",\n    \"battery\",\n    \"sensors\",\n    \"spray_system\",\n    \"gimbal\"\n  ],\n  \"parts_replaced\": [\n    {\n      \"part_name\": \"Propeller\",\n      \"part_number\": \"PROP-X7-01\",\n      \"quantity\": 1,\n      \"reason\": \"Minor crack detected\",\n      \"cost_usd\": 45\n    }\n  ],\n  \"notes\": \"All systems nominal. Cleaned multispectral sensors. Calibrated gimbal.\",\n  \"next_maintenance_due_hours\": 100,\n  \"cleared_for_flight\": true\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/fleet/drones/A-23/maintenance/log",
+              "host": ["{{base_url}}"],
+              "path": ["fleet", "drones", "A-23", "maintenance", "log"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Run Diagnostics",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"test_suite\": \"pre_flight\",\n  \"tests\": [\n    \"motors\",\n    \"sensors\",\n    \"battery\",\n    \"communication\",\n    \"gps\",\n    \"camera_systems\",\n    \"spray_system\"\n  ]\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/fleet/drones/A-23/diagnostics/run",
+              "host": ["{{base_url}}"],
+              "path": ["fleet", "drones", "A-23", "diagnostics", "run"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Component Health",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/fleet/drones/A-23/health",
+              "host": ["{{base_url}}"],
+              "path": ["fleet", "drones", "A-23", "health"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Analytics",
+      "item": [
+        {
+          "name": "Get Fleet Analytics",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/analytics/fleet?start_date=2024-11-01&end_date=2024-12-01",
+              "host": ["{{base_url}}"],
+              "path": ["analytics", "fleet"],
+              "query": [
+                {
+                  "key": "start_date",
+                  "value": "2024-11-01"
+                },
+                {
+                  "key": "end_date",
+                  "value": "2024-12-01"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Crop Analytics",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/analytics/agriculture?start_date=2024-11-01&end_date=2024-12-01",
+              "host": ["{{base_url}}"],
+              "path": ["analytics", "agriculture"],
+              "query": [
+                {
+                  "key": "start_date",
+                  "value": "2024-11-01"
+                },
+                {
+                  "key": "end_date",
+                  "value": "2024-12-01"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Export Report",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"report_type\": \"fleet_performance\",\n  \"period\": {\n    \"start_date\": \"2024-11-01\",\n    \"end_date\": \"2024-12-01\"\n  },\n  \"format\": \"pdf\",\n  \"sections\": [\n    \"executive_summary\",\n    \"fleet_operations\",\n    \"agricultural_impact\",\n    \"economic_roi\",\n    \"maintenance_summary\",\n    \"safety_compliance\"\n  ],\n  \"include_charts\": true,\n  \"include_maps\": true\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/analytics/reports/export",
+              "host": ["{{base_url}}"],
+              "path": ["analytics", "reports", "export"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Report Status",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/analytics/reports/rpt_8472",
+              "host": ["{{base_url}}"],
+              "path": ["analytics", "reports", "rpt_8472"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Weather",
+      "item": [
+        {
+          "name": "Get Weather Forecast",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/weather/forecast?farm_id=farm_miller_iowa&hours=48",
+              "host": ["{{base_url}}"],
+              "path": ["weather", "forecast"],
+              "query": [
+                {
+                  "key": "farm_id",
+                  "value": "farm_miller_iowa"
+                },
+                {
+                  "key": "hours",
+                  "value": "48"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Spray Recommendations",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/weather/spray-recommendations?farm_id=farm_miller_iowa&hours_ahead=48",
+              "host": ["{{base_url}}"],
+              "path": ["weather", "spray-recommendations"],
+              "query": [
+                {
+                  "key": "farm_id",
+                  "value": "farm_miller_iowa"
+                },
+                {
+                  "key": "hours_ahead",
+                  "value": "48"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Webhooks",
+      "item": [
+        {
+          "name": "Register Webhook",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"url\": \"https://your-server.com/acme-webhooks\",\n  \"events\": [\n    \"mission.started\",\n    \"mission.completed\",\n    \"mission.failed\",\n    \"drone.battery_low\",\n    \"drone.maintenance_due\",\n    \"ai.issue_detected\",\n    \"weather.spray_window_opening\",\n    \"compliance.spray_logged\"\n  ],\n  \"filters\": {\n    \"farm_ids\": [\"farm_miller_iowa\"],\n    \"drone_ids\": [\"A-23\", \"B-12\"]\n  },\n  \"secret\": \"your_webhook_secret_for_verification\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/webhooks",
+              "host": ["{{base_url}}"],
+              "path": ["webhooks"]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}
