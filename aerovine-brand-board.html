@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AeroVine Brand Board</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 60px;
+            padding: 40px 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            font-size: 3em;
+            color: #5D3A7A;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            font-size: 1.2em;
+            color: #7A8B99;
+        }
+
+        .section {
+            background: white;
+            padding: 40px;
+            margin-bottom: 40px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .section-title {
+            font-size: 2em;
+            color: #5D3A7A;
+            margin-bottom: 30px;
+            border-bottom: 3px solid #4A90E2;
+            padding-bottom: 10px;
+        }
+
+        .color-palette {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin: 30px 0;
+        }
+
+        .color-card {
+            text-align: center;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .color-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .color-swatch {
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+
+        .color-info {
+            padding: 20px;
+            background: white;
+        }
+
+        .color-name {
+            font-size: 1.3em;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .color-hex {
+            font-family: 'Courier New', monospace;
+            font-size: 1.1em;
+            color: #7A8B99;
+            margin-bottom: 5px;
+        }
+
+        .color-rgb {
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+            color: #999;
+        }
+
+        .color-usage {
+            margin-top: 10px;
+            font-size: 0.9em;
+            color: #666;
+            font-style: italic;
+        }
+
+        .logo-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .logo-display {
+            background: white;
+            padding: 60px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .logo-variations {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            width: 100%;
+        }
+
+        .logo-variant {
+            background: #f8f9fa;
+            padding: 40px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .logo-variant.dark {
+            background: #333;
+        }
+
+        .logo-variant.light {
+            background: white;
+        }
+
+        .logo-variant h3 {
+            margin-bottom: 20px;
+            color: #5D3A7A;
+        }
+
+        .logo-variant.dark h3 {
+            color: white;
+        }
+
+        .logo-svg {
+            width: 200px;
+            height: 240px;
+            margin: 0 auto;
+        }
+
+        .typography-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .font-sample {
+            padding: 30px;
+            background: #f8f9fa;
+            border-radius: 10px;
+        }
+
+        .font-sample h3 {
+            color: #5D3A7A;
+            margin-bottom: 20px;
+        }
+
+        .font-heading {
+            font-size: 2.5em;
+            font-weight: bold;
+            color: #5D3A7A;
+            margin-bottom: 10px;
+        }
+
+        .font-body {
+            font-size: 1.1em;
+            color: #333;
+            line-height: 1.8;
+        }
+
+        .font-label {
+            font-size: 0.9em;
+            color: #7A8B99;
+            margin-top: 10px;
+        }
+
+        .usage-examples {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .usage-card {
+            padding: 25px;
+            border-radius: 10px;
+            border-left: 5px solid;
+        }
+
+        .usage-card.purple {
+            background: rgba(93, 58, 122, 0.1);
+            border-color: #5D3A7A;
+        }
+
+        .usage-card.blue {
+            background: rgba(74, 144, 226, 0.1);
+            border-color: #4A90E2;
+        }
+
+        .usage-card.gold {
+            background: rgba(212, 165, 116, 0.1);
+            border-color: #D4A574;
+        }
+
+        .usage-card.gray {
+            background: rgba(122, 139, 153, 0.1);
+            border-color: #7A8B99;
+        }
+
+        .usage-card h4 {
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .usage-card ul {
+            margin-left: 20px;
+            color: #666;
+        }
+
+        .spacing-guide {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .spacing-box {
+            background: #f0f0f0;
+            border: 2px dashed #ccc;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+            font-weight: bold;
+        }
+
+        .icon-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .icon-item {
+            text-align: center;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 10px;
+        }
+
+        .icon-item svg {
+            width: 80px;
+            height: 80px;
+            margin-bottom: 15px;
+        }
+
+        .brand-values {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .value-card {
+            padding: 30px;
+            background: linear-gradient(135deg, #5D3A7A 0%, #4A90E2 100%);
+            color: white;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .value-card h3 {
+            font-size: 1.5em;
+            margin-bottom: 15px;
+        }
+
+        .value-card p {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2em;
+            }
+            .section {
+                padding: 20px;
+            }
+            .logo-svg {
+                width: 150px;
+                height: 180px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>AeroVine Brand Board</h1>
+            <p class="subtitle">Brand Guidelines & Visual Identity</p>
+        </header>
+
+        <!-- Logo Section -->
+        <section class="section">
+            <h2 class="section-title">Logo</h2>
+            <div class="logo-section">
+                <div class="logo-display">
+                    <svg class="logo-svg" viewBox="0 0 120 140" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Drone body -->
+                        <rect x="40" y="25" width="40" height="18" rx="4" fill="#7A8B99" opacity="0.7"/>
+                        <!-- Horizontal arms -->
+                        <line x1="40" y1="34" x2="25" y2="34" stroke="#333" stroke-width="2.5" stroke-linecap="round"/>
+                        <line x1="80" y1="34" x2="95" y2="34" stroke="#333" stroke-width="2.5" stroke-linecap="round"/>
+                        <!-- Four propellers -->
+                        <circle cx="25" cy="20" r="5" fill="#333"/>
+                        <circle cx="95" cy="20" r="5" fill="#333"/>
+                        <circle cx="25" cy="48" r="5" fill="#333"/>
+                        <circle cx="95" cy="48" r="5" fill="#333"/>
+                        <!-- Wing/tail -->
+                        <path d="M 80 34 L 85 25 L 80 30 Z" fill="#4A90E2"/>
+                        <!-- Landing gear -->
+                        <line x1="50" y1="43" x2="50" y2="55" stroke="#333" stroke-width="2" stroke-linecap="round"/>
+                        <line x1="70" y1="43" x2="70" y2="55" stroke="#333" stroke-width="2" stroke-linecap="round"/>
+                        <!-- Grape cluster -->
+                        <circle cx="50" cy="70" r="6" fill="#5D3A7A"/>
+                        <circle cx="45" cy="75" r="5.5" fill="#8B4A9E"/>
+                        <circle cx="55" cy="75" r="5.5" fill="#8B4A9E"/>
+                        <circle cx="42" cy="80" r="5" fill="#5D3A7A"/>
+                        <circle cx="50" cy="82" r="5" fill="#8B4A9E"/>
+                        <circle cx="58" cy="80" r="5" fill="#5D3A7A"/>
+                        <circle cx="46" cy="86" r="4.5" fill="#5D3A7A"/>
+                        <circle cx="54" cy="87" r="4.5" fill="#8B4A9E"/>
+                        <circle cx="50" cy="92" r="4" fill="#5D3A7A"/>
+                    </svg>
+                    <h2 style="color: #4A90E2; font-size: 2.5em; margin-top: 20px;">AeroVine</h2>
+                </div>
+
+                <div class="logo-variations">
+                    <div class="logo-variant light">
+                        <h3>Light Background</h3>
+                        <svg class="logo-svg" viewBox="0 0 120 140" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="40" y="25" width="40" height="18" rx="4" fill="#7A8B99" opacity="0.7"/>
+                            <line x1="40" y1="34" x2="25" y2="34" stroke="#333" stroke-width="2.5" stroke-linecap="round"/>
+                            <line x1="80" y1="34" x2="95" y2="34" stroke="#333" stroke-width="2.5" stroke-linecap="round"/>
+                            <circle cx="25" cy="20" r="5" fill="#333"/>
+                            <circle cx="95" cy="20" r="5" fill="#333"/>
+                            <circle cx="25" cy="48" r="5" fill="#333"/>
+                            <circle cx="95" cy="48" r="5" fill="#333"/>
+                            <path d="M 80 34 L 85 25 L 80 30 Z" fill="#4A90E2"/>
+                            <line x1="50" y1="43" x2="50" y2="55" stroke="#333" stroke-width="2" stroke-linecap="round"/>
+                            <line x1="70" y1="43" x2="70" y2="55" stroke="#333" stroke-width="2" stroke-linecap="round"/>
+                            <circle cx="50" cy="70" r="6" fill="#5D3A7A"/>
+                            <circle cx="45" cy="75" r="5.5" fill="#8B4A9E"/>
+                            <circle cx="55" cy="75" r="5.5" fill="#8B4A9E"/>
+                            <circle cx="42" cy="80" r="5" fill="#5D3A7A"/>
+                            <circle cx="50" cy="82" r="5" fill="#8B4A9E"/>
+                            <circle cx="58" cy="80" r="5" fill="#5D3A7A"/>
+                            <circle cx="46" cy="86" r="4.5" fill="#5D3A7A"/>
+                            <circle cx="54" cy="87" r="4.5" fill="#8B4A9E"/>
+                            <circle cx="50" cy="92" r="4" fill="#5D3A7A"/>
+                        </svg>
+                        <p style="color: #4A90E2; font-size: 1.5em; font-weight: bold; margin-top: 15px;">AeroVine</p>
+                    </div>
+
+                    <div class="logo-variant dark">
+                        <h3>Dark Background</h3>
+                        <svg class="logo-svg" viewBox="0 0 120 140" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="40" y="25" width="40" height="18" rx="4" fill="#B0B8C0" opacity="0.8"/>
+                            <line x1="40" y1="34" x2="25" y2="34" stroke="#fff" stroke-width="2.5" stroke-linecap="round"/>
+                            <line x1="80" y1="34" x2="95" y2="34" stroke="#fff" stroke-width="2.5" stroke-linecap="round"/>
+                            <circle cx="25" cy="20" r="5" fill="#fff"/>
+                            <circle cx="95" cy="20" r="5" fill="#fff"/>
+                            <circle cx="25" cy="48" r="5" fill="#fff"/>
+                            <circle cx="95" cy="48" r="5" fill="#fff"/>
+                            <path d="M 80 34 L 85 25 L 80 30 Z" fill="#4A90E2"/>
+                            <line x1="50" y1="43" x2="50" y2="55" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
+                            <line x1="70" y1="43" x2="70" y2="55" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
+                            <circle cx="50" cy="70" r="6" fill="#D4A574"/>
+                            <circle cx="45" cy="75" r="5.5" fill="#E4C19A"/>
+                            <circle cx="55" cy="75" r="5.5" fill="#E4C19A"/>
+                            <circle cx="42" cy="80" r="5" fill="#D4A574"/>
+                            <circle cx="50" cy="82" r="5" fill="#E4C19A"/>
+                            <circle cx="58" cy="80" r="5" fill="#D4A574"/>
+                            <circle cx="46" cy="86" r="4.5" fill="#D4A574"/>
+                            <circle cx="54" cy="87" r="4.5" fill="#E4C19A"/>
+                            <circle cx="50" cy="92" r="4" fill="#D4A574"/>
+                        </svg>
+                        <p style="color: #4A90E2; font-size: 1.5em; font-weight: bold; margin-top: 15px;">AeroVine</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Color Palette -->
+        <section class="section">
+            <h2 class="section-title">Color Palette</h2>
+            <div class="color-palette">
+                <div class="color-card">
+                    <div class="color-swatch" style="background: #5D3A7A;">
+                        Purple
+                    </div>
+                    <div class="color-info">
+                        <div class="color-name">Purple</div>
+                        <div class="color-hex">#5D3A7A</div>
+                        <div class="color-rgb">RGB(93, 58, 122)</div>
+                        <div class="color-usage">Grapes/Wine - Primary Brand Color</div>
+                    </div>
+                </div>
+
+                <div class="color-card">
+                    <div class="color-swatch" style="background: #4A90E2;">
+                        Blue
+                    </div>
+                    <div class="color-info">
+                        <div class="color-name">Blue</div>
+                        <div class="color-hex">#4A90E2</div>
+                        <div class="color-rgb">RGB(74, 144, 226)</div>
+                        <div class="color-usage">Technology/Reliability - Secondary Brand Color</div>
+                    </div>
+                </div>
+
+                <div class="color-card">
+                    <div class="color-swatch" style="background: #D4A574; color: #333;">
+                        Gold
+                    </div>
+                    <div class="color-info">
+                        <div class="color-name">Gold</div>
+                        <div class="color-hex">#D4A574</div>
+                        <div class="color-rgb">RGB(212, 165, 116)</div>
+                        <div class="color-usage">Harvest/Success - Accent Color</div>
+                    </div>
+                </div>
+
+                <div class="color-card">
+                    <div class="color-swatch" style="background: #7A8B99;">
+                        Gray
+                    </div>
+                    <div class="color-info">
+                        <div class="color-name">Gray</div>
+                        <div class="color-hex">#7A8B99</div>
+                        <div class="color-rgb">RGB(122, 139, 153)</div>
+                        <div class="color-usage">Terroir/Grounding - Neutral Color</div>
+                    </div>
+                </div>
+            </div>
+
+            <h3 style="margin-top: 40px; color: #5D3A7A; margin-bottom: 20px;">Color Usage Guidelines</h3>
+            <div class="usage-examples">
+                <div class="usage-card purple">
+                    <h4>Purple (#5D3A7A)</h4>
+                    <ul>
+                        <li>Primary headings</li>
+                        <li>Logo elements</li>
+                        <li>Brand accents</li>
+                        <li>Grape cluster imagery</li>
+                    </ul>
+                </div>
+
+                <div class="usage-card blue">
+                    <h4>Blue (#4A90E2)</h4>
+                    <ul>
+                        <li>Company name text</li>
+                        <li>Technology features</li>
+                        <li>Call-to-action buttons</li>
+                        <li>Links and highlights</li>
+                    </ul>
+                </div>
+
+                <div class="usage-card gold">
+                    <h4>Gold (#D4A574)</h4>
+                    <ul>
+                        <li>Success indicators</li>
+                        <li>Positive metrics</li>
+                        <li>Accent highlights</li>
+                        <li>Harvest imagery</li>
+                    </ul>
+                </div>
+
+                <div class="usage-card gray">
+                    <h4>Gray (#7A8B99)</h4>
+                    <ul>
+                        <li>Body text</li>
+                        <li>Secondary information</li>
+                        <li>Borders and dividers</li>
+                        <li>Neutral backgrounds</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Typography -->
+        <section class="section">
+            <h2 class="section-title">Typography</h2>
+            <div class="typography-section">
+                <div class="font-sample">
+                    <h3>Headings</h3>
+                    <div class="font-heading">AeroVine</div>
+                    <div class="font-label">Font: System Sans-Serif (SF Pro, Segoe UI, Roboto)</div>
+                    <div class="font-label">Weight: Bold (700)</div>
+                    <div class="font-label">Color: #5D3A7A (Purple)</div>
+                </div>
+
+                <div class="font-sample">
+                    <h3>Body Text</h3>
+                    <div class="font-body">
+                        AeroVine is a cutting-edge drone technology company specializing in agricultural applications for the wine industry. We provide precision agriculture solutions to premium wine producers.
+                    </div>
+                    <div class="font-label">Font: System Sans-Serif</div>
+                    <div class="font-label">Size: 16px (1em)</div>
+                    <div class="font-label">Line Height: 1.6</div>
+                    <div class="font-label">Color: #333 (Dark Gray)</div>
+                </div>
+
+                <div class="font-sample">
+                    <h3>Company Name</h3>
+                    <div style="font-size: 2em; font-weight: bold; color: #4A90E2; margin-bottom: 10px;">AeroVine</div>
+                    <div class="font-label">Font: System Sans-Serif</div>
+                    <div class="font-label">Weight: Bold (700)</div>
+                    <div class="font-label">Color: #4A90E2 (Blue)</div>
+                    <div class="font-label">Letter Spacing: -1px</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Brand Values -->
+        <section class="section">
+            <h2 class="section-title">Brand Values</h2>
+            <div class="brand-values">
+                <div class="value-card">
+                    <h3>Innovation</h3>
+                    <p>Embracing cutting-edge AI and drone technology to transform agriculture</p>
+                </div>
+                <div class="value-card">
+                    <h3>Safety First</h3>
+                    <p>Prioritizing safety in all UAS operations and data security protocols</p>
+                </div>
+                <div class="value-card">
+                    <h3>Customer Focus</h3>
+                    <p>Deep commitment to wine industry expertise and customer success</p>
+                </div>
+                <div class="value-card">
+                    <h3>Growth Mindset</h3>
+                    <p>Continuous learning, improvement, and adaptation in a fast-paced environment</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Spacing & Layout -->
+        <section class="section">
+            <h2 class="section-title">Spacing Guidelines</h2>
+            <div class="spacing-guide">
+                <div class="spacing-box" style="height: 8px; font-size: 0.7em;">8px</div>
+                <div class="spacing-box" style="height: 16px; font-size: 0.7em;">16px</div>
+                <div class="spacing-box" style="height: 24px; font-size: 0.7em;">24px</div>
+                <div class="spacing-box" style="height: 32px; font-size: 0.7em;">32px</div>
+                <div class="spacing-box" style="height: 40px; font-size: 0.7em;">40px</div>
+                <div class="spacing-box" style="height: 48px; font-size: 0.7em;">48px</div>
+            </div>
+            <p style="margin-top: 20px; color: #666;">
+                Use consistent spacing multiples of 8px for padding, margins, and layout elements.
+            </p>
+        </section>
+
+        <!-- Iconography -->
+        <section class="section">
+            <h2 class="section-title">Iconography</h2>
+            <div class="icon-grid">
+                <div class="icon-item">
+                    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="35" y="40" width="30" height="20" rx="3" fill="#4A90E2"/>
+                        <circle cx="20" cy="30" r="8" fill="#5D3A7A" opacity="0.8"/>
+                        <circle cx="80" cy="30" r="8" fill="#5D3A7A" opacity="0.8"/>
+                        <circle cx="20" cy="70" r="8" fill="#5D3A7A" opacity="0.8"/>
+                        <circle cx="80" cy="70" r="8" fill="#5D3A7A" opacity="0.8"/>
+                    </svg>
+                    <p>Drone Icon</p>
+                </div>
+                <div class="icon-item">
+                    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="50" cy="40" r="8" fill="#5D3A7A"/>
+                        <circle cx="42" cy="50" r="7" fill="#8B4A9E"/>
+                        <circle cx="58" cy="50" r="7" fill="#8B4A9E"/>
+                        <circle cx="50" cy="60" r="6" fill="#5D3A7A"/>
+                    </svg>
+                    <p>Grape Cluster</p>
+                </div>
+                <div class="icon-item">
+                    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="20" y="30" width="60" height="40" rx="5" fill="#4A90E2" opacity="0.3"/>
+                        <path d="M 30 50 L 50 35 L 70 50 L 50 65 Z" fill="#4A90E2"/>
+                    </svg>
+                    <p>Data Analytics</p>
+                </div>
+                <div class="icon-item">
+                    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="50" cy="50" r="30" fill="none" stroke="#D4A574" stroke-width="4"/>
+                        <path d="M 50 20 L 50 50 L 70 70" stroke="#D4A574" stroke-width="4" stroke-linecap="round"/>
+                    </svg>
+                    <p>Growth/Progress</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Application Examples -->
+        <section class="section">
+            <h2 class="section-title">Brand Application</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
+                <div style="padding: 30px; background: linear-gradient(135deg, #5D3A7A 0%, #4A90E2 100%); border-radius: 10px; color: white;">
+                    <h3 style="margin-bottom: 15px;">Business Cards</h3>
+                    <p>Use purple-to-blue gradient background with white text. Logo in top-left corner.</p>
+                </div>
+                <div style="padding: 30px; background: white; border: 3px solid #4A90E2; border-radius: 10px;">
+                    <h3 style="color: #5D3A7A; margin-bottom: 15px;">Letterhead</h3>
+                    <p style="color: #333;">White background with blue border. Logo and company name in header.</p>
+                </div>
+                <div style="padding: 30px; background: #f8f9fa; border-radius: 10px;">
+                    <h3 style="color: #5D3A7A; margin-bottom: 15px;">Presentations</h3>
+                    <p style="color: #333;">Use brand colors for slides. Purple for headings, blue for accents, gold for highlights.</p>
+                </div>
+            </div>
+        </section>
+
+        <footer style="text-align: center; padding: 40px 20px; color: #7A8B99; margin-top: 60px;">
+            <p style="font-size: 1.1em;">AeroVine Brand Guidelines</p>
+            <p style="margin-top: 10px;">Version 1.0 | Last Updated: 2025</p>
+        </footer>
+    </div>
+</body>
+</html>
+
