@@ -23,14 +23,14 @@ You now have a **professional-grade** startup simulation package that includes:
 ## 📂 Your Files
 
 ```
-/Users/jdohmann/AI-lab/
+/aerovine
 │
-├── acme-ai-dashboard.html              # ⭐ MAIN DEMO - Open this first!
+├── aerovine-dashboard.html              # ⭐ MAIN DEMO - Open this first!
 ├── UI-PROTOTYPE-GUIDE.md               # How to demo the UI
 │
-├── acme-ai-api-documentation.md        # Complete API specs (50+ pages)
-├── acme-ai-api-quick-reference.md      # Quick lookup cheat sheet
-├── acme-ai-postman-collection.json     # Import into Postman for testing
+├── aerovine-ai-api-documentation.md        # Complete API specs (50+ pages)
+├── aerovine-ai-api-quick-reference.md      # Quick lookup cheat sheet
+├── aerovine-ai-postman-collection.json     # Import into Postman for testing
 ├── README-API-DOCS.md                  # How to use the API docs
 │
 └── STARTUP-SIMULATION-PACKAGE.md       # ← You are here
@@ -42,7 +42,7 @@ You now have a **professional-grade** startup simulation package that includes:
 
 ### **Step 1: Open the UI Prototype**
 ```bash
-1. Go to: /Users/jdohmann/AI-lab/
+1. Go to: /aerovine
 2. Double-click: acme-ai-dashboard.html
 3. It opens in your browser - that's it!
 ```
@@ -74,7 +74,7 @@ You now have a **professional-grade** startup simulation package that includes:
 **Audience:** Mixed technical/non-technical
 
 **Script:**
-1. Open `acme-ai-dashboard.html`
+1. Open `aerovine-dashboard.html`
 2. Walk through Dashboard → Show AI detections
 3. Switch to Vineyards → Click Napa Valley card → Explain powdery mildew detection
 4. Show economic impact: $127K savings, $4.20 ROI
@@ -195,7 +195,7 @@ You now have a **professional-grade** startup simulation package that includes:
 ## 🎤 Demo Flow (Step-by-Step)
 
 ### **[0:00 - 0:30] Opening**
-*[Open acme-ai-dashboard.html - Dashboard tab visible]*
+*[Open aerovine-dashboard.html - Dashboard tab visible]*
 
 "Good morning. I'm here to present Acme.ai - an AI-powered agricultural drone fleet management platform. We specialize in precision agriculture for both commodity crops and premium vineyards."
 
@@ -270,7 +270,7 @@ You now have a **professional-grade** startup simulation package that includes:
 ---
 
 ### **[8:00 - 9:00] The Technology**
-*[Open acme-ai-api-documentation.md (or just reference it)]*
+*[Open aerovine-ai-api-documentation.md (or just reference it)]*
 
 "From a technical standpoint, this is built on a RESTful API with OAuth 2.0 authentication. We have 30+ endpoints covering:
 - Fleet management
